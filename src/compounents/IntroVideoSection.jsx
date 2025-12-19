@@ -70,15 +70,11 @@ const IntroVideoSection = () => {
             <motion.div
               key={i}
               variants={item}
-              whileHover={{
-                y: -10,
-                scale: 1.03,
-                boxShadow: "0 25px 60px rgba(0, 206, 209, 0.15)",
-              }}
-              className="rounded-2xl p-8 transition"
+              className=" rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)] select-none"
               style={{
                 backgroundColor: "var(--card-bg)",
                 border: `1px solid var(--card-border)`,
+                WebkitTapHighlightColor: "transparent",
               }}
             >
               <h3 className="text-xl font-semibold">{step.title}</h3>

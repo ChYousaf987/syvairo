@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const HeroSection = () => {
   return (
     <section
-      className="pt-40 pb-32 h-screen flex items-center overflow-hidden"
+      className="pt-40 pb-32 flex items-center overflow-hidden"
       style={{
         background: `linear-gradient(to bottom, var(--gradient-from), var(--gradient-to))`,
         color: "var(--text-primary)",
@@ -30,10 +30,11 @@ const HeroSection = () => {
             solutions that run your business autonomously.
           </p>
 
-          <div className="mt-8 flex gap-4 flex-wrap">
+          <div className="mt-8 flex gap-4 justify-center md:justify-start items-center">
             <motion.button
               whileHover={{ scale: 1.07 }}
-              className="px-8 py-4 rounded-2xl font-semibold"
+              whileTap={{ scale: 1.07 }}
+              className="px-3 md:px-8 py-4 rounded-2xl font-semibold"
               style={{
                 backgroundColor: "var(--accent)",
                 color: "#000",
@@ -44,7 +45,7 @@ const HeroSection = () => {
 
             <motion.button
               whileHover={{ scale: 1.07 }}
-              className="px-8 py-4 rounded-2xl border"
+              className="px-3 md:px-8 py-4 rounded-2xl border"
               style={{
                 borderColor: "var(--accent)",
                 color: "var(--text-primary)",
@@ -67,7 +68,6 @@ const HeroSection = () => {
             border: `1px solid var(--border-color)`,
           }}
         >
-          
           <div className="p-0 overflow-hidden rounded-3xl shadow-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-lg">
             <video
               src="/video.mp4"
@@ -78,8 +78,6 @@ const HeroSection = () => {
               className="w-full h-full object-cover"
             />
           </div>
-
-          
         </motion.div>
       </div>
     </section>

@@ -85,6 +85,11 @@ const CaseStudies = () => {
                 scale: 1.03,
                 boxShadow: "0 25px 60px rgba(0, 206, 209, 0.15)",
               }}
+              whileTap={{
+                y: -10,
+                scale: 1.03,
+                boxShadow: "0 25px 60px rgba(0, 206, 209, 0.15)",
+              }}
               className="rounded-2xl p-8 transition"
               style={{
                 backgroundColor: "var(--card-bg)",
