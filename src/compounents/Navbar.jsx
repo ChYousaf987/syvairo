@@ -22,7 +22,10 @@ const Navbar = ({ theme, setTheme }) => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
       className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl"
-      style={{ backgroundColor: "var(--bg-primary)" }}
+      style={{
+        background: `linear-gradient(to left, var(--gradient-from), var(--gradient-to))`,
+        color: "var(--text-primary)",
+      }}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/">

@@ -68,7 +68,7 @@ const HeroSection = () => {
           }}
         >
           
-          <div className="p-0 overflow-hidden rounded-3xl shadow-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 p-6 rounded-2xl shadow-lg">
+          <div className="p-0 overflow-hidden rounded-3xl shadow-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-lg">
             <video
               src="/video.mp4"
               muted
