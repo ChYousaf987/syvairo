@@ -39,9 +39,8 @@ const benefits = [
 const WhyChooseSyvairo = () => {
   return (
     <section
-      className="py-28 overflow-hidden"
+      className=" py-20 md:py-28 overflow-hidden"
       style={{
-        backgroundColor: "var(--section-alt)",
         color: "var(--text-primary)",
       }}
     >
@@ -52,19 +51,28 @@ const WhyChooseSyvairo = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl md:text-5xl font-bold"
+          className="text-3xl pb-2 md:text-5xl font-semibold tracking-tight bg-clip-text text-transparent"
+          style={{
+            backgroundImage: `
+      linear-gradient(
+        180deg,
+        var(--text-primary),
+        var(--accent)
+      )
+    `,
+          }}
         >
-          Why Businesses Choose{" "}
-          <span style={{ color: "var(--accent)" }}>Syvairo</span>
+          Why Businesses Choose Syvairo
         </motion.h2>
 
         {/* Intro Text */}
         <motion.p
-          initial={{ y: 20, opacity: 0 }}
+          initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mt-6 text-lg md:text-xl text-secondary max-w-2xl mx-auto"
+          transition={{ delay: 0.15 }}
+          className="mt-4 max-w-2xl mx-auto"
+          style={{ color: "var(--text-secondary)" }}
         >
           We don’t just provide AI tools — we implement fully functional systems
           that run your business workflows autonomously.
@@ -73,19 +81,17 @@ const WhyChooseSyvairo = () => {
         {/* Cards */}
         <div className="mt-16 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {benefits.map((item, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ y: 60, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -6, scale: 1.03 }}
-              tabIndex={0} // Focusable
-              className="rounded-2xl p-8 transition cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent"
+              className="rounded-2xl p-8 transition-all duration-300
+             hover:-translate-y-2 hover:scale-[1.03]
+             hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
+             hover:bg-[#00ced1]
+             select-none"
               style={{
                 backgroundColor: "var(--card-bg)",
                 border: `1px solid var(--card-border)`,
-                boxShadow: "var(--shadow-soft)",
+                WebkitTapHighlightColor: "transparent",
               }}
             >
               <div className="flex items-center space-x-4 mb-4">
@@ -93,7 +99,7 @@ const WhyChooseSyvairo = () => {
                 <h3 className="text-lg font-semibold">{item.title}</h3>
               </div>
               <p className="text-secondary">{item.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

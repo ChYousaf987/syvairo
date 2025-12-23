@@ -35,22 +35,30 @@ const item = {
 const ClientTrustLiveAgents = () => {
   return (
     <section
-      className="py-24 overflow-hidden"
+      className="py-20 md:py-28 overflow-hidden"
       style={{
-        backgroundColor: "var(--section-alt)",
         color: "var(--text-primary)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Heading */}
         <motion.h2
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-bold text-center"
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-5xl pb-2 font-semibold tracking-tight bg-clip-text text-transparent"
+          style={{
+            backgroundImage: `
+                      linear-gradient(
+                        180deg,
+                        var(--text-primary),
+                        var(--accent)
+                      )
+                    `,
+          }}
         >
-          Client Trust &{" "}
-          <span style={{ color: "var(--accent)" }}>Live AI Agents</span>
+          Client Trust & Live AI Agents
         </motion.h2>
 
         {/* Stats */}
@@ -64,12 +72,15 @@ const ClientTrustLiveAgents = () => {
           {stats.map((itemData, i) => (
             <motion.div
               key={i}
-              variants={item}
-              whileHover={{ y: -6, scale: 1.05 }}
-              className="rounded-2xl p-6"
+              className="rounded-2xl p-8 transition-all duration-300
+             hover:-translate-y-2 hover:scale-[1.03]
+             hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
+             hover:bg-[#00ced1]
+             select-none"
               style={{
                 backgroundColor: "var(--card-bg)",
-                boxShadow: "var(--shadow-soft)",
+                border: `1px solid var(--card-border)`,
+                WebkitTapHighlightColor: "transparent",
               }}
             >
               <p
@@ -94,16 +105,15 @@ const ClientTrustLiveAgents = () => {
           {agents.map((agent, i) => (
             <motion.div
               key={i}
-              variants={item}
-              whileHover={{
-                y: -8,
-                scale: 1.04,
-                boxShadow: "0 20px 45px rgba(0, 206, 209, 0.15)",
-              }}
-              className="rounded-2xl p-6 text-center transition"
+              className="rounded-2xl p-8 transition-all duration-300
+             hover:-translate-y-2 hover:scale-[1.03]
+             hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
+             hover:bg-[#00ced1]
+             select-none"
               style={{
                 backgroundColor: "var(--card-bg)",
-                border: "1px solid var(--card-border)",
+                border: `1px solid var(--card-border)`,
+                WebkitTapHighlightColor: "transparent",
               }}
             >
               <p className="text-lg font-semibold">{agent}</p>
@@ -136,16 +146,7 @@ const ClientTrustLiveAgents = () => {
             Contact Through AI Agents
           </motion.button>
 
-          <motion.button
-            whileHover={{ scale: 1.06 }}
-            className="px-8 py-4 rounded-2xl border"
-            style={{
-              borderColor: "var(--accent)",
-              color: "var(--text-primary)",
-            }}
-          >
-            Book Appointment
-          </motion.button>
+          
         </motion.div>
       </div>
     </section>

@@ -25,9 +25,8 @@ const item = {
 const DeliveryModel = () => {
   return (
     <section
-      className="py-24 overflow-hidden"
+      className=" py-20 md:py-28 overflow-hidden"
       style={{
-        backgroundColor: "var(--bg-primary)",
         color: "var(--text-primary)",
       }}
     >
@@ -36,7 +35,17 @@ const DeliveryModel = () => {
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-bold text-center"
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-5xl pb-2 text-center font-semibold tracking-tight bg-clip-text text-transparent"
+          style={{
+            backgroundImage: `
+                                                     linear-gradient(
+                                                       180deg,
+                                                       var(--text-primary),
+                                                       var(--accent)
+                                                     )
+                                                   `,
+          }}
         >
           Our <span style={{ color: "var(--accent)" }}>4-Step</span> Delivery
           Model
@@ -52,16 +61,15 @@ const DeliveryModel = () => {
           {steps.map((s, i) => (
             <motion.div
               key={i}
-              variants={item}
-              whileHover={{
-                y: -10,
-                scale: 1.05,
-                boxShadow: "0 25px 55px rgba(0,206,209,0.2)",
-              }}
-              className="rounded-2xl p-8 text-center transition"
+              className="rounded-2xl p-8 transition-all duration-300
+             hover:-translate-y-2 hover:scale-[1.03]
+             hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
+             hover:bg-[#00ced1]
+             select-none"
               style={{
                 backgroundColor: "var(--card-bg)",
-                border: "1px solid var(--card-border)",
+                border: `1px solid var(--card-border)`,
+                WebkitTapHighlightColor: "transparent",
               }}
             >
               <div

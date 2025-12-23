@@ -1,23 +1,22 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const HeroSection = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <section
-      className="pt-40 pb-32 flex items-center overflow-hidden"
-      style={{
-        background: `linear-gradient(to bottom, var(--gradient-from), var(--gradient-to))`,
-        color: "var(--text-primary)",
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+    <section className="relative pt-24 md:pt-48 pb-10 flex items-center overflow-hidden bg-grain">
+      <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
         {/* LEFT */}
         <motion.div
           initial={{ x: -80, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+          <h1
+            className="text-4xl md:text-6xl font-bold leading-tight"
+            style={{ color: "var(--text-primary)" }}
+          >
             AI Agents That{" "}
             <span style={{ color: "var(--accent)" }}>Act & Deliver</span>
           </h1>
@@ -30,56 +29,99 @@ const HeroSection = () => {
             solutions that run your business autonomously.
           </p>
 
-          <div className="mt-8 flex gap-4 justify-center md:justify-start items-center">
+          <div className="mt-8 flex gap-4">
             <motion.button
               whileHover={{ scale: 1.07 }}
-              whileTap={{ scale: 1.07 }}
-              className="px-3 md:px-8 py-4 rounded-2xl font-semibold"
+              whileTap={{ scale: 0.97 }}
+              className="px-8 py-4 rounded-2xl font-semibold"
               style={{
                 backgroundColor: "var(--accent)",
                 color: "#000",
               }}
             >
-              Build My AI System
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.07 }}
-              className="px-3 md:px-8 py-4 rounded-2xl border"
-              style={{
-                borderColor: "var(--accent)",
-                color: "var(--text-primary)",
-              }}
-            >
-              Book Demo
+              Build My AI System → Book Demo
             </motion.button>
           </div>
         </motion.div>
 
-        {/* RIGHT CARD */}
+        {/* RIGHT — CLICKABLE VIDEO */}
         <motion.div
           initial={{ x: 80, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           whileHover={{ scale: 1.03 }}
-          className="rounded-3xl p-5 backdrop-blur-xl"
+          onClick={() => setIsOpen(true)}
+          className="cursor-pointer rounded-3xl p-5 backdrop-blur-xl relative group"
           style={{
             backgroundColor: "var(--card-bg)",
-            border: `1px solid var(--border-color)`,
+            border: `1px solid var(--card-border)`,
           }}
         >
-          <div className="p-0 overflow-hidden rounded-3xl shadow-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-lg">
+          {/* Play Overlay */}
+          <div className="absolute inset-0 flex items-center justify-center z-10">
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              className="w-16 h-16 rounded-full flex items-center justify-center"
+              style={{
+                background: "rgba(0,0,0,0.6)",
+                backdropFilter: "blur(6px)",
+              }}
+            >
+              <span className="text-white text-2xl ml-1">▶</span>
+            </motion.div>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl shadow-lg">
             <video
               src="/video.mp4"
               muted
               loop
               autoPlay
               playsInline
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
             />
           </div>
         </motion.div>
       </div>
+
+      {/* VIDEO MODAL */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)}
+          >
+            <motion.div
+              className="relative w-full max-w-4xl"
+              initial={{ scale: 0.85 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.85 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close */}
+              <button
+                onClick={() => setIsOpen(false)}
+                className="absolute -top-10 right-0 text-white text-3xl"
+              >
+                ×
+              </button>
+
+              {/* Video */}
+              <div className="relative w-full pb-[56.25%]">
+                <video
+                  src="/video.mp4"
+                  controls
+                  autoPlay
+                  className="absolute inset-0 w-full h-full rounded-2xl"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

@@ -39,22 +39,30 @@ const item = {
 const CaseStudies = () => {
   return (
     <section
-      className="py-24 overflow-hidden"
+      className="py-20 md:py-28 overflow-hidden"
       style={{
-        backgroundColor: "var(--bg-primary)",
         color: "var(--text-primary)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Heading */}
         <motion.h2
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-bold text-center"
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-5xl pb-2 font-semibold tracking-tight bg-clip-text text-transparent"
+          style={{
+            backgroundImage: `
+             linear-gradient(
+               180deg,
+               var(--text-primary),
+               var(--accent)
+             )
+           `,
+          }}
         >
-          Case Studies{" "}
-          <span style={{ color: "var(--accent)" }}>& Proof of Work</span>
+          Case Studies & Proof of Work
         </motion.h2>
 
         <motion.p
@@ -62,7 +70,7 @@ const CaseStudies = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15 }}
-          className="mt-4 text-center max-w-2xl mx-auto"
+          className="mt-4 max-w-2xl mx-auto"
           style={{ color: "var(--text-secondary)" }}
         >
           Real businesses. Real automation. Real measurable results.
@@ -79,21 +87,15 @@ const CaseStudies = () => {
           {studies.map((itemData, i) => (
             <motion.div
               key={i}
-              variants={item}
-              whileHover={{
-                y: -10,
-                scale: 1.03,
-                boxShadow: "0 25px 60px rgba(0, 206, 209, 0.15)",
-              }}
-              whileTap={{
-                y: -10,
-                scale: 1.03,
-                boxShadow: "0 25px 60px rgba(0, 206, 209, 0.15)",
-              }}
-              className="rounded-2xl p-8 transition"
+              className="rounded-2xl p-8 transition-all duration-300
+             hover:-translate-y-2 hover:scale-[1.03]
+             hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
+             hover:bg-[#00ced1]
+             select-none"
               style={{
                 backgroundColor: "var(--card-bg)",
-                border: "1px solid var(--card-border)",
+                border: `1px solid var(--card-border)`,
+                WebkitTapHighlightColor: "transparent",
               }}
             >
               <h3 className="text-xl font-semibold">{itemData.title}</h3>
