@@ -40,23 +40,24 @@ const FloatingAgents = () => {
               <div
                 key={i}
                 className="
-    px-5 py-4 cursor-pointer transition-all duration-200
-    hover:translate-x-1
+    rounded-2xl px-5 py-4 cursor-pointer select-none
+    transition-all duration-300
+    hover:-translate-y-2 hover:scale-[1.03]
+    hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
   "
                 style={{
-                  backgroundColor: "var(--bg-primary)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "var(--bg-secondary)";
-                  e.currentTarget.style.boxShadow =
-                    "inset 0 0 0 1px var(--card-border)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "var(--bg-primary)";
-                  e.currentTarget.style.boxShadow = "none";
+                  backgroundColor: "var(--card-bgs)",
+                  border: "1px solid var(--card-border)",
+                  WebkitTapHighlightColor: "transparent",
                 }}
               >
-                <p className="font-semibold">{agent.name}</p>
+                <p
+                  className="font-semibold"
+                  style={{ color: "var(--text-primary)" }}
+                >
+                  {agent.name}
+                </p>
+
                 <p
                   className="text-sm mt-1"
                   style={{ color: "var(--text-secondary)" }}

@@ -20,7 +20,7 @@ const Navbar = ({ theme, setTheme }) => {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-0 w-full z-50 backdrop-blur-xl"
+      className="fixed top-0 w-full z-40 backdrop-blur-xl"
       style={{
         color: "var(--text-primary)",
       }}

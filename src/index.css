@@ -11,6 +11,7 @@
   --text-secondary: #666666;
 
   --card-bg: #ffffff;
+  --card-bgs: #ffffff;
   --card-border: rgba(0, 0, 0, 0.08);
 
   --accent: #00ced1;
@@ -29,6 +30,7 @@
   --text-secondary: #aaaaaa;
 
   --card-bg: rgba(255, 255, 255, 0.06);
+  --card-bgs: rgba(62, 47, 104, 0.771);
   --card-border: rgba(255, 255, 255, 0.12);
 
   --accent: #00ced1;

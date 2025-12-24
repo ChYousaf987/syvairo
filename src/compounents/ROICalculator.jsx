@@ -4,158 +4,108 @@ import { motion, AnimatePresence } from "framer-motion";
 const ROICalculator = () => {
   const [hours, setHours] = useState("");
   const [cost, setCost] = useState("");
-  const [showResult, setShowResult] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  // Formatter (USD)
-  const usd = (value) =>
+  // Formatter ($)
+  const usd = (val) =>
     new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",
       maximumFractionDigits: 0,
-    }).format(value);
+    }).format(val);
 
-  // Calculations
-  const monthlyCost = Number(hours) * Number(cost);
-  const yearlyCost = monthlyCost * 12;
-  const aiYearlyCost = 2400; // AI automation yearly cost ($)
-  const savings = yearlyCost - aiYearlyCost;
-  const roi = yearlyCost > 0 ? Math.round((savings / yearlyCost) * 100) : 0;
+  // ===== DOCUMENT LOGIC (UNCHANGED) =====
+  const automationRate = 0.5;
+
+  const monthlyHours = Number(hours);
+  const hourlyCost = Number(cost);
+
+  const hoursSavedMonth = monthlyHours * automationRate;
+  const hoursSavedYear = hoursSavedMonth * 12;
+
+  const moneySavedMonth = hoursSavedMonth * hourlyCost;
+  const moneySavedYear = moneySavedMonth * 12;
+
+  const monthlyCostBefore = monthlyHours * hourlyCost;
+  const yearlyCostBefore = monthlyCostBefore * 12;
+  const yearlyCostAfter = yearlyCostBefore * automationRate;
+
+  const roi =
+    yearlyCostBefore > 0
+      ? Math.round((moneySavedYear / yearlyCostBefore) * 100)
+      : 0;
 
   return (
-    <section className="py-24 px-6 max-w-7xl mx-auto text-center">
-      {/* Heading */}
+    <section className="py-24 px-6 max-w-6xl mx-auto text-center">
+      {/* TITLE */}
       <motion.h2
         initial={{ y: 40, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-3xl md:text-5xl font-semibold bg-clip-text text-transparent"
+        className="text-3xl md:text-5xl pb-2 text-center font-semibold tracking-tight bg-clip-text text-transparent"
         style={{
-          backgroundImage:
-            "linear-gradient(180deg, var(--text-primary), var(--accent))",
+          backgroundImage: `linear-gradient( 180deg, var(--text-primary), var(--accent) )`,
         }}
       >
-        What Does AI Yield For You?
+        AI Time & Cost Savings Calculator
       </motion.h2>
 
       <motion.p
-        initial={{ y: 20, opacity: 0 }}
+        initial={{ y: 30, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.15 }}
         className="mt-4 max-w-2xl mx-auto"
         style={{ color: "var(--text-secondary)" }}
       >
-        Calculate how much time and money you can save using intelligent
-        automation.
+        Calculate how much time and money AI automation can save for your
+        business.
       </motion.p>
 
       {/* INPUT CARD */}
-      <div className="max-w-xl mx-auto mt-16">
-        <div
-          className="rounded-3xl p-10"
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(124,58,237,0.25), rgba(0,0,0,0.6))",
-            backdropFilter: "blur(18px)",
-            border: "1px solid var(--card-border)",
-          }}
-        >
-          <h3
-            className="text-3xl font-semibold mb-4 bg-clip-text text-transparent"
-            style={{
-              backgroundImage: "linear-gradient(90deg, #8b5cf6, #38bdf8)",
-            }}
-          >
-            Calculate Your Savings
-          </h3>
-
-          <p style={{ color: "var(--text-secondary)" }}>
-            Discover your potential ROI instantly.
-          </p>
-
-          <div className="mt-8 space-y-6 text-left">
-            {/* HOURS */}
-            <div className="space-y-2">
-              <label className="text-sm flex items-center justify-start font-medium text-[var(--text-secondary)]">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-clock w-4 h-4 mr-2 text-cyan-400"
-                >
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>{" "}
-                Estimated hours spent on repetitive tasks per month
-              </label>
-
-              <input
-                type="number"
-                placeholder="e.g. 120"
-                value={hours}
-                onChange={(e) => setHours(e.target.value)}
-                className="
-        w-full p-4 rounded-xl outline-none transition
-        focus:ring-2 focus:ring-[var(--accent)]/40
-      "
-                style={{
-                  backgroundColor: "rgba(255,255,255,0.08)",
-                  border: "1px solid var(--card-border)",
-                  color: "var(--text-primary)",
-                }}
-              />
-            </div>
-
-            {/* COST */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-[var(--text-secondary)]">
-                <span className="text-cyan-500 text-lg">$ </span> Average all-in hourly employee cost
-                <span className="opacity-70"> (salary, taxes & overhead)</span>
-              </label>
-
-              <input
-                type="number"
-                placeholder="e.g. $35"
-                value={cost}
-                onChange={(e) => setCost(e.target.value)}
-                className="
-        w-full p-4 rounded-xl outline-none transition
-        focus:ring-2 focus:ring-[var(--accent)]/40
-      "
-                style={{
-                  backgroundColor: "rgba(255,255,255,0.08)",
-                  border: "1px solid var(--card-border)",
-                  color: "var(--text-primary)",
-                }}
-              />
-            </div>
+      <div className="max-w-xl mx-auto mt-14 rounded-3xl p-10 bg-black/40 border border-white/10">
+        <div className="space-y-6 text-left">
+          <div>
+            <label className="text-sm opacity-70">Monthly Working Hours</label>
+            <input
+              type="number"
+              max={744}
+              min={0}
+              placeholder="e.g. 160"
+              value={hours}
+              onChange={(e) => setHours(e.target.value)}
+              className="w-full mt-2 p-4 rounded-xl bg-white/10 outline-none"
+            />
           </div>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            onClick={() => setShowResult(true)}
-            className="mt-10 w-full py-4 rounded-full font-semibold text-lg"
-            style={{
-              background: "linear-gradient(90deg, #2563eb, #0891b2)",
-              color: "#fff",
-            }}
-          >
-            📈 Calculate ROI
-          </motion.button>
+          <div>
+            <label className="text-sm opacity-70">
+              Hourly Employee Cost ($)
+            </label>
+            <input
+              type="number"
+              min={0}
+              placeholder="e.g. 25"
+              value={cost}
+              onChange={(e) => setCost(e.target.value)}
+              className="w-full mt-2 p-4 rounded-xl bg-white/10 outline-none"
+            />
+          </div>
         </div>
+
+        <button
+          onClick={() => setOpen(true)}
+          className="mt-8 w-full py-4 rounded-full font-semibold text-lg
+          bg-gradient-to-r from-blue-600 to-cyan-500 hover:opacity-90"
+        >
+          Calculate ROI
+        </button>
       </div>
 
-      {/* RESULT MODAL */}
+      {/* ===== POPUP ===== */}
       <AnimatePresence>
-        {showResult && (
+        {open && (
           <motion.div
             className="fixed inset-0 z-50 flex items-center justify-center px-4"
             initial={{ opacity: 0 }}
@@ -165,78 +115,98 @@ const ROICalculator = () => {
             {/* Overlay */}
             <div
               className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-              onClick={() => setShowResult(false)}
+              onClick={() => setOpen(false)}
             />
 
-            {/* Modal */}
+            {/* Popup */}
             <motion.div
-              initial={{ scale: 0.85, y: 40 }}
+              initial={{ scale: 0.9, y: 40 }}
               animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.85, opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="relative w-full max-w-2xl rounded-3xl p-8"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(2,6,23,0.95), rgba(15,23,42,0.95))",
-                border: "1px solid var(--card-border)",
-              }}
+              exit={{ scale: 0.9 }}
+              transition={{ duration: 0.35 }}
+              className="relative w-full max-w-2xl rounded-3xl p-8
+        bg-gradient-to-b from-slate-900 to-slate-950 border border-white/10"
             >
+              {/* Close */}
               <button
-                onClick={() => setShowResult(false)}
-                className="absolute top-4 right-5 text-2xl opacity-70 hover:opacity-100"
+                onClick={() => setOpen(false)}
+                className="absolute top-4 right-5 text-xl opacity-60 hover:opacity-100"
               >
-                ×
+                ✕
               </button>
 
-              <h3 className="text-xl font-semibold mb-4">
-                Your ROI Calculation
+              {/* Title */}
+              <h3 className="text-xl font-semibold mb-8 text-center">
+                AI Time & Cost Savings Calculator
               </h3>
 
-              {/* Main Result */}
-              <div
-                className="p-6 rounded-2xl mb-6"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(34,211,238,0.15), rgba(59,130,246,0.15))",
-                }}
-              >
-                <p className="text-sm opacity-70">Potential Annual Savings</p>
-                <p className="text-3xl font-bold mt-2">{usd(savings)} / year</p>
-                <p
-                  className={`mt-1 text-sm ${
-                    roi >= 0 ? "text-green-400" : "text-red-400"
-                  }`}
-                >
-                  {roi}% ROI
-                </p>
+              {/* ===== OUTPUT SECTION (DOCUMENT ORDER) ===== */}
+              <div className="space-y-5 mb-8">
+                {/* 1️⃣ Hours Saved */}
+                <div className="rounded-xl p-5 py-8 bg-[#142846] border border-blue-500/20">
+                  <p className="text-sm opacity-70">🎯 Hours Saved per Month</p>
+                  <p className="text-2xl font-bold text-blue-400">
+                    {hoursSavedMonth} hours
+                  </p>
+                </div>
+
+                <div className="flex gap-4 w-full">
+                  {/* 2️⃣ Money Saved per Month */}
+                  <div className="rounded-xl p-5 w-full bg-[#261824] border border-green-500/20">
+                    <p className="text-sm opacity-70">
+                      💰 Money Saved per Month
+                    </p>
+                    <p className="text-3xl font-bold text-red-400">
+                      {usd(moneySavedMonth)}
+                    </p>
+                  </div>
+
+                  {/* 3️⃣ Money Saved per Year */}
+                  <div className="rounded-xl w-full p-6 bg-[#112327] border border-green-400/30">
+                    <p className="text-sm opacity-80">
+                      💸 Money Saved per Year
+                    </p>
+                    <p className="text-3xl font-extrabold text-green-400 mt-1">
+                      {usd(moneySavedYear)}
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-black/30">
-                  <p className="text-sm opacity-70">Current Cost</p>
-                  <p className="font-semibold">{usd(monthlyCost)} / month</p>
+              {/* WOW TEXT */}
+              <p className="mb-8 text-sm opacity-80 text-center">
+                Wow! By using AI automation, you free up time for strategic work
+                and save money instantly!
+              </p>
+
+              {/* OPTIONAL BEFORE / AFTER TABLE */}
+              <div className="rounded-xl overflow-hidden border border-white/10">
+                <div className="grid grid-cols-3 bg-white/5 text-sm font-semibold">
+                  <div className="p-3">Metric</div>
+                  <div className="p-3">Before AI</div>
+                  <div className="p-3">After AI</div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-black/30">
-                  <p className="text-sm opacity-70">Net Savings</p>
-                  <p className="font-semibold text-green-400">{usd(savings)}</p>
+                <div className="grid grid-cols-3 text-sm border-t border-white/10">
+                  <div className="p-3">Monthly Costs</div>
+                  <div className="p-3">{usd(monthlyCostBefore)}</div>
+                  <div className="p-3 text-green-400">
+                    {usd(monthlyCostBefore * 0.5)}
+                  </div>
                 </div>
-              </div>
 
-              {/* Comparison */}
-              <div className="mt-6 text-sm">
-                <div className="flex justify-between py-2 border-b border-white/10">
-                  <span>Annual Cost (Manual)</span>
-                  <span>{usd(yearlyCost)}</span>
+                <div className="grid grid-cols-3 text-sm border-t border-white/10">
+                  <div className="p-3">Time Spent</div>
+                  <div className="p-3">{monthlyHours} hrs</div>
+                  <div className="p-3 text-blue-400">{hoursSavedMonth} hrs</div>
                 </div>
-                <div className="flex justify-between py-2 border-b border-white/10">
-                  <span>With Automation</span>
-                  <span>{usd(aiYearlyCost)}</span>
-                </div>
-                <div className="flex justify-between py-2">
-                  <span>Time Saved</span>
-                  <span>24 hours / year</span>
+
+                <div className="grid grid-cols-3 text-sm border-t border-white/10">
+                  <div className="p-3">Savings</div>
+                  <div className="p-3">–</div>
+                  <div className="p-3 text-green-400">
+                    {usd(moneySavedMonth)}
+                  </div>
                 </div>
               </div>
             </motion.div>
