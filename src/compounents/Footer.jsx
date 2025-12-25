@@ -4,13 +4,12 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer
-      className="pt-20 pb-10"
+      className="pt-20 pb-10 z-50"
       style={{
-        backgroundColor: "var(--bg-secondary)",
         color: "var(--text-secondary)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6 z-50">
         {/* Top Grid */}
         <div
           className="grid md:grid-cols-4 gap-10 border-b pb-12"

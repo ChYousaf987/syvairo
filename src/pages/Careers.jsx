@@ -34,7 +34,6 @@ const Careers = () => {
     <section
       className=""
       style={{
-        backgroundColor: "var(--section-alt)",
         color: "var(--text-primary)",
       }}
     >

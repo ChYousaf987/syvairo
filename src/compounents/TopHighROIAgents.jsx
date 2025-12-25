@@ -1,26 +1,27 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const agents = [
   {
     name: "WhatsApp AI Receptionist",
-    desc: "24/7 queries, bookings & instant replies.",
+    desc: "Handles queries, bookings, 24/7",
   },
   {
     name: "Lead Qualification & Follow-Up",
-    desc: "Automatically scores & converts leads.",
+    desc: "Converts inquiries into customers automatically",
   },
   {
     name: "RAG Website AI Agent",
-    desc: "Answers using your documents & knowledge base.",
+    desc: "Instantly answers questions using documents",
   },
   {
-    name: "AI Voice Call Center",
-    desc: "Inbound/outbound calls, reminders & routing.",
+    name: "AI Call Center Voice Agent",
+    desc: "Calls customers, books slots, sends reminders.",
   },
   {
     name: "Automated Quotation Agent",
-    desc: "Instant pricing & PDF quote generation.",
+    desc: "Generates pricing & PDF quotes instantly",
   },
 ];
 
@@ -111,24 +112,24 @@ const TopHighROIAgents = () => {
           ))}
         </motion.div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.35 }}
-          className="mt-14 flex justify-center gap-4 flex-wrap"
-        >
-          <motion.button
-            whileHover={{ scale: 1.08 }}
-            className="px-8 py-4 rounded-2xl font-semibold"
-            style={{ backgroundColor: "var(--accent)", color: "#000" }}
+        <Link to="/catalogue">
+          {/* CTA */}
+          <motion.div
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.35 }}
+            className="mt-14 flex justify-center gap-4 flex-wrap"
           >
-            View Full 45+ Agent Catalog
-          </motion.button>
-
-          
-        </motion.div>
+            <motion.button
+              whileHover={{ scale: 1.08 }}
+              className="px-8 py-4 rounded-2xl font-semibold"
+              style={{ backgroundColor: "var(--accent)", color: "#000" }}
+            >
+              View Full 45+ Agent Catalog
+            </motion.button>
+          </motion.div>
+        </Link>
       </div>
     </section>
   );

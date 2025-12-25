@@ -1,32 +1,43 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const tiers = [
   {
     name: "TIER-1 · SMB Ready-to-Launch",
     items: [
-      "WhatsApp AI",
-      "Lead Qualification",
-      "Bookings",
-      "Invoices",
-      "Inventory Alerts",
+      "WhatsApp AI Receptionist & Voice Call Center",
+      "Multilanguage Chatbots & Customer Support",
+      "Lead Qualification & Sales Follow-Ups",
+      "Automated Quotes & Social Media Posting",
+      "Review Collection & Complaint Handling",
+      "Appointment Booking & Scheduling",
+      "Resume Screening & Employee Onboarding",
+      "Attendance Management & HR Automation",
+      "Dashboards, Reporting & Language Translation",
     ],
   },
   {
     name: "TIER-2 · Mid-to-Large Enterprise",
     items: [
-      "Multi-Agent Assistants",
-      "Dept Automation",
-      "CRM AI",
-      "Power BI Reports",
+      "Multi-Agent Business Assistants",
+      "Department Automation Suites",
+      "Back-Office Workflow Automation",
+      "Enterprise CRM Automation",
+      "Automated Reporting & Analytics",
+      "Contract & Document Extraction",
+      "Cross-Team Coordination Agents",
     ],
   },
   {
     name: "TIER-3 · Enterprise Custom Intelligence",
     items: [
-      "Enterprise AI Brain",
-      "COO Decision Engine",
-      "Compliance & Legal AI",
+      "Enterprise AI Brain (Central Intelligence)",
+      "COO-Level Decision Engine",
+      "Audit, Risk & Compliance Automation",
+      "Legal & Contract Understanding AI",
+      "Inter-Department Orchestration",
+      "Fully Autonomous Corporate AI Control Tower",
     ],
   },
 ];
@@ -71,8 +82,18 @@ const TieredSolutions = () => {
                                     `,
           }}
         >
-          Automation Solutions By Tier
+          OUR AUTOMATION SOLUTIONS — BY TIER
         </motion.h2>
+        <motion.p
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15 }}
+          className="mt-4 max-w-2xl mx-auto"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          Explore automation agents across business needs and company sizes.
+        </motion.p>
 
         {/* Cards */}
         <motion.div
@@ -96,9 +117,11 @@ const TieredSolutions = () => {
                 WebkitTapHighlightColor: "transparent",
               }}
             >
-              <h3 className="text-xl font-semibold mb-4">{t.name}</h3>
+              <h3 className="text-xl text-start font-semibold mb-4">
+                {t.name}
+              </h3>
               <ul
-                className="space-y-2 text-sm"
+                className="space-y-2 text-start text-sm"
                 style={{ color: "var(--text-secondary)" }}
               >
                 {t.items.map((it, idx) => (
@@ -124,17 +147,18 @@ const TieredSolutions = () => {
           >
             Build Your Custom Agent
           </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 1.06 }}
-            className="px-8 py-4 rounded-2xl border"
-            style={{
-              borderColor: "var(--accent)",
-              color: "var(--text-primary)",
-            }}
-          >
-            View Full Catalog
-          </motion.button>
+          <Link to="/catalogue" className="">
+            <motion.button
+              whileHover={{ scale: 1.06 }}
+              className="px-8 py-4 rounded-2xl border"
+              style={{
+                borderColor: "var(--accent)",
+                color: "var(--text-primary)",
+              }}
+            >
+              View Full Catalog
+            </motion.button>
+          </Link>
         </motion.div>
       </div>
     </section>

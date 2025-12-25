@@ -33,7 +33,6 @@ const About = () => {
     <section
       className="py-28 px-6"
       style={{
-        backgroundColor: "var(--section-alt)",
         color: "var(--text-primary)",
       }}
     >

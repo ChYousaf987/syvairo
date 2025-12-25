@@ -10,6 +10,8 @@ import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import Legal from "./pages/Legal";
+import AutomationCatalogue from "./pages/AutomationCatalogue";
+import AnimatedCanvasBackground from "./compounents/AnimatedCanvasBackground";
 
 const App = () => {
   const [theme, setTheme] = useState("dark");
@@ -20,18 +22,24 @@ const App = () => {
 
   return (
     <>
-      <Navbar theme={theme} setTheme={setTheme} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/media" element={<MediaBlog />} />
-        <Route path="/blog/:id" element={<BlogPostPage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/careers" element={<Careers />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/legal" element={<Legal />} />
-      </Routes>
-      <Footer />
+      <div className="relative">
+        <AnimatedCanvasBackground />
+        <div className="relative z-10">
+          <Navbar theme={theme} setTheme={setTheme} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/media" element={<MediaBlog />} />
+            <Route path="/blog/:id" element={<BlogPostPage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/legal" element={<Legal />} />
+            <Route path="/catalogue" element={<AutomationCatalogue />} />
+          </Routes>
+          <Footer />
+        </div>
+      </div>
     </>
   );
 };

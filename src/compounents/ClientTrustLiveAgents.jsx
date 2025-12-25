@@ -5,6 +5,7 @@ const stats = [
   { value: "15+", label: "AI Projects" },
   { value: "15+", label: "Happy Clients" },
   { value: "22+", label: "Live AI Agents" },
+  { value: "3+", label: "mid-enterprise solutions deployed" },
   { value: "🌍", label: "Global Clients" },
 ];
 
@@ -60,14 +61,13 @@ const ClientTrustLiveAgents = () => {
         >
           Client Trust & Live AI Agents
         </motion.h2>
-
         {/* Stats */}
         <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="mt-12 grid md:grid-cols-4 gap-6 text-center"
+          className="mt-12 grid md:grid-cols-5 gap-6 text-center"
         >
           {stats.map((itemData, i) => (
             <motion.div
@@ -93,14 +93,42 @@ const ClientTrustLiveAgents = () => {
             </motion.div>
           ))}
         </motion.div>
-
+        <motion.h2
+          initial={{ y: 40, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-3xl pb-2 mt-16 font-semibold tracking-tight bg-clip-text text-transparent"
+          style={{
+            backgroundImage: `
+                      linear-gradient(
+                        180deg,
+                        var(--text-primary),
+                        var(--accent)
+                      )
+                    `,
+          }}
+        >
+          Contact Us Through Real AI Systems:
+        </motion.h2>
+        <motion.p
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15 }}
+          className="mt-4 max-w-xl mx-auto"
+          style={{ color: "var(--text-secondary)" }}
+        >
+          These AI agents handle real business tasks automatically. Contact us
+          directly through them or have us build your own.
+        </motion.p>
         {/* Agents */}
         <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="mt-16 grid md:grid-cols-4 gap-8"
+          className="mt-8 grid md:grid-cols-4 gap-8"
         >
           {agents.map((agent, i) => (
             <motion.div
@@ -126,7 +154,6 @@ const ClientTrustLiveAgents = () => {
             </motion.div>
           ))}
         </motion.div>
-
         {/* CTA */}
         <motion.div
           initial={{ y: 40, opacity: 0 }}
@@ -135,7 +162,7 @@ const ClientTrustLiveAgents = () => {
           transition={{ delay: 0.4 }}
           className="mt-14 flex justify-center gap-4 flex-wrap"
         >
-          <motion.button
+          {/* <motion.button
             whileHover={{
               scale: 1.08,
               boxShadow: "0 15px 40px rgba(0, 206, 209, 0.35)",
@@ -144,9 +171,7 @@ const ClientTrustLiveAgents = () => {
             style={{ backgroundColor: "var(--accent)", color: "#000" }}
           >
             Contact Through AI Agents
-          </motion.button>
-
-          
+          </motion.button> */}
         </motion.div>
       </div>
     </section>
