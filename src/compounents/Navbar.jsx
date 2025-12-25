@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 
 const Navbar = ({ theme, setTheme }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const menuRef = useRef(null);
 
   const menuItems = [
     { name: "Home", path: "/" },
@@ -12,156 +14,129 @@ const Navbar = ({ theme, setTheme }) => {
     { name: "About", path: "/about" },
     { name: "Careers", path: "/careers" },
     { name: "Contact", path: "/contact" },
-    
   ];
 
+  // Close mobile menu if click outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMobileOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <motion.header
-      initial={{ y: -60, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      className="fixed top-0 w-full z-40 backdrop-blur-xl"
-      style={{
-        color: "var(--text-primary)",
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div className="fixed top-0 w-full z-40 flex justify-center mt-4">
+      <div
+        className="flex items-center p-2 bg-[#250843cc] rounded-full space-x-4 relative"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        {/* Logo */}
         <Link to="/">
-          <img src="/logoz.png" className="w-36" alt="Syvairo" />
+          <img src="/logoz.png" alt="Logo" className="w-36 cursor-pointer" />
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden md:flex gap-8 text-sm">
-          {menuItems.map((item) => (
-            <motion.div
-              key={item.name}
-              whileHover={{ y: -2, color: "var(--accent)" }}
-              className="cursor-pointer"
+        <AnimatePresence>
+          {hovered && (
+            <motion.ul
+              initial={{ opacity: 0, width: 0 }}
+              animate={{ opacity: 1, width: "auto" }}
+              exit={{ opacity: 0, width: 0 }}
+              transition={{ duration: 0.2 }}
+              className="hidden md:flex items-center space-x-6 text-white font-medium overflow-hidden"
             >
-              <Link to={item.path} style={{ color: "var(--text-secondary)" }}>
-                {item.name}
-              </Link>
-            </motion.div>
-          ))}
-        </nav>
+              {menuItems.map((item, index) => (
+                <li key={index} className="hover:text-accent cursor-pointer">
+                  <Link to={item.path}>{item.name}</Link>
+                </li>
+              ))}
+            </motion.ul>
+          )}
+        </AnimatePresence>
 
-        {/* Right Buttons */}
-        <div className="hidden md:flex items-center">
-          <motion.button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            aria-label="Toggle theme"
-            whileHover={{ scale: 1.06 }}
-            whileTap={{ scale: 0.96 }}
-            className={`
-      relative w-[68px] h-9 rounded-full p-[3px]
-      backdrop-blur-xl transition-all duration-300
-      ${
-        theme === "dark"
-          ? "bg-black/70 border border-white/10"
-          : "bg-white/70 border border-black/10"
-      }
-      shadow-[0_12px_30px_rgba(0,0,0,0.25)]
-    `}
-          >
-            {/* Glow */}
-            <span
-              className={`
-        absolute inset-0 rounded-full blur-lg opacity-40
-        ${theme === "dark" ? "bg-[var(--accent)]" : "bg-yellow-300"}
-      `}
-            />
+        {/* Mobile Menu Icon */}
+        <div
+          className="md:hidden text-white cursor-pointer relative"
+          ref={menuRef}
+        >
+          <button onClick={() => setMobileOpen(!mobileOpen)}>
+            {mobileOpen ? (
+              <HiOutlineX size={30} />
+            ) : (
+              <HiOutlineMenu size={30} />
+            )}
+          </button>
 
-            {/* Icons */}
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs opacity-70">
-              ☀️
-            </span>
-            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs opacity-70">
-              🌙
-            </span>
-
-            {/* Slider */}
-            <motion.div
-              layout
-              transition={{ type: "spring", stiffness: 600, damping: 30 }}
-              className={`
-        relative z-10 w-7 h-7 rounded-full
-        flex items-center justify-center
-        ${
-          theme === "dark"
-            ? "bg-gradient-to-br from-gray-700 to-gray-900"
-            : "bg-gradient-to-br from-white to-gray-200"
-        }
-        shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),_0_8px_20px_rgba(0,0,0,0.35)]
-        ${theme === "dark" ? "ml-[34px]" : "ml-0"}
-      `}
-            />
-          </motion.button>
+          {/* Dropdown below the icon */}
+          <AnimatePresence>
+            {mobileOpen && (
+              <motion.ul
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 5 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="absolute top-full transform mt-2 bg-[#250843cc] rounded-xl overflow-hidden flex flex-col items-center space-y-3 py-3 text-white font-medium min-w-[120px] shadow-lg"
+              >
+                {menuItems.map((item, index) => (
+                  <li key={index} className="hover:text-accent">
+                    <Link to={item.path} onClick={() => setMobileOpen(false)}>
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </motion.ul>
+            )}
+          </AnimatePresence>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center gap-3">
-          {/* Theme Toggle */}
-          <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="ml-2 text-xl"
-            style={{ color: "var(--text-primary)" }}
-          >
-            {theme === "dark" ? "🌞" : "🌙"}
-          </button>
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-2xl"
-            style={{ color: "var(--text-primary)" }}
-          >
-            {isOpen ? <HiOutlineX /> : <HiOutlineMenu />}
-          </button>
-        </div>
+        {/* Light/Dark Mode Button */}
+        <motion.button
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          aria-label="Toggle theme"
+          whileHover={{ scale: 1.06 }}
+          whileTap={{ scale: 0.96 }}
+          className={`relative w-[68px] h-9 rounded-full p-[3px] backdrop-blur-xl transition-all duration-300 ${
+            theme === "dark"
+              ? "bg-black/70 border border-white/10"
+              : "bg-white/70 border border-black/10"
+          } shadow-[0_12px_30px_rgba(0,0,0,0.25)]`}
+        >
+          {/* Glow */}
+          <span
+            className={`absolute inset-0 rounded-full blur-lg opacity-40 ${
+              theme === "dark" ? "bg-[var(--accent)]" : "bg-yellow-300"
+            }`}
+          />
+
+          {/* Icons */}
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs opacity-70">
+            ☀️
+          </span>
+          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs opacity-70">
+            🌙
+          </span>
+
+          {/* Slider */}
+          <motion.div
+            layout
+            transition={{ type: "spring", stiffness: 600, damping: 30 }}
+            className={`relative z-10 w-7 h-7 rounded-full flex items-center justify-center ${
+              theme === "dark"
+                ? "bg-gradient-to-br from-gray-700 to-gray-900"
+                : "bg-gradient-to-br from-white to-gray-200"
+            } shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),_0_8px_20px_rgba(0,0,0,0.35)] ${
+              theme === "dark" ? "ml-[34px]" : "ml-0"
+            }`}
+          />
+        </motion.button>
       </div>
-
-      {/* Mobile Menu Overlay */}
-      <motion.div
-        initial={{ height: 0, opacity: 0 }}
-        animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-        className="md:hidden overflow-hidden bg-card-bg border-t border-card-border"
-      >
-        <div className="flex flex-col items-center py-4 gap-4">
-          {menuItems.map((item) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              onClick={() => setIsOpen(false)}
-              className="text-lg font-semibold"
-              style={{ color: "var(--text-primary)" }}
-            >
-              {item.name}
-            </Link>
-          ))}
-
-          <div className="flex items-center justify-center gap-4 mt-4">
-            <button
-              className="px-6 py-2 rounded-xl border text-sm"
-              style={{
-                borderColor: "var(--accent)",
-                color: "var(--accent)",
-              }}
-            >
-              Build My AI System
-            </button>
-
-            <button
-              className="px-6 py-2 rounded-xl text-sm font-semibold"
-              style={{
-                backgroundColor: "var(--accent)",
-                color: "#000",
-              }}
-            >
-              Book Demo
-            </button>
-          </div>
-        </div>
-      </motion.div>
-    </motion.header>
+    </div>
   );
 };
 

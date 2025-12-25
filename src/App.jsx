@@ -12,6 +12,7 @@ import FAQ from "./pages/FAQ";
 import Legal from "./pages/Legal";
 import AutomationCatalogue from "./pages/AutomationCatalogue";
 import AnimatedCanvasBackground from "./compounents/AnimatedCanvasBackground";
+import ConsultationForm from "./compounents/ConsultationForm";
 
 const App = () => {
   const [theme, setTheme] = useState("dark");
@@ -36,6 +37,7 @@ const App = () => {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/legal" element={<Legal />} />
             <Route path="/catalogue" element={<AutomationCatalogue />} />
+            <Route path="/ConsultationForm" element={<ConsultationForm />} />
           </Routes>
           <Footer />
         </div>
