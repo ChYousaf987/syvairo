@@ -9,6 +9,7 @@ import { RiRobot2Line } from "react-icons/ri";
 import { FcSettings } from "react-icons/fc";
 import { TbSettingsAutomation } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import { IoMdBusiness } from "react-icons/io";
 
 const steps = [
   {
@@ -53,6 +54,12 @@ const IntroVideoSection = () => {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 text-center">
+        <span className="inline-block mb-3 px-4 py-1 rounded-full text-sm font-semibold bg-cyan-500/10 text-cyan-400">
+          <div className="flex items-center gap-2">
+            <IoMdBusiness cl />
+            Business Solutions
+          </div>
+        </span>
         {/* Heading */}
         <motion.h2
           initial={{ y: 40, opacity: 0 }}
@@ -133,16 +140,19 @@ const IntroVideoSection = () => {
         </motion.div>
         <motion.div variants={container} className="mt-8 relative">
           <motion.button
-            whileHover={{ scale: 1.07 }}
-            whileTap={{ scale: 0.97 }}
             onClick={() => {
               document
                 .getElementById("roi-calculator")
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="px-8 py-4 rounded-2xl text-black font-semibold"
+            whileHover={{
+              scale: 1.07,
+              boxShadow: "0 0 10px #00ced1, 0 0 20px #00ced1",
+            }}
+            whileTap={{ scale: 0.97 }}
+            className="px-8 py-4 rounded-full bg-cyan-600 border-2 border-cyan-500 bg-transparent font-bold text-white text-lg transition-all duration-300"
             style={{
-              backgroundColor: "var(--button)",
+              boxShadow: "0 0 2px #00ced1, 0 0 10px #00ced1", // neon glow
             }}
           >
             Calculate Your ROI
