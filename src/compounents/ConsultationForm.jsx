@@ -17,7 +17,7 @@ export default function ConsultationForm() {
   };
 
   return (
-    <div className="my-24 flex items-center justify-center px-4">
+    <div className="my-24 flex h-screen items-center justify-center px-4">
       <div className="w-full max-w-2xl rounded-3xl  bg-gray-600/30 p-8 shadow-2xl relative">
         {/* Back to Home */}
         {!submitted && (

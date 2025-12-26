@@ -61,8 +61,13 @@ const IntroVideoSection = () => {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-5xl pb-2 font-semibold tracking-tight bg-clip-text text-transparent"
           style={{
-            backgroundImage:
-              "linear-gradient(to left, var(--from), var(--via), var(--to))",
+            backgroundImage: `
+             linear-gradient(
+               180deg,
+               var(--text-primary),
+               var(--accent)
+             )
+           `,
           }}
         >
           How AI Transforms Your Business

@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { HiClock, HiCog, HiPuzzle, HiScale } from "react-icons/hi";
-import { HiBolt, HiRocketLaunch } from "react-icons/hi2";
+import { HiClock, HiCog, HiOutlinePhone, HiOutlineStar, HiOutlineUserGroup, HiPuzzle, HiScale } from "react-icons/hi";
+import { HiBolt, HiOutlineBanknotes, HiOutlineCalendarDays, HiRocketLaunch } from "react-icons/hi2";
 
 const benefits = [
   {
@@ -38,6 +38,7 @@ const benefits = [
 
 const caseStudies = [
   {
+    icon: HiOutlinePhone,
     title: "AI Receptionist (Incoming Calls)",
     client: "Mid-sized E-commerce Retailer — USA",
     challenge: "Long wait times and unanswered calls resulted in lost leads.",
@@ -48,6 +49,7 @@ const caseStudies = [
     ],
   },
   {
+    icon: HiOutlineCalendarDays,
     title: "AI Appointment Booking",
     client: "Healthcare Clinic — Pakistan",
     challenge:
@@ -59,6 +61,7 @@ const caseStudies = [
     ],
   },
   {
+    icon: HiOutlineUserGroup,
     title: "Follow-Up & Lead Qualification",
     client: "Insurance Provider — India",
     challenge: "Slow manual follow-ups caused leads to cool down.",
@@ -69,6 +72,7 @@ const caseStudies = [
     ],
   },
   {
+    icon: HiOutlineStar,
     title: "Review & Coupon Engagement",
     client: "Restaurant Chain — GCC",
     challenge: "Low customer engagement and online reviews.",
@@ -79,12 +83,14 @@ const caseStudies = [
     ],
   },
   {
+    icon: HiOutlineBanknotes,
     title: "Multi-Agent Workflow Automation",
     client: "Financial Services Firm — UK",
     challenge: "Manual back-office tasks caused errors and delays.",
     impact: ["**40%** faster process completion", "**30%** fewer errors"],
   },
 ];
+
 
 const WhyChooseSyvairo = () => {
   return (
@@ -103,8 +109,13 @@ const WhyChooseSyvairo = () => {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-5xl pb-2 font-semibold tracking-tight bg-clip-text text-transparent"
           style={{
-            backgroundImage:
-              "linear-gradient(to left, var(--from), var(--via), var(--to))",
+            backgroundImage: `
+             linear-gradient(
+               180deg,
+               var(--text-primary),
+               var(--accent)
+             )
+           `,
           }}
         >
           Why Businesses Choose Syvairo
@@ -166,12 +177,12 @@ const WhyChooseSyvairo = () => {
           className="text-3xl mt-14 pb-2 text-center font-semibold tracking-tight bg-clip-text text-transparent"
           style={{
             backgroundImage: `
-      linear-gradient(
-        180deg,
-        var(--text-primary),
-        var(--accent)
-      )
-    `,
+             linear-gradient(
+               180deg,
+               var(--text-primary),
+               var(--accent)
+             )
+           `,
           }}
         >
           CASE STUDIES — Real Results from AI Agents (Cards Recommended)
@@ -179,35 +190,55 @@ const WhyChooseSyvairo = () => {
 
         {/* Cards */}
         <div className="mt-10 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {caseStudies.map((item, i) => (
-            <div
-              key={i}
-              className="rounded-2xl p-8 transition-all duration-300
-             hover:-translate-y-2 hover:scale-[1.03]
-             hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-             hover:bg-[#00ced1]
-             select-none"
-              style={{
-                backgroundColor: "var(--card-bg)",
-                border: `1px solid var(--card-border)`,
-                WebkitTapHighlightColor: "transparent",
-              }}
-            >
-              <h4 className="font-semibold text-lg mb-1">{item.title}</h4>
-              <p className="text-sm text-accent mb-3">{item.client}</p>
+          {caseStudies.map((item, i) => {
+            const Icon = item.icon;
 
-              <p className="text-secondary mb-4">{item.challenge}</p>
+            return (
+              <div
+                key={i}
+                className="group rounded-2xl p-8 transition-all duration-300
+      hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
+      hover:bg-[#00ced1]
+      select-none"
+                style={{
+                  backgroundColor: "var(--card-bg)",
+                  border: `1px solid var(--card-border)`,
+                  WebkitTapHighlightColor: "transparent",
+                }}
+              >
+                {/* Header */}
+                <div className="flex items-start gap-4 mb-4">
+                  <div
+                    className="w-11 h-11 flex items-center justify-center rounded-xl
+          bg-purple-400/20 text-purple-400
+          group-hover:bg-white/20 group-hover:text-white
+          transition"
+                  >
+                    <Icon size={22} />
+                  </div>
 
-              <ul className="space-y-2 text-sm">
-                {item.impact.map((item, idx) => (
-                  <li
-                    key={idx}
-                    dangerouslySetInnerHTML={{ __html: `• ${item}` }}
-                  />
-                ))}
-              </ul>
-            </div>
-          ))}
+                  <div>
+                    <h4 className="font-semibold text-lg leading-tight">
+                      {item.title}
+                    </h4>
+                    <p className="text-sm text-accent">{item.client}</p>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <p className="text-secondary mb-4">{item.challenge}</p>
+
+                <ul className="space-y-2 text-sm">
+                  {item.impact.map((impact, idx) => (
+                    <li
+                      key={idx}
+                      dangerouslySetInnerHTML={{ __html: `• ${impact}` }}
+                    />
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
