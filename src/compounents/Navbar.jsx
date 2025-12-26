@@ -38,25 +38,113 @@ const Navbar = ({ theme, setTheme }) => {
       >
         {/* Logo */}
         <Link to="/">
-          <img src="/logoz.png" alt="Logo" className="w-36 cursor-pointer" />
+          <img
+            src="/shortlogo.png"
+            alt="Logo"
+            className="w-12 cursor-pointer"
+          />
         </Link>
 
         {/* Desktop Menu */}
         <AnimatePresence>
           {hovered && (
-            <motion.ul
-              initial={{ opacity: 0, width: 0 }}
-              animate={{ opacity: 1, width: "auto" }}
-              exit={{ opacity: 0, width: 0 }}
-              transition={{ duration: 0.2 }}
-              className="hidden md:flex items-center space-x-6 text-white font-medium overflow-hidden"
-            >
-              {menuItems.map((item, index) => (
-                <li key={index} className="hover:text-accent cursor-pointer">
-                  <Link to={item.path}>{item.name}</Link>
-                </li>
-              ))}
-            </motion.ul>
+            <>
+              <motion.ul
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: "auto" }}
+                exit={{ opacity: 0, width: 0 }}
+                transition={{ duration: 0.2 }}
+                className="hidden md:flex items-center space-x-6 text-white font-medium overflow-hidden"
+              >
+                {menuItems.map((item, index) => (
+                  <li key={index} className="hover:text-accent cursor-pointer">
+                    <Link to={item.path}>{item.name}</Link>
+                  </li>
+                ))}
+              </motion.ul>
+              <motion.button
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                aria-label="Toggle theme"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                className="relative w-12 h-7 rounded-full overflow-hidden backdrop-blur-2xl shadow-xl border border-white/10"
+              >
+                {/* Track background */}
+                <div
+                  className={`absolute inset-0 rounded-full transition-all duration-700 ${
+                    theme === "dark"
+                      ? "bg-gradient-to-r from-gray-900 via-purple-900/20 to-gray-900"
+                      : "bg-gradient-to-r from-gray-100 via-blue-100/50 to-gray-100"
+                  }`}
+                />
+
+                {/* Moving glow */}
+                <motion.div
+                  animate={{ x: theme === "dark" ? "100%" : "-100%" }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  className={`absolute inset-0 rounded-full blur-2xl opacity-50 ${
+                    theme === "dark"
+                      ? "bg-gradient-to-r from-purple-600 via-cyan-500 to-purple-600"
+                      : "bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-400"
+                  }`}
+                />
+
+                {/* Slider Knob - Ab position Motion se control ho rahi hai */}
+                <motion.div
+                  layout
+                  transition={{ type: "spring", stiffness: 500, damping: 35 }}
+                  animate={{
+                    x: theme === "dark" ? 24 : 0, // 24px = w-12 (48px) - w-6 (24px) knob width
+                  }}
+                  className="relative z-10 flex items-center justify-center w-6 h-6 rounded-full shadow-2xl backdrop-blur-xl border"
+                  style={{
+                    background:
+                      theme === "dark"
+                        ? "rgba(0,0,0,0.6)"
+                        : "rgba(255,255,255,0.8)",
+                    borderColor:
+                      theme === "dark"
+                        ? "rgba(168, 85, 247, 0.3)"
+                        : "rgba(96, 165, 250, 0.3)",
+                  }}
+                >
+                  {/* Inner AI glow dot */}
+                  <div
+                    className={`w-2.5 h-2.5 rounded-full animate-pulse ${
+                      theme === "dark"
+                        ? "bg-gradient-to-br from-purple-400 to-cyan-400 shadow-lg shadow-cyan-400/50"
+                        : "bg-gradient-to-br from-blue-400 to-cyan-300 shadow-lg shadow-blue-400/40"
+                    }`}
+                  />
+
+                  {/* Glass highlight */}
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-white/30 via-transparent to-transparent pointer-events-none" />
+                </motion.div>
+
+                {/* Floating particles in dark mode only */}
+                {theme === "dark" && (
+                  <>
+                    <motion.div
+                      animate={{ y: [0, -4, 0] }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: 3,
+                        ease: "easeInOut",
+                      }}
+                      className="absolute top-1.5 left-2 w-0.5 h-0.5 bg-cyan-300/80 rounded-full"
+                    />
+                    <motion.div
+                      animate={{ y: [0, 4, 0] }}
+                      transition={{ repeat: Infinity, duration: 4, delay: 1 }}
+                      className="absolute bottom-2 left-4 w-0.5 h-0.5 bg-purple-300/60 rounded-full"
+                    />
+                  </>
+                )}
+              </motion.button>
+            </>
           )}
         </AnimatePresence>
 
@@ -77,11 +165,14 @@ const Navbar = ({ theme, setTheme }) => {
           <AnimatePresence>
             {mobileOpen && (
               <motion.ul
-                initial={{ opacity: 0, y: -10 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 5 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
-                className="absolute top-full transform mt-2 bg-[#250843cc] rounded-xl overflow-hidden flex flex-col items-center space-y-3 py-3 text-white font-medium min-w-[120px] shadow-lg"
+                className="absolute top-full -right-5 mt-2
+bg-[#250843cc] rounded-xl overflow-hidden
+flex flex-col items-center space-y-3 py-3
+text-white font-medium min-w-[140px] shadow-lg"
               >
                 {menuItems.map((item, index) => (
                   <li key={index} className="hover:text-accent">
@@ -96,45 +187,6 @@ const Navbar = ({ theme, setTheme }) => {
         </div>
 
         {/* Light/Dark Mode Button */}
-        <motion.button
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          aria-label="Toggle theme"
-          whileHover={{ scale: 1.06 }}
-          whileTap={{ scale: 0.96 }}
-          className={`relative w-[68px] h-9 rounded-full p-[3px] backdrop-blur-xl transition-all duration-300 ${
-            theme === "dark"
-              ? "bg-black/70 border border-white/10"
-              : "bg-white/70 border border-black/10"
-          } shadow-[0_12px_30px_rgba(0,0,0,0.25)]`}
-        >
-          {/* Glow */}
-          <span
-            className={`absolute inset-0 rounded-full blur-lg opacity-40 ${
-              theme === "dark" ? "bg-[var(--accent)]" : "bg-yellow-300"
-            }`}
-          />
-
-          {/* Icons */}
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs opacity-70">
-            ☀️
-          </span>
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs opacity-70">
-            🌙
-          </span>
-
-          {/* Slider */}
-          <motion.div
-            layout
-            transition={{ type: "spring", stiffness: 600, damping: 30 }}
-            className={`relative z-10 w-7 h-7 rounded-full flex items-center justify-center ${
-              theme === "dark"
-                ? "bg-gradient-to-br from-gray-700 to-gray-900"
-                : "bg-gradient-to-br from-white to-gray-200"
-            } shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),_0_8px_20px_rgba(0,0,0,0.35)] ${
-              theme === "dark" ? "ml-[34px]" : "ml-0"
-            }`}
-          />
-        </motion.button>
       </div>
     </div>
   );

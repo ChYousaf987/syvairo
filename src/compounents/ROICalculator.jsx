@@ -36,7 +36,10 @@ const ROICalculator = () => {
       : 0;
 
   return (
-    <section className="py-24 px-6 max-w-6xl mx-auto text-center">
+    <section
+      id="roi-calculator"
+      className="py-24 px-6 max-w-6xl mx-auto text-center"
+    >
       {/* TITLE */}
       <motion.h2
         initial={{ y: 40, opacity: 0 }}

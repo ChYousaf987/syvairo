@@ -1,13 +1,21 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import {
+  AiOutlineAudioMuted,
+  AiOutlinePauseCircle,
+  AiOutlinePlayCircle,
+  AiOutlineSound,
+} from "react-icons/ai";
 
 const HeroSection = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isDemoOpen, setIsDemoOpen] = useState(false);
   const videoRef = useRef(null);
-
+  const [playing, setPlaying] = useState(true);
+  const [muted, setMuted] = useState(true);
+  const [progress, setProgress] = useState(0);
 
   const [form, setForm] = useState({
     name: "",
@@ -45,7 +53,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative pt-24 md:pt-60 pb-10 flex items-center bg-grain">
+    <section className="relative h-screen pt-24 pb-10 flex items-center bg-grain">
       <motion.div
         className="relative max-w-7xl text-center mx-auto px-6 items-center flex flex-col"
         initial="hidden"
@@ -54,20 +62,25 @@ const HeroSection = () => {
       >
         {/* H2 */}
         <motion.h2
-          variants={itemVariants}
+          initial={{ y: 40, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-3xl md:text-5xl pb-2 font-bold tracking-tight bg-clip-text text-transparent"
           style={{
-            backgroundImage: `linear-gradient(180deg, var(--text-primary), var(--accent))`,
+            backgroundImage:
+              "linear-gradient(to left, var(--from), var(--via), var(--to))",
           }}
         >
           Ai Agents that act and Delver
         </motion.h2>
+        {/* bg-gradient-to-l from-[#63A4FA] via-[#f701ff] to-[#63A4FA] */}
 
         {/* Paragraph */}
         <motion.p
           variants={itemVariants}
           className="mt-4 max-w-2xl mx-auto"
-          style={{ color: "var(--text-secondary)" }}
+          style={{ color: "var(--text-primary)" }}
         >
           We don’t sell tools – We deliver end to end intelligent automation
           solution that run business autonomously
@@ -76,103 +89,122 @@ const HeroSection = () => {
         {/* Video */}
         <motion.div
           variants={itemVariants}
-          whileHover={{ scale: 1.03 }}
-          onClick={() => setIsVideoOpen(true)}
-          className="cursor-pointer rounded-3xl p-5 backdrop-blur-xl relative group mt-20"
+          className="cursor-pointer rounded-3xl p-5 backdrop-blur-xl relative group mt-10"
           style={{
             backgroundColor: "var(--card-bg)",
             border: `1px solid var(--card-border)`,
           }}
         >
-          <div className="absolute inset-0 flex items-center justify-center z-10">
-            <motion.div
-              whileHover={{ scale: 1.1 }}
-              className="w-16 h-16 rounded-full flex items-center justify-center"
-              style={{
-                background: "rgba(0,0,0,0.6)",
-                backdropFilter: "blur(6px)",
-              }}
-            >
-              <span className="text-white text-2xl ml-1">▶</span>
-            </motion.div>
-          </div>
-
-          <div className="overflow-hidden rounded-2xl shadow-lg">
+          <div className="relative overflow-hidden rounded-2xl shadow-lg">
+            {/* VIDEO */}
             <video
+              ref={videoRef}
               src="/video.mp4"
-              muted
-              loop
               autoPlay
+              loop
+              muted={muted}
               playsInline
-              className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+              className="w-full h-[40vh] object-cover"
+              onTimeUpdate={() => {
+                const v = videoRef.current;
+                setProgress((v.currentTime / v.duration) * 100);
+              }}
             />
+
+            {/* CONTROLS (YouTube Style) */}
+            <div
+              className="
+        absolute bottom-0 left-0 right-0
+        bg-gradient-to-t from-black/80 to-transparent
+        opacity-0 group-hover:opacity-100
+        transition-opacity duration-300
+        p-3
+      "
+            >
+              {/* Progress Bar */}
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={progress}
+                onChange={(e) => {
+                  const v = videoRef.current;
+                  v.currentTime = (e.target.value / 100) * v.duration;
+                }}
+                className="w-full h-1 mb-3 accent-white cursor-pointer"
+              />
+
+              {/* Controls Row */}
+              <div className="flex items-center justify-between text-white text-sm">
+                {/* Left Controls */}
+                <div className="flex items-center gap-4">
+                  {/* Play / Pause */}
+                  <button
+                    onClick={() => {
+                      if (videoRef.current.paused) {
+                        videoRef.current.play();
+                        setPlaying(true);
+                      } else {
+                        videoRef.current.pause();
+                        setPlaying(false);
+                      }
+                    }}
+                  >
+                    {playing ? (
+                      <AiOutlinePauseCircle size={25} />
+                    ) : (
+                      <AiOutlinePlayCircle size={25} />
+                    )}
+                  </button>
+
+                  {/* Mute */}
+                  <button
+                    onClick={() => {
+                      videoRef.current.muted = !muted;
+                      setMuted(!muted);
+                    }}
+                  >
+                    {muted ? (
+                      <AiOutlineAudioMuted size={18} />
+                    ) : (
+                      <AiOutlineSound size={18} />
+                    )}
+                  </button>
+                </div>
+
+                {/* Right Controls */}
+                <div className="flex items-center gap-4">
+                  {/* Fullscreen */}
+                  <button
+                    onClick={() => {
+                      if (videoRef.current.requestFullscreen) {
+                        videoRef.current.requestFullscreen();
+                      }
+                    }}
+                  >
+                    ⛶
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
 
         {/* Button */}
-        <motion.div variants={itemVariants} className="mt-8 relative">
-          {/* <motion.button
-            whileHover={{ scale: 1.07 }}
-            whileTap={{ scale: 0.97 }}
-            className="px-8 py-4 rounded-2xl font-semibold"
-            style={{
-              backgroundColor: "var(--accent)",
-              color: "#000",
-            }}
-            onClick={() => setDropdownOpen(!dropdownOpen)}
-          >
-            Build My AI System → Book Demo
-          </motion.button> */}
+        <div variants={itemVariants} className="mt-8 relative">
           <Link to="/ConsultationForm">
-            <motion.button
+            <button
               whileHover={{ scale: 1.07 }}
               whileTap={{ scale: 0.97 }}
-              className="px-8 py-4 rounded-2xl font-semibold"
+              className="px-8 py-4 rounded-2xl font-bold"
               style={{
-                backgroundColor: "var(--accent)",
-                color: "#000",
+                backgroundColor: "var(--button)",
               }}
             >
               Discover your benefits →
-            </motion.button>
+            </button>
           </Link>
-
-          {/* Dropdown */}
-          {/* <AnimatePresence>
-            {dropdownOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="absolute top-full left-0 mt-2 w-56 rounded-2xl z-20 transition-all duration-300"
-                style={{
-                  backgroundColor: "var(--card-bg)",
-                  border: "1px solid var(--card-border)",
-                  boxShadow: "var(--shadow-soft)",
-                }}
-              >
-                <button
-                  className="w-full text-left px-4 py-3 transition-all duration-300 hover:bg-[var(--bg-secondary)]"
-                  style={{ color: "var(--text-primary)" }}
-                  onClick={() => {
-                    setDropdownOpen(false);
-                    setIsDemoOpen(true);
-                  }}
-                >
-                  Book a Demo
-                </button>
-                <div style={{ borderTop: "1px solid var(--card-border)" }} />
-                <button
-                  className="w-full text-left px-4 py-3 transition-all duration-300 hover:bg-[var(--bg-secondary)]"
-                  style={{ color: "var(--text-primary)" }}
-                  onClick={() => alert("AI Agent Inquiry clicked")}
-                >
-                  AI Agent Inquiry
-                </button>
-              </motion.div>
-            )}
-          </AnimatePresence> */}
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* VIDEO MODAL & DEMO FORM MODAL remains unchanged */}

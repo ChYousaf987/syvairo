@@ -1,93 +1,80 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const steps = [1, 2, 3];
+import { Link, useNavigate } from "react-router-dom";
+import { HiArrowLeft } from "react-icons/hi";
 
 export default function ConsultationForm() {
   const [step, setStep] = useState(1);
+  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
-  const next = () => step < 3 && setStep(step + 1);
-  const prev = () => step > 1 && setStep(step - 1);
+  const next = () => {
+    if (step < 1) {
+      setStep(step + 1);
+    } else {
+      setSubmitted(true);
+    }
+  };
 
   return (
-    <div className="my-36 flex items-center justify-center px-4">
-      <div className="w-full max-w-2xl rounded-3xl border border-cyan-400/40 bg-gradient-to-br from-[#3a1b6e] via-[#2a144f] to-[#0b0714] p-8 shadow-2xl">
+    <div className="my-24 flex items-center justify-center px-4">
+      <div className="w-full max-w-2xl rounded-3xl  bg-gray-600/30 p-8 shadow-2xl relative">
+        {/* Back to Home */}
+        {!submitted && (
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-cyan-400 transition mb-6"
+          >
+            <HiArrowLeft size={18} />
+          </Link>
+        )}
+
         {/* Header */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-blue-300">
-            Schedule a free consultation
-          </h2>
-          <p className="text-gray-300 mt-3 max-w-xl mx-auto">
-            Discover how Opusmatic can automate your business processes. Book a
-            free consultation for a personalized assessment.
-          </p>
-          <p className="text-sm text-gray-400 mt-2">
-            30-minute consultation · No obligations
-          </p>
-        </div>
-
-        {/* Steps */}
-        <div className="flex items-center justify-between mb-10 relative">
-          <div className="absolute left-0 right-0 h-[2px] bg-gray-600 top-1/2 -translate-y-1/2" />
-
-          {steps.map((s) => (
-            <div
-              key={s}
-              className={`relative z-10 w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold
-                ${
-                  step >= s
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-600 text-gray-300"
-                }`}
+        {!submitted && (
+          <div className="text-center mb-8">
+            <h2
+              className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to left, var(--from), var(--via), var(--to))",
+              }}
             >
-              {s}
-            </div>
-          ))}
-        </div>
+              Schedule a free consultation
+            </h2>
+            <p className="text-gray-300 mt-3 max-w-xl mx-auto">
+              Discover how Opusmatic can automate your business processes. Book
+              a free consultation for a personalized assessment.
+            </p>
+            <p className="text-sm text-gray-400 mt-2">
+              30-minute consultation · No obligations
+            </p>
+          </div>
+        )}
 
-        {/* Form Content */}
+        {/* Content */}
         <AnimatePresence mode="wait">
-          {step === 1 && (
+          {!submitted ? (
             <motion.div
-              key="step1"
+              key="form"
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.4 }}
               className="grid grid-cols-1 md:grid-cols-2 gap-6"
             >
-              {/* Full Name – Mandatory */}
               <Input label="Full Name *" placeholder="Your full name" />
-
-              {/* Company Name – Optional */}
               <Input label="Company Name" placeholder="Your company name" />
-
-              {/* Email Address – Mandatory */}
               <Input
                 label="Email Address *"
                 placeholder="name@company.com"
                 full
               />
-
-              {/* Mobile Number – Optional */}
               <Input
                 label="Mobile Number (with country code)"
                 placeholder="+92 300 1234567"
                 full
               />
-            </motion.div>
-          )}
 
-          {step === 2 && (
-            <motion.div
-              key="step2"
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -40 }}
-              transition={{ duration: 0.4 }}
-              className="space-y-6"
-            >
-              {/* Current Challenges – Optional */}
               <div>
                 <label className="block text-sm text-gray-300 mb-2">
                   Current Challenges
@@ -99,7 +86,6 @@ export default function ConsultationForm() {
                 />
               </div>
 
-              {/* Automation Goals – Optional */}
               <div>
                 <label className="block text-sm text-gray-300 mb-2">
                   Automation Goals
@@ -111,39 +97,52 @@ export default function ConsultationForm() {
                 />
               </div>
             </motion.div>
-          )}
-
-          {step === 3 && (
+          ) : (
             <motion.div
-              key="step3"
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -40 }}
-              transition={{ duration: 0.4 }}
-              className="text-gray-200"
+              key="thankyou"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col items-center text-center py-20"
             >
-              Step 3 content (review & submit)
+              {/* Logo */}
+              <img src="/logoz.png" alt="Logo" className="w-40 mb-6" />
+
+              <h3 className="text-3xl font-semibold text-cyan-300 mb-4">
+                Thank you for contacting us!
+              </h3>
+
+              <p className="text-gray-300 max-w-md mb-10">
+                We’ve received your request and our team will get back to you as
+                soon as possible.
+              </p>
+
+              <button
+                onClick={() => navigate("/")}
+                className="px-8 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold hover:scale-[1.03] transition"
+              >
+                Explore More
+              </button>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Footer Buttons */}
-        <div className="flex justify-between mt-10">
-          <button
-            onClick={prev}
-            disabled={step === 1}
-            className="px-6 py-3 rounded-xl border border-gray-600 text-gray-300 hover:bg-gray-700/40 disabled:opacity-40"
-          >
-            ← Previous
-          </button>
-
-          <button
-            onClick={next}
-            className="px-8 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-semibold hover:scale-[1.02] transition"
-          >
-            Next →
-          </button>
-        </div>
+        {/* Footer */}
+        {!submitted && (
+          <div className="flex justify-end mt-10">
+            <button
+              onClick={next}
+              className="px-8 py-3 rounded-xl  font-semibold hover:scale-[1.02] transition"
+              style={{
+                backgroundColor: "var(--button)",
+                color: "#000",
+              }}
+            >
+              Submit →
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -156,12 +155,7 @@ function Input({ label, placeholder, full }) {
       <label className="block text-sm text-gray-300 mb-2">{label}</label>
       <input
         placeholder={placeholder}
-        className="
-          w-full px-4 py-3 rounded-xl
-          bg-black/30 border border-gray-600
-          text-white placeholder-gray-400
-          focus:outline-none focus:ring-2 focus:ring-cyan-400
-        "
+        className="w-full px-4 py-3 rounded-xl bg-black/30 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400"
       />
     </div>
   );

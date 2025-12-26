@@ -19,6 +19,13 @@
   --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.08);
   --gradient-from: #c5d4ff;
   --gradient-to: #e0e8ff;
+
+  
+  --from: #A256F7;
+  --via: #f657fc;
+  --to: #A256F7;
+
+  --button : #A256F7;
 }
 
 [data-theme="dark"] {
@@ -38,4 +45,11 @@
   --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.6);
   --gradient-from:#3a0077;
   --gradient-to: #17002d;
+
+
+  --from: #63A4FA;
+  --via: #f657fc;
+  --to: #63A4FA;
+
+  --button : #A256F7;
 }
