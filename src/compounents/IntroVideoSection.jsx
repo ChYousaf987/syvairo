@@ -107,7 +107,7 @@ const IntroVideoSection = () => {
                   {/* Icon */}
                   <div
                     className=" w-12 h-12 flex items-center justify-center rounded-xl
-          bg-cyan-400/15 text-cyan-400
+          bg-purple-400/20 text-purple-400
           group-hover:bg-white/20 group-hover:text-white
           transition"
                   >
