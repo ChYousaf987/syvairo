@@ -54,10 +54,20 @@ const IntroVideoSection = () => {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 text-center">
-        <span className="inline-block mb-3 px-4 py-1 rounded-full text-sm font-semibold bg-cyan-500/10 text-cyan-400">
+        <span
+          style={{
+            textShadow: `
+      0 0 38px rgba(0, 206, 209, 0.45),
+      0 0 20px rgba(0, 206, 209, 0.25)
+    `,
+          }}
+          className="inline-block mb-3 px-4 py-1 rounded-full text-sm font-semibold bg-cyan-500/10 border border-cyan-700"
+        >
           <div className="flex items-center gap-2">
-            <IoMdBusiness cl />
-            Business Solutions
+            <IoMdBusiness />
+            <div className="text-sm font-semibold text-cyan-400">
+              Business Solutions
+            </div>
           </div>
         </span>
         {/* Heading */}
@@ -75,6 +85,10 @@ const IntroVideoSection = () => {
                var(--accent)
              )
            `,
+            textShadow: `
+      0 0 38px rgba(0, 206, 209, 0.45),
+      0 0 20px rgba(0, 206, 209, 0.25)
+    `,
           }}
         >
           How AI Transforms Your Business
@@ -111,15 +125,14 @@ const IntroVideoSection = () => {
         select-none"
                 style={{
                   backgroundColor: "var(--card-bg)",
-                  border: `1px solid var(--card-border)`,
-                  WebkitTapHighlightColor: "transparent",
+                  border: "1px solid rgba(0,206,209,0.35)",
                 }}
               >
                 <div className="flex gap-5 items-center ">
                   {/* Icon */}
                   <div
                     className=" w-12 h-12 flex items-center justify-center rounded-xl
-          bg-purple-400/20 text-purple-400
+          bg-cyan-400/20 text-cyan-400
           group-hover:bg-white/20 group-hover:text-white
           transition"
                   >

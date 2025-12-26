@@ -68,17 +68,17 @@ const HeroSection = () => {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-5xl pb-2 font-bold tracking-tight bg-clip-text text-transparent"
           style={{
-            backgroundImage: `
-             linear-gradient(
-               180deg,
-               var(--text-primary),
-               var(--accent)
-             )
-           `,
+            backgroundImage:
+              "linear-gradient(180deg, var(--text-primary), var(--accent))",
+            textShadow: `
+      0 0 38px rgba(0, 206, 209, 0.45),
+      0 0 20px rgba(0, 206, 209, 0.25)
+    `,
           }}
         >
-          Ai Agents that act and Delver
+          AI Agents that act and Deliver
         </motion.h2>
+
         {/* bg-gradient-to-l from-[#63A4FA] via-[#f701ff] to-[#63A4FA] */}
 
         {/* Paragraph */}

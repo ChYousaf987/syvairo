@@ -21,8 +21,8 @@ const Home = () => {
         <HerosSection />
         <IntroVideoSection />
         <WhyChooseSyvairo />
-        {/* <CaseStudies /> */}
         <ClientTrustLiveAgents />
+        <CaseStudies />
         <TopHighROIAgents />
         <TieredSolutions />
         <TechStack />

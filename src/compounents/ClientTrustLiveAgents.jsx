@@ -50,13 +50,8 @@ const ClientTrustLiveAgents = () => {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-5xl pb-2 font-semibold tracking-tight bg-clip-text text-transparent"
           style={{
-            backgroundImage: `
-                      linear-gradient(
-                        180deg,
-                        var(--text-primary),
-                        var(--accent)
-                      )
-                    `,
+            backgroundImage: `linear-gradient(180deg, var(--text-primary), var(--accent))`,
+            textShadow: `0 0 38px rgba(0, 206, 209, 0.35), 0 0 20px rgba(0, 206, 209, 0.2)`,
           }}
         >
           Client Trust & Live AI Agents
@@ -72,15 +67,13 @@ const ClientTrustLiveAgents = () => {
           {stats.map((itemData, i) => (
             <motion.div
               key={i}
-              className="rounded-2xl p-8 transition-all duration-300
-             hover:-translate-y-2 hover:scale-[1.03]
-             hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-             hover:bg-[#00ced1]
-             select-none"
+              className="group rounded-2xl p-8 transition-all duration-300
+        hover:-translate-y-2 hover:scale-[1.03]
+        hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
+        hover:bg-[#00ced1] select-none"
               style={{
                 backgroundColor: "var(--card-bg)",
-                border: `1px solid var(--card-border)`,
-                WebkitTapHighlightColor: "transparent",
+                border: "1px solid rgba(0,206,209,0.35)",
               }}
             >
               <p
@@ -90,67 +83,6 @@ const ClientTrustLiveAgents = () => {
                 {itemData.value}
               </p>
               <p style={{ color: "var(--text-secondary)" }}>{itemData.label}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-        <motion.h2
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl md:text-3xl pb-2 mt-16 font-semibold tracking-tight bg-clip-text text-transparent"
-          style={{
-            backgroundImage: `
-                      linear-gradient(
-                        180deg,
-                        var(--text-primary),
-                        var(--accent)
-                      )
-                    `,
-          }}
-        >
-          Contact Us Through Real AI Systems:
-        </motion.h2>
-        <motion.p
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.15 }}
-          className="mt-4 max-w-xl mx-auto"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          These AI agents handle real business tasks automatically. Contact us
-          directly through them or have us build your own.
-        </motion.p>
-        {/* Agents */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="mt-8 grid md:grid-cols-4 gap-8"
-        >
-          {agents.map((agent, i) => (
-            <motion.div
-              key={i}
-              className="rounded-2xl p-8 transition-all duration-300
-             hover:-translate-y-2 hover:scale-[1.03]
-             hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-             hover:bg-[#00ced1]
-             select-none"
-              style={{
-                backgroundColor: "var(--card-bg)",
-                border: `1px solid var(--card-border)`,
-                WebkitTapHighlightColor: "transparent",
-              }}
-            >
-              <p className="text-lg font-semibold">{agent}</p>
-              <p
-                className="mt-2 text-sm"
-                style={{ color: "var(--text-secondary)" }}
-              >
-                Live & ready to interact
-              </p>
             </motion.div>
           ))}
         </motion.div>

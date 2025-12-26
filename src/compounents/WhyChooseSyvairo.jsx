@@ -1,37 +1,52 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { HiClock, HiCog, HiOutlinePhone, HiOutlineStar, HiOutlineUserGroup, HiPuzzle, HiScale } from "react-icons/hi";
-import { HiBolt, HiOutlineBanknotes, HiOutlineCalendarDays, HiRocketLaunch } from "react-icons/hi2";
+import {
+  HiClock,
+  HiCog,
+  HiOutlinePhone,
+  HiOutlineStar,
+  HiOutlineUserGroup,
+  HiScale,
+  HiOutlineBriefcase,
+  HiOutlineCalendarDays,
+  HiOutlineBanknotes,
+  HiRocketLaunch,
+  HiBolt,
+} from "react-icons/hi2";
+import { HiPuzzle } from "react-icons/hi";
+import { TbBolt } from "react-icons/tb";
+import { LuClock2 } from "react-icons/lu";
+import { IoCogOutline, IoExtensionPuzzleOutline, IoRocketOutline } from "react-icons/io5";
 
 const benefits = [
   {
-    icon: <HiBolt size={26} />,
+    icon: <TbBolt size={26} />,
     title: "AI that acts, not just answers",
     description: "Tasks completed end-to-end automatically",
   },
   {
-    icon: <HiClock size={26} />,
+    icon: <LuClock2 size={26} />,
     title: "No missed leads – 24/7",
     description: "Follow-ups & replies anytime",
   },
   {
-    icon: <HiRocketLaunch size={26} />,
-    title: "45+ automation agents ready ",
+    icon: <IoRocketOutline size={26} />,
+    title: "45+ automation agents ready",
     description: "Launch in days, not months",
   },
   {
-    icon: <HiPuzzle size={26} />,
+    icon: <IoExtensionPuzzleOutline size={26} />,
     title: "Integrates with any software",
     description: "API, CRM, ERP, WhatsApp",
   },
   {
     icon: <HiScale size={26} />,
-    title: "Scalable from SMB → Enterprise ",
+    title: "Scalable from SMB → Enterprise",
     description: "Modular automation architecture",
   },
   {
-    icon: <HiCog size={26} />,
-    title: "Custom AI & RPA solutions ",
+    icon: <IoCogOutline size={26} />,
+    title: "Custom AI & RPA solutions",
     description: "Tailored to your exact workflow",
   },
 ];
@@ -91,16 +106,30 @@ const caseStudies = [
   },
 ];
 
-
 const WhyChooseSyvairo = () => {
   return (
     <section
-      className=" py-20 md:py-28 overflow-hidden"
+      className="py-20 md:py-28 overflow-hidden"
       style={{
         color: "var(--text-primary)",
       }}
     >
       <div className="max-w-7xl mx-auto px-6 text-center">
+        {/* Badge */}
+        <span
+          style={{
+            textShadow: `0 0 38px rgba(0, 206, 209, 0.45), 0 0 20px rgba(0, 206, 209, 0.25)`,
+          }}
+          className="inline-block mb-3 px-4 py-1 rounded-full text-sm font-semibold bg-cyan-500/10 border border-cyan-700"
+        >
+          <div className="flex items-center gap-2">
+            <HiOutlineBriefcase size={20} />
+            <div className="text-sm font-semibold text-cyan-400">
+              Choose Syvairo
+            </div>
+          </div>
+        </span>
+
         {/* Heading */}
         <motion.h2
           initial={{ y: 40, opacity: 0 }}
@@ -109,53 +138,32 @@ const WhyChooseSyvairo = () => {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-5xl pb-2 font-semibold tracking-tight bg-clip-text text-transparent"
           style={{
-            backgroundImage: `
-             linear-gradient(
-               180deg,
-               var(--text-primary),
-               var(--accent)
-             )
-           `,
+            backgroundImage: `linear-gradient(180deg, var(--text-primary), var(--accent))`,
+            textShadow: `0 0 38px rgba(0, 206, 209, 0.35), 0 0 20px rgba(0, 206, 209, 0.2)`,
           }}
         >
           Why Businesses Choose Syvairo
         </motion.h2>
 
-        {/* Intro Text */}
-        <motion.p
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.15 }}
-          className="mt-4 max-w-2xl mx-auto"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          We don’t just provide AI tools — we implement fully functional systems
-          that run your business workflows autonomously.
-        </motion.p>
-
-        {/* Cards */}
+        {/* Benefits Cards */}
         <div className="mt-16 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {benefits.map((item, i) => (
             <div
               key={i}
-              className="rounded-2xl p-8 transition-all duration-300
-             hover:-translate-y-2 hover:scale-[1.03]
-             hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-             hover:bg-[#00ced1]
-             select-none"
+              className="group rounded-2xl p-8 transition-all duration-300
+        hover:-translate-y-2 hover:scale-[1.03]
+        hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
+        hover:bg-[#00ced1] select-none"
               style={{
                 backgroundColor: "var(--card-bg)",
-                border: `1px solid var(--card-border)`,
-                WebkitTapHighlightColor: "transparent",
+                border: "1px solid rgba(0,206,209,0.35)",
               }}
             >
               <div className="flex items-center gap-3">
                 <div
-                  className=" w-12 h-12 flex items-center justify-center rounded-xl
-          bg-purple-400/20 text-purple-400
-          group-hover:bg-white/20 group-hover:text-white
-          transition"
+                  className="w-12 h-12 flex items-center justify-center rounded-xl
+          bg-cyan-400/20 text-cyan-400
+          group-hover:bg-white/20 group-hover:text-white transition"
                 >
                   {item.icon}
                 </div>
@@ -165,10 +173,8 @@ const WhyChooseSyvairo = () => {
             </div>
           ))}
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-6 ">
-        {/* Intro Text */}
+        {/* Case Studies */}
         <motion.h2
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -176,19 +182,13 @@ const WhyChooseSyvairo = () => {
           transition={{ duration: 0.6 }}
           className="text-3xl mt-14 pb-2 text-center font-semibold tracking-tight bg-clip-text text-transparent"
           style={{
-            backgroundImage: `
-             linear-gradient(
-               180deg,
-               var(--text-primary),
-               var(--accent)
-             )
-           `,
+            backgroundImage: `linear-gradient(180deg, var(--text-primary), var(--accent))`,
+            textShadow: `0 0 38px rgba(0, 206, 209, 0.35), 0 0 20px rgba(0, 206, 209, 0.2)`,
           }}
         >
-          CASE STUDIES — Real Results from AI Agents (Cards Recommended)
+          CASE STUDIES — Real Results from AI Agents
         </motion.h2>
 
-        {/* Cards */}
         <div className="mt-10 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {caseStudies.map((item, i) => {
             const Icon = item.icon;
@@ -197,26 +197,22 @@ const WhyChooseSyvairo = () => {
               <div
                 key={i}
                 className="group rounded-2xl p-8 transition-all duration-300
-      hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-      hover:bg-[#00ced1]
-      select-none"
+        hover:-translate-y-2 hover:scale-[1.03]
+        hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
+        hover:bg-[#00ced1] select-none"
                 style={{
                   backgroundColor: "var(--card-bg)",
-                  border: `1px solid var(--card-border)`,
-                  WebkitTapHighlightColor: "transparent",
+                  border: "1px solid rgba(0,206,209,0.35)",
                 }}
               >
-                {/* Header */}
                 <div className="flex items-start gap-4 mb-4">
                   <div
                     className="w-11 h-11 flex items-center justify-center rounded-xl
-          bg-purple-400/20 text-purple-400
-          group-hover:bg-white/20 group-hover:text-white
-          transition"
+            bg-cyan-400/20 text-cyan-400
+            group-hover:bg-white/20 group-hover:text-white transition"
                   >
                     <Icon size={22} />
                   </div>
-
                   <div>
                     <h4 className="font-semibold text-lg leading-tight">
                       {item.title}
@@ -225,7 +221,6 @@ const WhyChooseSyvairo = () => {
                   </div>
                 </div>
 
-                {/* Content */}
                 <p className="text-secondary mb-4">{item.challenge}</p>
 
                 <ul className="space-y-2 text-sm">

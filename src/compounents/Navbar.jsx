@@ -41,7 +41,7 @@ const Navbar = ({ theme, setTheme }) => {
           <img
             src="/shortlogo.png"
             alt="Logo"
-            className="w-12 cursor-pointer"
+            className="w-10 cursor-pointer"
           />
         </Link>
 
