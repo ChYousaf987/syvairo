@@ -5,32 +5,32 @@ import { HiBolt, HiRocketLaunch } from "react-icons/hi2";
 
 const benefits = [
   {
-    icon: <HiBolt className="w-8 h-8 text-accent" />,
+    icon: <HiBolt size={26} />,
     title: "AI that acts, not just answers",
     description: "Tasks completed end-to-end automatically",
   },
   {
-    icon: <HiClock className="w-8 h-8 text-accent" />,
+    icon: <HiClock size={26} />,
     title: "No missed leads – 24/7",
     description: "Follow-ups & replies anytime",
   },
   {
-    icon: <HiRocketLaunch className="w-8 h-8 text-accent" />,
+    icon: <HiRocketLaunch size={26} />,
     title: "45+ automation agents ready ",
     description: "Launch in days, not months",
   },
   {
-    icon: <HiPuzzle className="w-8 h-8 text-accent" />,
+    icon: <HiPuzzle size={26} />,
     title: "Integrates with any software",
     description: "API, CRM, ERP, WhatsApp",
   },
   {
-    icon: <HiScale className="w-8 h-8 text-accent" />,
+    icon: <HiScale size={26} />,
     title: "Scalable from SMB → Enterprise ",
     description: "Modular automation architecture",
   },
   {
-    icon: <HiCog className="w-8 h-8 text-accent" />,
+    icon: <HiCog size={26} />,
     title: "Custom AI & RPA solutions ",
     description: "Tailored to your exact workflow",
   },
@@ -101,15 +101,10 @@ const WhyChooseSyvairo = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl pb-2 md:text-5xl font-semibold tracking-tight bg-clip-text text-transparent"
+          className="text-3xl md:text-5xl pb-2 font-semibold tracking-tight bg-clip-text text-transparent"
           style={{
-            backgroundImage: `
-      linear-gradient(
-        180deg,
-        var(--text-primary),
-        var(--accent)
-      )
-    `,
+            backgroundImage:
+              "linear-gradient(to left, var(--from), var(--via), var(--to))",
           }}
         >
           Why Businesses Choose Syvairo
@@ -144,16 +139,22 @@ const WhyChooseSyvairo = () => {
                 WebkitTapHighlightColor: "transparent",
               }}
             >
-              <div className="flex items-center space-x-4 mb-4">
-                {item.icon}
+              <div className="flex items-center gap-3">
+                <div
+                  className=" w-12 h-12 flex items-center justify-center rounded-xl
+          bg-purple-400/20 text-purple-400
+          group-hover:bg-white/20 group-hover:text-white
+          transition"
+                >
+                  {item.icon}
+                </div>
                 <h3 className="text-lg font-semibold">{item.title}</h3>
               </div>
-              <p className="text-secondary">{item.description}</p>
+              <p className="text-secondary mt-4">{item.description}</p>
             </div>
           ))}
         </div>
       </div>
-
 
       <div className="max-w-7xl mx-auto px-6 ">
         {/* Intro Text */}
