@@ -204,7 +204,7 @@ const HeroSection = () => {
                 boxShadow: "0 0 10px #00ced1, 0 0 20px #00ced1",
               }}
               whileTap={{ scale: 0.97 }}
-              className="px-8 py-4 rounded-full bg-cyan-400 border-2 border-cyan-500 font-bold text-white text-lg transition-all duration-300"
+              className="px-8 py-4 rounded-full bg-cyan-600 border-2 border-cyan-500 font-bold text-white text-lg transition-all duration-300"
               style={{
                 boxShadow: "0 0 2px #00ced1, 0 0 10px #00ced1", // neon glow
               }}

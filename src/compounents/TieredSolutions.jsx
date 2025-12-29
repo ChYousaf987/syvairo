@@ -1,32 +1,29 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { HiOutlineChip } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
 const tiers = [
   {
     name: "TIER-1 · SMB Ready-to-Launch",
     items: [
-      "WhatsApp AI Receptionist & Voice Call Center",
-      "Multilanguage Chatbots & Customer Support",
-      "Lead Qualification & Sales Follow-Ups",
-      "Automated Quotes & Social Media Posting",
-      "Review Collection & Complaint Handling",
-      "Appointment Booking & Scheduling",
-      "Resume Screening & Employee Onboarding",
-      "Attendance Management & HR Automation",
-      "Dashboards, Reporting & Language Translation",
+      "Communication & Support: AI Receptionist",
+      "Sales & Marketing: Lead Qualification",
+      "Customer Experience: Complaint Handling",
+      "HR & Internal: Resume Screening",
+      "Operations & Efficiency: AI Meeting Notes",
+      "Data & Analytics: And More",
     ],
   },
   {
     name: "TIER-2 · Mid-to-Large Enterprise",
     items: [
       "Multi-Agent Business Assistants",
-      "Department Automation Suites",
       "Back-Office Workflow Automation",
       "Enterprise CRM Automation",
-      "Automated Reporting & Analytics",
       "Contract & Document Extraction",
-      "Cross-Team Coordination Agents",
+      "Advanced Reporting & Analytics",
+      "And More",
     ],
   },
   {
@@ -34,10 +31,10 @@ const tiers = [
     items: [
       "Enterprise AI Brain (Central Intelligence)",
       "COO-Level Decision Engine",
-      "Audit, Risk & Compliance Automation",
-      "Legal & Contract Understanding AI",
       "Inter-Department Orchestration",
-      "Fully Autonomous Corporate AI Control Tower",
+      "Autonomous Corporate AI Control Tower",
+      "Risk, Audit & Compliance Automation",
+      "And More",
     ],
   },
 ];
@@ -47,24 +44,28 @@ const container = {
   show: { transition: { staggerChildren: 0.18 } },
 };
 
-const item = {
-  hidden: { y: 60, opacity: 0 },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: { type: "spring", stiffness: 85, damping: 16 },
-  },
-};
-
 const TieredSolutions = () => {
   return (
     <section
       className="py-20 md:py-28 overflow-hidden"
-      style={{
-        color: "var(--text-primary)",
-      }}
+      style={{ color: "var(--text-primary)" }}
     >
       <div className="max-w-7xl mx-auto px-6 text-center">
+        {/* 🔹 TOP BADGE */}
+        <span
+          style={{
+            textShadow:
+              "0 0 38px rgba(0, 206, 209, 0.45), 0 0 20px rgba(0, 206, 209, 0.25)",
+          }}
+          className="inline-block mb-4 px-4 py-1 rounded-full text-sm font-semibold
+                     bg-cyan-500/10 border border-cyan-700"
+        >
+          <div className="flex items-center gap-2">
+            <HiOutlineChip className="text-cyan-400 text-base" />
+            <span className="text-cyan-400">Tiered AI Automation Stack</span>
+          </div>
+        </span>
+
         {/* Heading */}
         <motion.h2
           initial={{ y: 40, opacity: 0 }}
@@ -73,26 +74,22 @@ const TieredSolutions = () => {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-5xl pb-2 font-semibold tracking-tight bg-clip-text text-transparent"
           style={{
-            backgroundImage: `
-                                      linear-gradient(
-                                        180deg,
-                                        var(--text-primary),
-                                        var(--accent)
-                                      )
-                                    `,
+            backgroundImage: `linear-gradient(180deg, var(--text-primary), var(--accent))`,
+            textShadow:
+              "0 0 38px rgba(0, 206, 209, 0.35), 0 0 20px rgba(0, 206, 209, 0.2)",
           }}
         >
           OUR AUTOMATION SOLUTIONS — BY TIER
         </motion.h2>
+
         <motion.p
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15 }}
           className="mt-4 max-w-2xl mx-auto"
-          style={{ color: "var(--text-secondary)" }}
         >
-          Explore automation agents across business needs and company sizes.
+          Scalable AI automation designed for every stage of business growth.
         </motion.p>
 
         {/* Cards */}
@@ -106,20 +103,19 @@ const TieredSolutions = () => {
           {tiers.map((t, i) => (
             <motion.div
               key={i}
-              className="rounded-2xl p-8 transition-all duration-300
-             hover:-translate-y-2 hover:scale-[1.03]
-             hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-             hover:bg-[#00ced1]
-             select-none"
+              className="group rounded-2xl p-6 transition-all duration-300
+              hover:-translate-y-2 hover:scale-[1.03]
+              hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
+              hover:bg-[#00ced1] select-none"
               style={{
                 backgroundColor: "var(--card-bg)",
-                border: `1px solid var(--card-border)`,
-                WebkitTapHighlightColor: "transparent",
+                border: "1px solid rgba(0,206,209,0.35)",
               }}
             >
               <h3 className="text-xl text-start font-semibold mb-4">
                 {t.name}
               </h3>
+
               <ul
                 className="space-y-2 text-start text-sm"
                 style={{ color: "var(--text-secondary)" }}
@@ -138,25 +134,21 @@ const TieredSolutions = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.35 }}
-          className="mt-14 flex justify-center gap-4 flex-wrap"
+          className="mt-14 flex justify-center"
         >
-          <motion.button
-            whileHover={{ scale: 1.08 }}
-            className="px-8 py-4 rounded-2xl font-semibold"
-            style={{ backgroundColor: "var(--accent)", color: "#000" }}
-          >
-            Build Your Custom Agent
-          </motion.button>
-          <Link to="/catalogue" className="">
+          <Link to="/ConsultationForm">
             <motion.button
-              whileHover={{ scale: 1.06 }}
-              className="px-8 py-4 rounded-2xl border"
+              whileHover={{
+                scale: 1.07,
+                boxShadow: "0 0 10px #00ced1, 0 0 20px #00ced1",
+              }}
+              whileTap={{ scale: 0.97 }}
+              className="px-8 py-4 rounded-full bg-cyan-600 border-2 border-cyan-500 font-bold text-white text-lg transition-all duration-300"
               style={{
-                borderColor: "var(--accent)",
-                color: "var(--text-primary)",
+                boxShadow: "0 0 2px #00ced1, 0 0 10px #00ced1", // neon glow
               }}
             >
-              View Full Catalog
+              Build Your Custom Agent
             </motion.button>
           </Link>
         </motion.div>

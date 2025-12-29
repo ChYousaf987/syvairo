@@ -123,7 +123,7 @@ const WhyChooseSyvairo = () => {
           className="inline-block mb-3 px-4 py-1 rounded-full text-sm font-semibold bg-cyan-500/10 border border-cyan-700"
         >
           <div className="flex items-center gap-2">
-            <HiOutlineBriefcase size={20} />
+            <HiOutlineBriefcase size={18} />
             <div className="text-sm font-semibold text-cyan-400">
               Choose Syvairo
             </div>

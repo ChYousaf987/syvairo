@@ -26,6 +26,20 @@ const CaseStudies = () => {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 text-center">
+        {/* 🔹 TOP BADGE */}
+        <span
+          style={{
+            textShadow:
+              "0 0 38px rgba(0, 206, 209, 0.45), 0 0 20px rgba(0, 206, 209, 0.25)",
+          }}
+          className="inline-block mb-4 px-4 py-1 rounded-full text-sm font-semibold
+                     bg-cyan-500/10 border border-cyan-700"
+        >
+          <div className="flex items-center gap-2">
+            <HiPhone className="text-cyan-400 text-base" />
+            <span className="text-cyan-400">Real-Time AI Workforce</span>
+          </div>
+        </span>
         {/* Heading */}
         <motion.h2
           initial={{ y: 40, opacity: 0 }}
@@ -83,7 +97,7 @@ const CaseStudies = () => {
                 className="rounded-2xl p-8 transition-all duration-300
                        hover:-translate-y-2 hover:scale-[1.03]
                        hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-                       hover:bg-[#00ced1]
+                       hover:bg-[]
                        select-none"
                 style={{
                   backgroundColor: "var(--card-bg)",
@@ -102,7 +116,7 @@ const CaseStudies = () => {
                 </div>
                 <p
                   className="mt-2 text-sm"
-                  style={{ color: "var(--text-secondary)" }}
+                  style={{ color: "var(--text-primary)" }}
                 >
                   Live & ready to interact
                 </p>
