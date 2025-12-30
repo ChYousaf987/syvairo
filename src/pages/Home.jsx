@@ -4,33 +4,19 @@ import IntroVideoSection from "../compounents/IntroVideoSection";
 import WhyChooseSyvairo from "../compounents/WhyChooseSyvairo";
 import CaseStudies from "../compounents/CaseStudies";
 import ClientTrustLiveAgents from "../compounents/ClientTrustLiveAgents";
-import TopHighROIAgents from "../compounents/TopHighROIAgents";
-import TieredSolutions from "../compounents/TieredSolutions";
-import TechStack from "../compounents/TechStack";
 import ROICalculator from "../compounents/ROICalculator";
-import DeliveryModel from "../compounents/DeliveryModel";
-import MediaPreview from "../compounents/MediaPreview";
-import FloatingAgents from "../compounents/FloatingAgents";
-import AnimatedCanvasBackground from "../compounents/AnimatedCanvasBackground";
+import FAQ from "./FAQ";
 
 const Home = () => {
   return (
     <div className="relative">
-      <AnimatedCanvasBackground />
       <div className="relative z-10">
         <HerosSection />
         <IntroVideoSection />
         <WhyChooseSyvairo />
         <ClientTrustLiveAgents />
-        <CaseStudies />
-        <TopHighROIAgents />
-        <TieredSolutions />
-        <TechStack />
-        <ROICalculator />
-        <DeliveryModel />
-        <MediaPreview />
-
-        <FloatingAgents />
+        <ROICalculator/>
+        <FAQ/>
       </div>
     </div>
   );

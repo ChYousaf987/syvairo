@@ -148,7 +148,7 @@ const TieredSolutions = () => {
                 boxShadow: "0 0 2px #00ced1, 0 0 10px #00ced1", // neon glow
               }}
             >
-              Build Your Custom Agent
+              → Build Your AI Infrastructure With Us
             </motion.button>
           </Link>
         </motion.div>

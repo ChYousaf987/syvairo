@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { HiChevronDown, HiChevronUp } from "react-icons/hi";
+import { motion, AnimatePresence } from "framer-motion";
+import { HiChevronDown } from "react-icons/hi";
 
 const faqs = [
   {
@@ -33,54 +33,88 @@ const faqs = [
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
-  const toggleIndex = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
-
   return (
-    <section
-      className="py-28 px-6"
-      style={{
-        color: "var(--text-primary)",
-      }}
-    >
-      <motion.h1
-        initial={{ y: 20, opacity: 0 }}
+    <section className="py-28 px-6 text-[var(--text-primary)]">
+      {/* Badge */}
+      <div className="flex justify-center mb-6">
+        <span className="px-4 py-1 rounded-full text-sm font-semibold bg-cyan-500/10 border border-cyan-700 text-cyan-400 shadow-[0_0_25px_rgba(34,211,238,0.25)]">
+          💬 Common Questions
+        </span>
+      </div>
+
+      {/* Heading */}
+      <motion.h2
+        initial={{ y: 30, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        className="text-4xl md:text-5xl font-bold text-center mb-12"
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-3xl md:text-5xl text-center mb-14 font-semibold bg-clip-text text-transparent"
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, var(--text-primary), var(--accent))",
+        }}
       >
         Frequently Asked Questions
-      </motion.h1>
+      </motion.h2>
 
-      <div className="max-w-4xl mx-auto space-y-4">
-        {faqs.map((faq, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-            className="rounded-xl border"
-            style={{
-              borderColor: "var(--card-border)",
-              backgroundColor: "var(--card-bg)",
-            }}
-          >
-            <button
-              className="w-full flex justify-between items-center p-5 font-semibold text-left"
-              onClick={() => toggleIndex(index)}
+      {/* FAQ List */}
+      <div className="max-w-4xl mx-auto space-y-5">
+        {faqs.map((faq, index) => {
+          const isOpen = activeIndex === index;
+
+          return (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.08 }}
+              className="group rounded-2xl transition-all duration-300
+              hover:-translate-y-2 hover:scale-[1.03]
+              hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
+              hover:bg-[#00ced1] select-none"
+              style={{
+                backgroundColor: "var(--card-bg)",
+                border: "1px solid rgba(0,206,209,0.35)",
+              }}
             >
-              {faq.question}
-              {activeIndex === index ? (
-                <HiChevronUp className="w-6 h-6 text-accent" />
-              ) : (
-                <HiChevronDown className="w-6 h-6 text-accent" />
-              )}
-            </button>
-            {activeIndex === index && (
-              <div className="p-5 pt-0 text-secondary">{faq.answer}</div>
-            )}
-          </motion.div>
-        ))}
+              {/* Question */}
+              <button
+                onClick={() => setActiveIndex(isOpen ? null : index)}
+                className="w-full flex justify-between items-center p-6 text-left"
+              >
+                <span className="text-base md:text-lg font-medium">
+                  {faq.question}
+                </span>
+
+                <motion.span
+                  animate={{ rotate: isOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-cyan-400"
+                >
+                  <HiChevronDown className="w-6 h-6" />
+                </motion.span>
+              </button>
+
+              {/* Answer */}
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.35, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-6 text-sm md:text-base text-gray-300 leading-relaxed">
+                      {faq.answer}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

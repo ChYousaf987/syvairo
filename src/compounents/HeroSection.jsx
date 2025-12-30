@@ -7,6 +7,7 @@ import {
   AiOutlinePlayCircle,
   AiOutlineSound,
 } from "react-icons/ai";
+import { IoMdBusiness } from "react-icons/io";
 
 const HeroSection = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -66,7 +67,7 @@ const HeroSection = () => {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-3xl md:text-5xl pb-2 font-bold tracking-tight bg-clip-text text-transparent"
+          className="text-3xl md:text-4xl pb-2 font-bold tracking-tight bg-clip-text text-transparent"
           style={{
             backgroundImage:
               "linear-gradient(180deg, var(--text-primary), var(--accent))",
@@ -90,11 +91,25 @@ const HeroSection = () => {
           We don’t sell tools – We deliver end to end intelligent automation
           solution that run business autonomously
         </motion.p>
-
+        <span
+          style={{
+            textShadow: `
+              0 0 38px rgba(0, 206, 209, 0.45),
+              0 0 20px rgba(0, 206, 209, 0.25)
+            `,
+          }}
+          className="inline-block mt-6 px-4 py-1 rounded-full text-sm font-semibold bg-cyan-500/10 border border-cyan-700"
+        >
+          <div className="flex items-center">
+            <div className="text-sm font-semibold text-cyan-400">
+              How SYVAIRO Came To Live
+            </div>
+          </div>
+        </span>
         {/* Video */}
         <motion.div
           variants={itemVariants}
-          className="cursor-pointer rounded-3xl p-5 backdrop-blur-xl relative group mt-10"
+          className="cursor-pointer rounded-3xl p-5 backdrop-blur-xl relative group mt-3"
           style={{
             backgroundColor: "var(--card-bg)",
             border: `1px solid var(--card-border)`,

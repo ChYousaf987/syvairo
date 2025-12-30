@@ -12,6 +12,7 @@ import {
   HiOutlineBanknotes,
   HiRocketLaunch,
   HiBolt,
+  HiOutlineChatBubbleLeftRight,
 } from "react-icons/hi2";
 import { HiPuzzle } from "react-icons/hi";
 import { TbBolt } from "react-icons/tb";
@@ -104,6 +105,18 @@ const caseStudies = [
     challenge: "Manual back-office tasks caused errors and delays.",
     impact: ["**40%** faster process completion", "**30%** fewer errors"],
   },
+  {
+    icon: HiOutlineChatBubbleLeftRight,
+    title: "WhatsApp AI Customer Support",
+    client: "Real Estate Agency — UAE",
+    challenge:
+      "High volume of WhatsApp inquiries with delayed responses and missed follow-ups.",
+    impact: [
+      "**70%** inquiries handled instantly",
+      "**45%** faster lead response time",
+      "Higher property viewing conversions",
+    ],
+  },
 ];
 
 const WhyChooseSyvairo = () => {
@@ -123,9 +136,8 @@ const WhyChooseSyvairo = () => {
           className="inline-block mb-3 px-4 py-1 rounded-full text-sm font-semibold bg-cyan-500/10 border border-cyan-700"
         >
           <div className="flex items-center gap-2">
-            <HiOutlineBriefcase size={18} />
             <div className="text-sm font-semibold text-cyan-400">
-              Choose Syvairo
+              ⭐ Why Choose Syvairo
             </div>
           </div>
         </span>

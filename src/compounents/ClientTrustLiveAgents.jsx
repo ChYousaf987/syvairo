@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { FaAws } from "react-icons/fa";
 import { SiOpenai, SiGooglecloud, SiZapier, SiAnthropic } from "react-icons/si";
 import { RiAiGenerate } from "react-icons/ri";
+import { SiUipath, SiN8N } from "react-icons/si";
+
 
 const stats = [
   { value: "15+", label: "AI Projects" },
@@ -30,9 +32,8 @@ const ClientTrustLiveAgents = () => {
           className="inline-block mb-3 px-4 py-1 rounded-full text-sm font-semibold bg-cyan-500/10 border border-cyan-700"
         >
           <div className="flex items-center gap-2">
-            <RiAiGenerate className="text-cyan-400" />
             <div className="text-sm font-semibold text-cyan-400">
-              AI Powered Solutions
+              🤖 AI Powered Solutions
             </div>
           </div>
         </span>
@@ -118,6 +119,31 @@ const ClientTrustLiveAgents = () => {
 
             <motion.div whileHover={{ scale: 1.2 }} title="Anthropic">
               <SiAnthropic />
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.2 }} title="AI Agents">
+              <RiAiGenerate />
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.2 }} title="UiPath">
+              <SiUipath />
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.2 }} title="n8n">
+              <SiN8N />
+            </motion.div>
+
+            {/* <motion.div whileHover={{ scale: 1.2 }} title="Microsoft Azure">
+              <SiMicrosoftazure />
+            </motion.div> */}
+
+            {/* Blue Prism – no official icon */}
+            <motion.div
+              whileHover={{ scale: 1.2 }}
+              title="Blue Prism"
+              className="text-2xl md:text-3xl font-semibold tracking-wide"
+            >
+              BP
             </motion.div>
           </div>
         </motion.div>
