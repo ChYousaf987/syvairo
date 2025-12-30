@@ -6,6 +6,7 @@ import CaseStudies from "../compounents/CaseStudies";
 import ClientTrustLiveAgents from "../compounents/ClientTrustLiveAgents";
 import ROICalculator from "../compounents/ROICalculator";
 import FAQ from "./FAQ";
+import FloatingAgents from "../compounents/FloatingAgents";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
         <ClientTrustLiveAgents />
         <ROICalculator/>
         <FAQ/>
+        <FloatingAgents/>
       </div>
     </div>
   );

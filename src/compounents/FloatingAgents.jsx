@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { BsChatDots, BsMic } from "react-icons/bs";
+import { FaWhatsapp } from "react-icons/fa";
+import { RiAiGenerate } from "react-icons/ri";
 
 const agents = [
   {
     name: "AI Chatbot",
-    desc: "Website & support automation",
+    icon: BsChatDots,
   },
   {
     name: "WhatsApp AI",
-    desc: "Automated WhatsApp conversations",
+    icon: FaWhatsapp,
   },
   {
     name: "Voice AI Agent",
-    desc: "Calls, bookings & voice support",
+    icon: BsMic,
   },
 ];
 
@@ -20,52 +23,72 @@ const FloatingAgents = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed right-5 bottom-5 z-50">
+    <div className="fixed right-5 bottom-5 z-50 flex flex-col items-end">
       {/* Dropdown */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 40 }}
-            transition={{ duration: 0.25 }}
-            className="mb-4 w-64 rounded-2xl overflow-hidden"
+            exit={{ opacity: 0, x: 50 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="mb-4 w-64 rounded-2xl overflow-hidden shadow-lg"
             style={{
               backgroundColor: "var(--card-bg)",
               border: "1px solid var(--card-border)",
-              boxShadow: "var(--shadow-soft)",
             }}
           >
-            {agents.map((agent, i) => (
-              <div
-                key={i}
-                className="
-    rounded-2xl px-5 py-4 cursor-pointer select-none
-    transition-all duration-300
-    hover:-translate-y-2 hover:scale-[1.03]
-    hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-  "
-                style={{
-                  backgroundColor: "var(--card-bgs)",
-                  border: "1px solid var(--card-border)",
-                  WebkitTapHighlightColor: "transparent",
-                }}
-              >
-                <p
-                  className="font-semibold"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  {agent.name}
-                </p>
+            {agents.map((agent, i) => {
+              const Icon = agent.icon;
 
-                <p
-                  className="text-sm mt-1"
-                  style={{ color: "var(--text-secondary)" }}
+              return (
+                <motion.div
+                  key={i}
+                  whileHover={{
+                    x: 6,
+                    scale: 1.03,
+                    boxShadow: "0 10px 30px rgba(0,206,209,0.25)",
+                  }}
+                  className="flex items-center gap-4 rounded- px-5 py-4 cursor-pointer transition-all duration-300"
+                  style={{
+                    backgroundColor: "var(--card-bg)",
+                    borderBottom:
+                      i !== agents.length - 1
+                        ? "1px solid var(--card-border)"
+                        : "none",
+                    WebkitTapHighlightColor: "transparent",
+                  }}
                 >
-                  {agent.desc}
-                </p>
-              </div>
-            ))}
+                  {/* Icon */}
+                  <div
+                    className="w-10 h-10 rounded-full flex items-center justify-center"
+                    style={{
+                      background: "linear-gradient(135deg, #22D3EE, #3B82F6)",
+                      color: "#000",
+                      boxShadow: "0 8px 20px rgba(34,211,238,0.25)",
+                    }}
+                  >
+                    <Icon className="text-lg" />
+                  </div>
+
+                  {/* Text */}
+                  <div className="flex flex-col">
+                    <p
+                      className="font-semibold"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      {agent.name}
+                    </p>
+                    <p
+                      className="text-sm"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      Start conversation
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>
@@ -73,17 +96,23 @@ const FloatingAgents = () => {
       {/* Floating Button */}
       <motion.button
         onClick={() => setOpen(!open)}
-        whileHover={{ scale: 1.08 }}
+        whileHover={{ scale: 1.15, rotate: 10 }}
         whileTap={{ scale: 0.95 }}
-        className="w-14 h-14 rounded-full flex items-center justify-center"
+        animate={open ? {} : { scale: [1, 1.05, 1], rotate: [0, 5, 0] }}
+        transition={{
+          repeat: open ? 0 : Infinity,
+          repeatDelay: 2,
+          duration: 1.5,
+        }}
+        className="w-16 h-16 rounded-full flex items-center justify-center"
         style={{
-          backgroundColor: "var(--accent)",
+          background: "linear-gradient(135deg, #22D3EE, #3B82F6)",
           color: "#000",
-          boxShadow: "0 15px 40px rgba(0,206,209,0.4)",
+          boxShadow: "0 15px 50px rgba(34,211,238,0.45)",
         }}
         aria-label="AI Agents"
       >
-        🤖
+        <RiAiGenerate className="text-3xl text-white" />
       </motion.button>
     </div>
   );
