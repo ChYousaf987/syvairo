@@ -40,9 +40,9 @@ const Navbar = ({ theme, setTheme }) => {
         {/* Logo */}
         <Link to="/">
           <img
-            src="/shortlogo.png"
+            src="/SYVAIRO_logo.png"
             alt="Logo"
-            className="w-10 cursor-pointer"
+            className="w-24 cursor-pointer"
           />
         </Link>
 

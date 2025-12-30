@@ -9,11 +9,11 @@ import FloatingAgents from "../compounents/FloatingAgents";
 const Services = () => {
   return (
     <>
-      <CaseStudies />
       <TopHighROIAgents />
       <TieredSolutions />
       <TechStack />
       <DeliveryModel />
+      <CaseStudies />
       <FloatingAgents />
     </>
   );

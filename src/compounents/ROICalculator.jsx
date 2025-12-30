@@ -40,7 +40,10 @@ const ROICalculator = () => {
   const monthlyCostBefore = result?.monthlyHours * result?.hourlyCost || 0;
 
   return (
-    <section className="py-16 px-6 min-h-screen flex flex-col items-center">
+    <section
+      id="roi-calculator"
+      className="py-16 px-6 min-h-screen flex flex-col items-center"
+    >
       {/* Heading */}
       <div className="max-w-3xl w-full text-center mb-12">
         <span
