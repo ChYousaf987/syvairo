@@ -17,8 +17,18 @@ export default function ConsultationForm() {
   };
 
   return (
-    <div className="my-24 flex h-screen items-center justify-center px-4">
-      <div className="w-full max-w-2xl rounded-3xl  bg-gray-600/30 p-8 shadow-2xl relative">
+    <div className="my-20 flex h- items-center justify-center px-4">
+      <div
+        className="w-full max-w-3xl bg-gray-600/30 shadow-2xl relative group rounded-2xl p-8 transition-all duration-300
+        hover:-translate-y-2 hover:scale-[1]
+        hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
+        hover:bg-[#00ced1]
+        select-none"
+        style={{
+          backgroundColor: "var(--card-bg)",
+          border: "1px solid rgba(0,206,209,0.35)",
+        }}
+      >
         {/* Back to Home */}
         {!submitted && (
           <Link
@@ -32,22 +42,39 @@ export default function ConsultationForm() {
         {/* Header */}
         {!submitted && (
           <div className="text-center mb-8">
-            <h2
-              className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text"
+            <motion.h2
+              initial={{ y: 40, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl md:text-5xl pb-2 font-semibold tracking-tight bg-clip-text text-transparent"
               style={{
-                backgroundImage:
-                  "linear-gradient(to left, var(--from), var(--via), var(--to))",
+                backgroundImage: `
+                         linear-gradient(
+                           180deg,
+                           var(--text-primary),
+                           var(--accent)
+                         )
+                       `,
+                textShadow: `
+                  0 0 38px rgba(0, 206, 209, 0.45),
+                  0 0 20px rgba(0, 206, 209, 0.25)
+                `,
               }}
             >
               Schedule a free consultation
-            </h2>
-            <p className="text-gray-300 mt-3 max-w-xl mx-auto">
+            </motion.h2>
+            <motion.p
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+              className="mt-4 max-w-2xl mx-auto"
+              style={{ color: "var(--text-primary)" }}
+            >
               Discover how Opusmatic can automate your business processes. Book
               a free consultation for a personalized assessment.
-            </p>
-            <p className="text-sm text-gray-400 mt-2">
-              30-minute consultation · No obligations
-            </p>
+            </motion.p>
           </div>
         )}
 
@@ -60,7 +87,7 @@ export default function ConsultationForm() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.4 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 gap-3"
             >
               <Input label="Full Name *" placeholder="Your full name" />
               <Input label="Company Name" placeholder="Your company name" />
@@ -75,25 +102,16 @@ export default function ConsultationForm() {
                 full
               />
 
-              <div>
+              <div className="md:col-span-2">
                 <label className="block text-sm text-gray-300 mb-2">
-                  Current Challenges
+                  Challenges & Automation Goals
                 </label>
-                <textarea
-                  rows={4}
-                  placeholder="Describe your current challenges"
-                  className="w-full px-4 py-3 rounded-xl bg-black/30 border border-gray-600 text-white focus:ring-2 focus:ring-cyan-400"
-                />
-              </div>
 
-              <div>
-                <label className="block text-sm text-gray-300 mb-2">
-                  Automation Goals
-                </label>
                 <textarea
                   rows={4}
-                  placeholder="What do you want to automate?"
-                  className="w-full px-4 py-3 rounded-xl bg-black/30 border border-gray-600 text-white focus:ring-2 focus:ring-cyan-400"
+                  placeholder={`What processes you want to automate`}
+                  className="w-full px-4 py-3 rounded-xl bg-black/30 border border-gray-600 text-white placeholder-gray-400
+    focus:outline-none focus:ring-2 focus:ring-cyan-400"
                 />
               </div>
             </motion.div>
@@ -130,19 +148,98 @@ export default function ConsultationForm() {
 
         {/* Footer */}
         {!submitted && (
-          <div className="flex justify-end mt-10">
-            <button
+          <div className="flex justify-end mt-3">
+            <motion.button
               onClick={next}
-              className="px-8 py-3 rounded-xl  font-semibold hover:scale-[1.02] transition"
+              whileHover={{
+                scale: 1.07,
+                boxShadow: "0 0 10px #00ced1, 0 0 20px #00ced1",
+              }}
+              whileTap={{ scale: 0.97 }}
+              className="px-8 py-4 rounded-full bg-cyan-600 border-2 border-cyan-500 font-bold text-white text-lg transition-all duration-300"
               style={{
-                backgroundColor: "var(--button)",
-                color: "#000",
+                boxShadow: "0 0 2px #00ced1, 0 0 10px #00ced1", // neon glow
               }}
             >
               Submit →
-            </button>
+            </motion.button>
           </div>
         )}
+        <hr className="mt-5 border-[1] border-gray-600" />
+        {/* EXPECTATION SECTION */}
+        <div className="mt-6 text-center">
+          <p className="text-sm text-gray-400 mb-2">
+            Your data will be processed according to our{" "}
+            <span className="text-cyan-400 cursor-pointer">Privacy Policy</span>
+            .
+          </p>
+
+          <h3 className="text-md font-semibold text-white mb-8">
+            What you can expect during the consultation:
+          </h3>
+
+          <div className="grid md:grid-cols-2 gap-5">
+            {/* Card 1 */}
+            <div className="flex gap-4 rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+              <div className="text-cyan-400 text-xl">◎</div>
+              <div className="text-left">
+                <p className="font-semibold text-sm text-white">
+                  Analysis of your current processes
+                </p>
+                <p className="text-xs text-gray-400">
+                  Identification of automation opportunities
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="flex gap-4 rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+              <div className="text-cyan-400 text-xl">✔</div>
+              <div className="text-left">
+                <p className="font-semibold text-sm text-white">
+                  AI solutions explanation
+                </p>
+                <p className="text-xs text-gray-400">
+                  Customized advice for your business
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="flex gap-4 rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+              <div className="text-cyan-400 text-xl">↗</div>
+              <div className="text-left">
+                <p className="font-semibold text-sm text-white">
+                  ROI calculation and implementation plan
+                </p>
+                <p className="text-xs text-gray-400">
+                  Concrete steps towards results
+                </p>
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="flex gap-4 rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+              <div className="text-cyan-400 text-xl">◷</div>
+              <div className="text-left">
+                <p className="font-semibold text-sm text-white">
+                  30-minute consultation
+                </p>
+                <p className="text-xs text-gray-400">
+                  No obligations · Directly applicable advice
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-sm text-gray-400 mt-6">
+            Discover more about our{" "}
+            <span className="text-cyan-400 cursor-pointer">
+              services and approach
+            </span>
+            .
+          </p>
+        </div>
       </div>
     </div>
   );
