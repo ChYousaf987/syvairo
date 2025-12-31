@@ -16,9 +16,9 @@ const Home = () => {
         <IntroVideoSection />
         <WhyChooseSyvairo />
         <ClientTrustLiveAgents />
-        <ROICalculator/>
-        <FAQ/>
-        <FloatingAgents/>
+        <ROICalculator />
+        <FAQ />
+        <FloatingAgents />
       </div>
     </div>
   );

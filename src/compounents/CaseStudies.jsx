@@ -20,7 +20,7 @@ const container = {
 const CaseStudies = () => {
   return (
     <section
-      className="py-20 md:py-28 overflow-hidden"
+      className="py-7 overflow-hidden"
       style={{
         color: "var(--text-primary)",
       }}

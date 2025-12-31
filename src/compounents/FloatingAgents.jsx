@@ -104,13 +104,11 @@ const FloatingAgents = () => {
           repeatDelay: 2,
           duration: 1.5,
         }}
-        className="w-16 h-16 rounded-full flex items-center justify-center"
-        style={{
-          background: "linear-gradient(135deg, #22D3EE, #3B82F6)",
-          color: "#000",
-          boxShadow: "0 15px 50px rgba(34,211,238,0.45)",
-        }}
         aria-label="AI Agents"
+        className="px-4 py-4 rounded-full bg-cyan-600 border-2 border-cyan-500 font-bold text-white text-lg transition-all duration-300"
+        style={{
+          boxShadow: "0 0 2px #00ced1, 0 0 10px #00ced1", // neon glow
+        }}
       >
         <RiAiGenerate className="text-3xl text-white" />
       </motion.button>

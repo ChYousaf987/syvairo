@@ -1,10 +1,11 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer
-      className="pt-20 pb-10 z-50"
+      className="pt-20 bg-black pb-10 z-50"
       style={{
         color: "var(--text-secondary)",
       }}
@@ -64,6 +65,11 @@ const Footer = () => {
               <li>
                 <a href="/" className="hover:text-accent transition">
                   Home
+                </a>
+              </li>
+              <li>
+                <a href="/services" className="hover:text-accent transition">
+                  Services
                 </a>
               </li>
               <li>
@@ -132,7 +138,9 @@ const Footer = () => {
             <ul className="space-y-2 text-sm">
               <li>contact@syvairo.com</li>
               <li>00000000000</li>
-              <li style={{ color: "var(--accent)" }}>Book Strategy Call →</li>
+              <Link to="/ConsultationForm">
+                <li style={{ color: "var(--accent)" }}>Book Strategy Call →</li>
+              </Link>
             </ul>
           </div>
         </div>

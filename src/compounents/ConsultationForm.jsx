@@ -19,7 +19,7 @@ export default function ConsultationForm() {
   return (
     <div className="my-20 flex h- items-center justify-center px-4">
       <div
-        className="w-full max-w-3xl bg-gray-600/30 shadow-2xl relative group rounded-2xl p-8 transition-all duration-300
+        className="w-full max-w-2xl bg-gray-600/30 shadow-2xl relative group rounded-2xl py-6 px-8 transition-all duration-300
         hover:-translate-y-2 hover:scale-[1]
         hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
         hover:bg-[#00ced1]
@@ -29,47 +29,48 @@ export default function ConsultationForm() {
           border: "1px solid rgba(0,206,209,0.35)",
         }}
       >
-        {/* Back to Home */}
-        {!submitted && (
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-cyan-400 transition mb-6"
-          >
-            <HiArrowLeft size={18} />
-          </Link>
-        )}
-
         {/* Header */}
         {!submitted && (
-          <div className="text-center mb-8">
-            <motion.h2
-              initial={{ y: 40, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-3xl md:text-5xl pb-2 font-semibold tracking-tight bg-clip-text text-transparent"
-              style={{
-                backgroundImage: `
+          <div className="text-center ">
+            <div className="flex w-full">
+              {!submitted && (
+                <Link
+                  to="/"
+                  className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-cyan-400 transition mb-"
+                >
+                  <HiArrowLeft size={18} />
+                </Link>
+              )}
+
+              <motion.h2
+                initial={{ y: 40, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="text-xl md:text-3xl mx-auto text-center font-semibold tracking-tight bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: `
                          linear-gradient(
                            180deg,
                            var(--text-primary),
                            var(--accent)
                          )
                        `,
-                textShadow: `
+                  textShadow: `
                   0 0 38px rgba(0, 206, 209, 0.45),
                   0 0 20px rgba(0, 206, 209, 0.25)
                 `,
-              }}
-            >
-              Schedule a free consultation
-            </motion.h2>
+                }}
+              >
+                Schedule a free consultation
+              </motion.h2>
+            </div>
             <motion.p
               initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="mt-4 max-w-2xl mx-auto"
+              className="my-2 max-w-2xl mx-auto"
               style={{ color: "var(--text-primary)" }}
             >
               Discover how Opusmatic can automate your business processes. Book
@@ -87,7 +88,7 @@ export default function ConsultationForm() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.4 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-3"
+              className="grid grid-cols-1 md:grid-cols-2 gap-2"
             >
               <Input label="Full Name *" placeholder="Your full name" />
               <Input label="Company Name" placeholder="Your company name" />
@@ -108,7 +109,7 @@ export default function ConsultationForm() {
                 </label>
 
                 <textarea
-                  rows={4}
+                  rows={3}
                   placeholder={`What processes you want to automate`}
                   className="w-full px-4 py-3 rounded-xl bg-black/30 border border-gray-600 text-white placeholder-gray-400
     focus:outline-none focus:ring-2 focus:ring-cyan-400"
@@ -156,7 +157,7 @@ export default function ConsultationForm() {
                 boxShadow: "0 0 10px #00ced1, 0 0 20px #00ced1",
               }}
               whileTap={{ scale: 0.97 }}
-              className="px-8 py-4 rounded-full bg-cyan-600 border-2 border-cyan-500 font-bold text-white text-lg transition-all duration-300"
+              className="px-8 py-2 rounded-full bg-cyan-600 border-2 border-cyan-500 font-bold text-white text-lg transition-all duration-300"
               style={{
                 boxShadow: "0 0 2px #00ced1, 0 0 10px #00ced1", // neon glow
               }}
@@ -234,9 +235,9 @@ export default function ConsultationForm() {
 
           <p className="text-sm text-gray-400 mt-6">
             Discover more about our{" "}
-            <span className="text-cyan-400 cursor-pointer">
+            <Link to="/services" className="text-cyan-400 cursor-pointer">
               services and approach
-            </span>
+            </Link>
             .
           </p>
         </div>
@@ -249,7 +250,7 @@ export default function ConsultationForm() {
 function Input({ label, placeholder, full }) {
   return (
     <div className={full ? "md:col-span-2" : ""}>
-      <label className="block text-sm text-gray-300 mb-2">{label}</label>
+      <label className="block text-sm text-gray-300 mb-1">{label}</label>
       <input
         placeholder={placeholder}
         className="w-full px-4 py-3 rounded-xl bg-black/30 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400"

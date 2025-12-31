@@ -25,7 +25,7 @@ const App = () => {
   return (
     <>
       <div className="relative">
-        <AnimatedCanvasBackground />
+        <AnimatedCanvasBackground theme={theme} />
         <div className="relative z-10">
           <Navbar theme={theme} setTheme={setTheme} />
           <Routes>

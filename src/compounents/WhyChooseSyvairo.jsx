@@ -17,7 +17,11 @@ import {
 import { HiPuzzle } from "react-icons/hi";
 import { TbBolt } from "react-icons/tb";
 import { LuClock2 } from "react-icons/lu";
-import { IoCogOutline, IoExtensionPuzzleOutline, IoRocketOutline } from "react-icons/io5";
+import {
+  IoCogOutline,
+  IoExtensionPuzzleOutline,
+  IoRocketOutline,
+} from "react-icons/io5";
 
 const benefits = [
   {
@@ -121,91 +125,46 @@ const caseStudies = [
 
 const WhyChooseSyvairo = () => {
   return (
-    <section
-      className="py-20 md:py-28 overflow-hidden"
-      style={{
-        color: "var(--text-primary)",
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        {/* Badge */}
-        <span
-          style={{
-            textShadow: `0 0 38px rgba(0, 206, 209, 0.45), 0 0 20px rgba(0, 206, 209, 0.25)`,
-          }}
-          className="inline-block mb-3 px-4 py-1 rounded-full text-sm font-semibold bg-cyan-500/10 border border-cyan-700"
-        >
-          <div className="flex items-center gap-2">
-            <div className="text-sm font-semibold text-cyan-400">
-              ⭐ Why Choose Syvairo
-            </div>
-          </div>
-        </span>
-
-        {/* Heading */}
-        <motion.h2
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl md:text-5xl pb-2 font-semibold tracking-tight bg-clip-text text-transparent"
-          style={{
-            backgroundImage: `linear-gradient(180deg, var(--text-primary), var(--accent))`,
-            textShadow: `0 0 38px rgba(0, 206, 209, 0.35), 0 0 20px rgba(0, 206, 209, 0.2)`,
-          }}
-        >
-          Why Businesses Choose Syvairo
-        </motion.h2>
-
-        {/* Benefits Cards */}
-        <div className="mt-16 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {benefits.map((item, i) => (
-            <div
-              key={i}
-              className="group rounded-2xl p-8 transition-all duration-300
-        hover:-translate-y-2 hover:scale-[1.03]
-        hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-        hover:bg-[#00ced1] select-none"
-              style={{
-                backgroundColor: "var(--card-bg)",
-                border: "1px solid rgba(0,206,209,0.35)",
-              }}
-            >
-              <div className="flex items-center gap-3">
-                <div
-                  className="w-12 h-12 flex items-center justify-center rounded-xl
-          bg-cyan-400/20 text-cyan-400
-          group-hover:bg-white/20 group-hover:text-white transition"
-                >
-                  {item.icon}
-                </div>
-                <h3 className="text-lg font-semibold">{item.title}</h3>
+    <>
+      <section
+        className="py-7 overflow-hidden"
+        style={{
+          color: "var(--text-primary)",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          {/* Badge */}
+          <span
+            style={{
+              textShadow: `0 0 38px rgba(0, 206, 209, 0.45), 0 0 20px rgba(0, 206, 209, 0.25)`,
+            }}
+            className="inline-block mb-3 px-4 py-1 rounded-full text-sm font-semibold bg-cyan-500/10 border border-cyan-700"
+          >
+            <div className="flex items-center gap-2">
+              <div className="text-sm font-semibold text-cyan-400">
+                ⭐ Why Choose Syvairo
               </div>
-              <p className="text-secondary mt-4">{item.description}</p>
             </div>
-          ))}
-        </div>
+          </span>
 
-        {/* Case Studies */}
-        <motion.h2
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl mt-14 pb-2 text-center font-semibold tracking-tight bg-clip-text text-transparent"
-          style={{
-            backgroundImage: `linear-gradient(180deg, var(--text-primary), var(--accent))`,
-            textShadow: `0 0 38px rgba(0, 206, 209, 0.35), 0 0 20px rgba(0, 206, 209, 0.2)`,
-          }}
-        >
-          CASE STUDIES — Real Results from AI Agents
-        </motion.h2>
+          {/* Heading */}
+          <motion.h2
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-5xl pb-2 font-semibold tracking-tight bg-clip-text text-transparent"
+            style={{
+              backgroundImage: `linear-gradient(180deg, var(--text-primary), var(--accent))`,
+              textShadow: `0 0 38px rgba(0, 206, 209, 0.35), 0 0 20px rgba(0, 206, 209, 0.2)`,
+            }}
+          >
+            Why Businesses Choose Syvairo
+          </motion.h2>
 
-        <div className="mt-10 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {caseStudies.map((item, i) => {
-            const Icon = item.icon;
-
-            return (
+          {/* Benefits Cards */}
+          <div className="mt-16 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {benefits.map((item, i) => (
               <div
                 key={i}
                 className="group rounded-2xl p-8 transition-all duration-300
@@ -217,38 +176,86 @@ const WhyChooseSyvairo = () => {
                   border: "1px solid rgba(0,206,209,0.35)",
                 }}
               >
-                <div className="flex items-start gap-4 mb-4">
+                <div className="flex items-center gap-3">
                   <div
-                    className="w-11 h-11 flex items-center justify-center rounded-xl
+                    className="w-12 h-12 flex items-center justify-center rounded-xl
+          bg-cyan-400/20 text-cyan-400
+          group-hover:bg-white/20 group-hover:text-white transition"
+                  >
+                    {item.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold">{item.title}</h3>
+                </div>
+                <p className="text-secondary mt-4">{item.description}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Case Studies */}
+          <motion.h2
+            initial={{ y: 40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl mt-14 pb-2 text-center font-semibold tracking-tight bg-clip-text text-transparent"
+            style={{
+              backgroundImage: `linear-gradient(180deg, var(--text-primary), var(--accent))`,
+              textShadow: `0 0 38px rgba(0, 206, 209, 0.35), 0 0 20px rgba(0, 206, 209, 0.2)`,
+            }}
+          >
+            CASE STUDIES — Real Results from AI Agents
+          </motion.h2>
+
+          <div className="mt-10 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {caseStudies.map((item, i) => {
+              const Icon = item.icon;
+
+              return (
+                <div
+                  key={i}
+                  className="group rounded-2xl p-8 transition-all duration-300
+        hover:-translate-y-2 hover:scale-[1.03]
+        hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
+        hover:bg-[#00ced1] select-none"
+                  style={{
+                    backgroundColor: "var(--card-bg)",
+                    border: "1px solid rgba(0,206,209,0.35)",
+                  }}
+                >
+                  <div className="flex items-start gap-4 mb-4">
+                    <div
+                      className="w-11 h-11 flex items-center justify-center rounded-xl
             bg-cyan-400/20 text-cyan-400
             group-hover:bg-white/20 group-hover:text-white transition"
-                  >
-                    <Icon size={22} />
+                    >
+                      <Icon size={22} />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg leading-tight">
+                        {item.title}
+                      </h4>
+                      <p className="text-sm text-accent">{item.client}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-lg leading-tight">
-                      {item.title}
-                    </h4>
-                    <p className="text-sm text-accent">{item.client}</p>
-                  </div>
+
+                  <p className="text-secondary mb-4">{item.challenge}</p>
+
+                  <ul className="space-y-2 text-sm">
+                    {item.impact.map((impact, idx) => (
+                      <li
+                        key={idx}
+                        dangerouslySetInnerHTML={{ __html: `• ${impact}` }}
+                      />
+                    ))}
+                  </ul>
                 </div>
-
-                <p className="text-secondary mb-4">{item.challenge}</p>
-
-                <ul className="space-y-2 text-sm">
-                  {item.impact.map((impact, idx) => (
-                    <li
-                      key={idx}
-                      dangerouslySetInnerHTML={{ __html: `• ${impact}` }}
-                    />
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <hr className="h-px bg-gray-800 my-12 border-0" />
+    </>
   );
 };
 
