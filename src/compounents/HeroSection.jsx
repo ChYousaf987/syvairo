@@ -20,10 +20,10 @@ const HeroSection = () => {
   const [progress, setProgress] = useState(0);
 
   const [theme, setTheme] = useState("dark");
-  
-    useEffect(() => {
-      document.documentElement.setAttribute("data-theme", theme);
-    }, [theme]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   const [form, setForm] = useState({
     name: "",

@@ -105,17 +105,17 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/privacy" className="hover:text-accent transition">
+                <a href="/privacy-policy" className="hover:text-accent transition">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="/terms" className="hover:text-accent transition">
+                <a href="/terms-of-service" className="hover:text-accent transition">
                   Terms of Service
                 </a>
               </li>
               <li>
-                <a href="/cookie" className="hover:text-accent transition">
+                <a href="/cookie-policy" className="hover:text-accent transition">
                   Cookie Policy
                 </a>
               </li>
@@ -149,7 +149,7 @@ const Footer = () => {
         <div className="mt-8 flex flex-col md:flex-row items-center justify-between text-xs gap-4">
           <p>© 2025 Syvairo. All Rights Reserved.</p>
           <p>
-            Developed by{" "}
+            Developed by
             <span style={{ color: "var(--accent)" }}>CODESVISTA</span>
           </p>
         </div>

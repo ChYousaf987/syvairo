@@ -65,3 +65,11 @@
   );
   padding: 70px 0;
 }
+.bgGradientOutPadding {
+  background: linear-gradient(
+    to top right,
+    #110f35,
+    #000002,
+    #220141
+  );
+}

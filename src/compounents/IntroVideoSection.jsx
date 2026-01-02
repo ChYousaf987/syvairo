@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { IoMdBusiness } from "react-icons/io";
 import PurpleNeonBlackGradient from "./PurpleNeonBlackGradient";
 import PurpleNeonBlackBackground from "./PurpleNeonBlackGradient";
+import Dashboard from "./Dashboard";
 
 const steps = [
   {
@@ -50,11 +51,11 @@ const IntroVideoSection = () => {
 
   return (
     <>
-        {/* <PurpleNeonBlackBackground /> */}
+      {/* <PurpleNeonBlackBackground /> */}
       <section
         className="relative py-7 overflow-hidden bgGradient"
         style={{
-          color: "var(--text-primary)", 
+          color: "var(--text-primary)",
         }}
       >
         <div className="max-w-7xl mx-auto px-6 text-center">
@@ -158,6 +159,22 @@ const IntroVideoSection = () => {
               );
             })}
           </motion.div>
+
+
+          {/* dashboard view */}
+          <div className="group rounded-2xl w-[60%] mt-10 p-4 mx-auto transition-all duration-300
+        hover:-translate-y-2 hover:scale-[1.03]
+        hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
+        hover:bg-[#00ced1]
+        select-none"
+            style={{
+              backgroundColor: "var(--card-bg)",
+              border: "1px solid rgba(0,206,209,0.35)",
+            }}>
+            <img src="/dashboard.png" className="rounded-2xl  mx-auto   " alt="" />
+          </div>
+
+
           <motion.div variants={container} className="mt-8 relative">
             <motion.button
               onClick={() => {
@@ -179,8 +196,12 @@ const IntroVideoSection = () => {
             </motion.button>
           </motion.div>
 
-          {/* CTA Button */}
+
+
         </div>
+
+
+
       </section>
       {/* <hr className="h-px bg-gray-800 my-12 border-0" /> */}
     </>

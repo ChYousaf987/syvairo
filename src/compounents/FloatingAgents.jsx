@@ -81,9 +81,9 @@ const FloatingAgents = () => {
                     scale: 1.03,
                     boxShadow: "0 10px 30px rgba(0,206,209,0.25)",
                   }}
-                  className="flex items-center gap-4 rounded- px-5 py-4 cursor-pointer transition-all duration-300 backdrop-blur-[10px]"
+                  className="flex items-center gap-4 bg-gradient-to-tr from-[#092242] to-[#3B82F6] rounded- px-5 py-4 cursor-pointer transition-all duration-300 backdrop-blur-[10px]"
                   style={{
-                    backgroundColor: "var(--card-bg)",
+                    // backgroundColor: "var(--card-bg)",
                     borderBottom:
                       i !== agents.length - 1
                         ? "1px solid var(--card-border)"

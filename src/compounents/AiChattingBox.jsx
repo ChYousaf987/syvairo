@@ -40,7 +40,7 @@ const AiChattingBox = ({ openAiChat, setOpenAiChat }) => {
       <hr className='my-2 border-gray-400' />
 
       {/* body */}
-      <div className='space-y-5 py-4 '>
+      <div className='space-y-5 py-4 bg-gradient-to-tr  '>
         {/* customer message */}
         <div className='flex  gap-2 justify-end '>
           <p className='border border-blue-300  px-2 py-1 rounded-[10px] rounded-br-none w-fit text-wrap'> Hi, I need help </p>

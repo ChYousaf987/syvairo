@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const PrivacyPolicy = () => {
+const TermsOfService = () => {
     return (
         <div className="bgGradientOutPadding text-gray-200 ">
             {/* header */}
@@ -24,7 +24,7 @@ const PrivacyPolicy = () => {
           `,
                     }}
                 >
-                    Privacy Policy
+                    Terms of Service
                 </motion.h2>
 
                 <p className="mb-4">
@@ -40,13 +40,15 @@ const PrivacyPolicy = () => {
             <div className="py-12 px-4 md:px-16 lg:px-32">
 
 
+                <p className="mb-4">
+                    These Terms of Service ("Terms") govern your use of the website
+                    <span className="font-semibold"> syvairo.vercel.app</span> operated by
+                    <span className="font-semibold"> Syvairo</span>.
+                </p>
 
                 <p className="mb-4">
-                    Welcome to <span className="font-semibold">Syvairo</span> (“we”, “our”, “us”). We
-                    respect your privacy and are committed to protecting your personal
-                    information. This Privacy Policy explains how we collect, use,
-                    disclose, and safeguard your information when you use our website:
-                    <span className="font-semibold"> syvairo.vercel.app</span>.
+                    By accessing or using our website, you agree to be bound by these Terms.
+                    If you do not agree, please do not use our services.
                 </p>
 
                 <h2 className="text-2xl font-semibold mt-8 mb-4 bg-clip-text text-transparent" style={{
@@ -57,16 +59,12 @@ const PrivacyPolicy = () => {
             0 0 20px rgba(0, 206, 209, 0.25)
           `,
                 }}>
-                    1. Information We Collect
+                    Use of Our Service
                 </h2>
-                <p className="mb-3">
-                    We may collect personal information that you voluntarily provide to us
-                    when you:
-                </p>
-                <ul className="list-disc ml-6 space-y-2">
-                    <li>Register or create an account</li>
-                    <li>Subscribe to newsletters</li>
-                    <li>Contact customer support</li>
+                <ul className="list-disc ml-6 space-y-2 mb-4">
+                    <li>You must be at least 13 years old to use our service</li>
+                    <li>You agree not to misuse or attempt to harm the platform</li>
+                    <li>You are responsible for maintaining account security</li>
                 </ul>
 
                 <h2 className="text-2xl font-semibold mt-8 mb-4 bg-clip-text text-transparent" style={{
@@ -77,32 +75,12 @@ const PrivacyPolicy = () => {
             0 0 20px rgba(0, 206, 209, 0.25)
           `,
                 }}>
-                    2. How We Use Your Information
+                    Intellectual Property
                 </h2>
-                <p className="mb-3">
-                    We use the information we collect to:
-                </p>
-                <ul className="list-disc ml-6 space-y-2">
-                    <li>Provide, operate and maintain our website</li>
-                    <li>Improve user experience</li>
-                    <li>Respond to your inquiries or support requests</li>
-                    <li>Send you updates, newsletters and marketing emails (with consent)</li>
-                </ul>
-
-                <h2 className="text-2xl font-semibold mt-8 mb-4 bg-clip-text text-transparent" style={{
-                    backgroundImage:
-                        "linear-gradient(180deg, var(--text-primary), var(--accent))",
-                    textShadow: `
-            0 0 38px rgba(0, 206, 209, 0.45),
-            0 0 20px rgba(0, 206, 209, 0.25)
-          `,
-                }}>
-                    3. Cookies & Tracking Technologies
-                </h2>
-                <p className="mb-3">
-                    We use cookies and similar tracking technologies to track activity on
-                    our website and hold certain information. Cookies help us provide you
-                    with a better browsing experience.
+                <p className="mb-4">
+                    All content, features, and functionality on this website are the
+                    exclusive property of Syvairo and are protected by applicable copyright
+                    and intellectual property laws.
                 </p>
 
                 <h2 className="text-2xl font-semibold mt-8 mb-4 bg-clip-text text-transparent" style={{
@@ -113,12 +91,11 @@ const PrivacyPolicy = () => {
             0 0 20px rgba(0, 206, 209, 0.25)
           `,
                 }}>
-                    4. Third-Party Services
+                    User Responsibilities
                 </h2>
-                <p className="mb-3">
-                    We may use third-party services (like analytics providers) that collect
-                    information used to identify or track users. These service providers
-                    have their own privacy policies.
+                <p className="mb-4">
+                    You agree not to engage in activities that violate laws, infringe on
+                    intellectual property rights, or disrupt website operations.
                 </p>
 
                 <h2 className="text-2xl font-semibold mt-8 mb-4 bg-clip-text text-transparent" style={{
@@ -129,12 +106,11 @@ const PrivacyPolicy = () => {
             0 0 20px rgba(0, 206, 209, 0.25)
           `,
                 }}>
-                    5. Data Security
+                    Limitation of Liability
                 </h2>
-                <p className="mb-3">
-                    We implement appropriate security measures to protect your personal
-                    information. However, no website or internet transmission is
-                    completely secure.
+                <p className="mb-4">
+                    Syvairo shall not be liable for any indirect, incidental, or
+                    consequential damages resulting from your use of the website.
                 </p>
 
                 <h2 className="text-2xl font-semibold mt-8 mb-4 bg-clip-text text-transparent" style={{
@@ -145,11 +121,11 @@ const PrivacyPolicy = () => {
             0 0 20px rgba(0, 206, 209, 0.25)
           `,
                 }}>
-                    6. Children’s Privacy
+                    Termination
                 </h2>
-                <p className="mb-3">
-                    Our website is not intended for use by children under the age of 13.
-                    We do not knowingly collect information from children.
+                <p className="mb-4">
+                    We reserve the right to suspend or terminate access to our service at
+                    any time without prior notice if you violate these Terms.
                 </p>
 
                 <h2 className="text-2xl font-semibold mt-8 mb-4 bg-clip-text text-transparent" style={{
@@ -160,11 +136,11 @@ const PrivacyPolicy = () => {
             0 0 20px rgba(0, 206, 209, 0.25)
           `,
                 }}>
-                    7. Changes to This Policy
+                    Changes to Terms
                 </h2>
-                <p className="mb-3">
-                    We may update this privacy policy from time to time. We recommend you
-                    review it periodically.
+                <p className="mb-4">
+                    We may update these Terms from time to time. Continued use of the
+                    service after changes means you accept the updated Terms.
                 </p>
 
                 <h2 className="text-2xl font-semibold mt-8 mb-4 bg-clip-text text-transparent" style={{
@@ -175,19 +151,18 @@ const PrivacyPolicy = () => {
             0 0 20px rgba(0, 206, 209, 0.25)
           `,
                 }}>
-                    8. Contact Us
+                    Contact Information
                 </h2>
                 <p>
-                    If you have questions about this Privacy Policy, you can contact us at:
+                    If you have any questions about these Terms, please contact us at:
                 </p>
-                <p className="mt-2 font-semibold">
+                <p className="font-semibold mt-2">
                     Email: support@syvairo.vercel.app
                 </p>
 
             </div>
-
         </div>
     );
 };
 
-export default PrivacyPolicy;
+export default TermsOfService;

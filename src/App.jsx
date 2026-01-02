@@ -15,6 +15,10 @@ import AnimatedCanvasBackground from "./compounents/AnimatedCanvasBackground";
 import ConsultationForm from "./compounents/ConsultationForm";
 import Services from "./pages/Services";
 import PurpleNeonBlackBackground from "./compounents/PurpleNeonBlackGradient";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import CookiePolicy from "./pages/CookiePolicy";
+import Dashboard from "./compounents/Dashboard";
 
 const App = () => {
   const [theme, setTheme] = useState("dark");
@@ -41,10 +45,10 @@ const App = () => {
             <Route path="/catalogue" element={<AutomationCatalogue />} />
             <Route path="/ConsultationForm" element={<ConsultationForm />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/test" element={<div className="relative h-screen w-full">
-              <PurpleNeonBlackBackground />
-              <h1>Test</h1>
-            </div>} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/test" element={<Dashboard />} />
           </Routes>
           <Footer />
         </div>
