@@ -48,7 +48,7 @@ const TieredSolutions = () => {
   return (
     <>
       <section
-        className="py-7 overflow-hidden"
+        className="py-7 overflow-hidden bgGradient"
         style={{ color: "var(--text-primary)" }}
       >
         <div className="max-w-7xl mx-auto px-6 text-center">
@@ -155,7 +155,7 @@ const TieredSolutions = () => {
           </motion.div>
         </div>
       </section>
-      <hr className="h-px bg-gray-800 my-12 border-0" />
+      {/* <hr className="h-px bg-gray-800 my-12 border-0" /> */}
     </>
   );
 };

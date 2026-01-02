@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { TrendingUp, FileText, Mic, Brain } from "lucide-react";
+import { TrendingUp, FileText, Mic, Brain, Headphones } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
 const agents = [
@@ -30,6 +30,12 @@ const agents = [
     desc: "Generates pricing & PDF quotes instantly",
     icon: FileText,
   },
+  {
+  name: "AI Support & Ticketing Agent",
+  desc: "Resolves tickets and syncs with CRM automatically",
+  icon: Headphones,
+},
+  
 ];
 
 const container = {
@@ -41,7 +47,7 @@ const TopHighROIAgents = () => {
   return (
     <>
       <section
-        className="pt-20 pb-7 md:pt-28 overflow-hidden"
+        className="pt-20 pb-7 md:pt-28 overflow-hidden bgGradient"
         style={{ color: "var(--text-primary)" }}
       >
         <div className="max-w-7xl mx-auto px-6 text-center">
@@ -146,14 +152,12 @@ const TopHighROIAgents = () => {
             transition={{ delay: 0.35 }}
             className="mt-14 flex justify-center"
           >
+            <Link to="/catalogue">
             <motion.button
               whileHover={{
                 scale: 1.07,
                 boxShadow: "0 0 10px #00ced1, 0 0 20px #00ced1",
               }}
-              onClick={() =>
-                window.open("/Syvairo-AI-Automation-Catalog.docx", "_blank")
-              }
               whileTap={{ scale: 0.97 }}
               className="px-8 py-4 rounded-full bg-cyan-600 border-2 border-cyan-500 font-bold text-white text-lg transition-all duration-300"
               style={{
@@ -162,10 +166,11 @@ const TopHighROIAgents = () => {
             >
               View Full 45+ Agent Catalog
             </motion.button>
+            </Link>
           </motion.div>
         </div>
       </section>
-      <hr className="h-px bg-gray-800 my-12 border-0" />
+      {/* <hr className="h-px bg-gray-800 my-12 border-0" /> */}
     </>
   );
 };

@@ -20,7 +20,7 @@ const container = {
 const CaseStudies = () => {
   return (
     <section
-      className="py-7 overflow-hidden"
+      className="py-7 overflow-hidden bgGradient"
       style={{
         color: "var(--text-primary)",
       }}

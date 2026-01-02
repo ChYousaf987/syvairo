@@ -35,7 +35,7 @@ const FAQ = () => {
 
   return (
     <>
-      <section className="py-7 px-6 text-[var(--text-primary)]">
+      <section className="py-7 px-6 text-[var(--text-primary)] bgGradient">
         {/* Badge */}
         <div className="flex justify-center mb-6">
           <span className="px-4 py-1 rounded-full text-sm font-semibold bg-cyan-500/10 border border-cyan-700 text-cyan-400 shadow-[0_0_25px_rgba(34,211,238,0.25)]">

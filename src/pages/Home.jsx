@@ -11,7 +11,7 @@ import FloatingAgents from "../compounents/FloatingAgents";
 const Home = () => {
   return (
     <div className="relative">
-      <div className="relative z-10">
+      <div className="relative pt-16">
         <HerosSection />
         <IntroVideoSection />
         <WhyChooseSyvairo />

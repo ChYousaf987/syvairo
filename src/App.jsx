@@ -14,6 +14,7 @@ import AutomationCatalogue from "./pages/AutomationCatalogue";
 import AnimatedCanvasBackground from "./compounents/AnimatedCanvasBackground";
 import ConsultationForm from "./compounents/ConsultationForm";
 import Services from "./pages/Services";
+import PurpleNeonBlackBackground from "./compounents/PurpleNeonBlackGradient";
 
 const App = () => {
   const [theme, setTheme] = useState("dark");
@@ -24,8 +25,8 @@ const App = () => {
 
   return (
     <>
-      <div className="relative">
-        <AnimatedCanvasBackground theme={theme} />
+      <div className="relative bg-black">
+        {/* <AnimatedCanvasBackground theme={theme} /> */}
         <div className="relative z-10">
           <Navbar theme={theme} setTheme={setTheme} />
           <Routes>
@@ -40,6 +41,10 @@ const App = () => {
             <Route path="/catalogue" element={<AutomationCatalogue />} />
             <Route path="/ConsultationForm" element={<ConsultationForm />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/test" element={<div className="relative h-screen w-full">
+              <PurpleNeonBlackBackground />
+              <h1>Test</h1>
+            </div>} />
           </Routes>
           <Footer />
         </div>

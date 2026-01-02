@@ -10,6 +10,8 @@ import { FcSettings } from "react-icons/fc";
 import { TbSettingsAutomation } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { IoMdBusiness } from "react-icons/io";
+import PurpleNeonBlackGradient from "./PurpleNeonBlackGradient";
+import PurpleNeonBlackBackground from "./PurpleNeonBlackGradient";
 
 const steps = [
   {
@@ -48,10 +50,11 @@ const IntroVideoSection = () => {
 
   return (
     <>
+        {/* <PurpleNeonBlackBackground /> */}
       <section
-        className="py-7 overflow-hidden"
+        className="relative py-7 overflow-hidden bgGradient"
         style={{
-          color: "var(--text-primary)",
+          color: "var(--text-primary)", 
         }}
       >
         <div className="max-w-7xl mx-auto px-6 text-center">
@@ -179,7 +182,7 @@ const IntroVideoSection = () => {
           {/* CTA Button */}
         </div>
       </section>
-      <hr className="h-px bg-gray-800 my-12 border-0" />
+      {/* <hr className="h-px bg-gray-800 my-12 border-0" /> */}
     </>
   );
 };

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* purple , black, neon : gradient from #A256F7 via #f657fc to #A256F7  color for background-gradient*/
+
 :root {
   --bg-primary: #ffffff;
   --bg-secondary: #f5f5f5;
@@ -52,4 +54,14 @@
   --to: #63A4FA;
 
   --button : #A256F7;
+}
+
+.bgGradient {
+  background: linear-gradient(
+    to top right,
+    #110f35,
+    #000002,
+    #220141
+  );
+  padding: 70px 0;
 }

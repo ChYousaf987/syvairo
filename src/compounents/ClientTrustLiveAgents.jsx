@@ -24,7 +24,7 @@ const container = {
 const ClientTrustLiveAgents = () => {
   return (
     <>
-      <section className="py-7 overflow-hidden">
+      <section className="py-7 overflow-hidden bgGradient">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <span
             style={{
@@ -150,7 +150,7 @@ const ClientTrustLiveAgents = () => {
           </motion.div>
         </div>
       </section>
-      <hr className="h-px bg-gray-800 my-12 border-0" />
+      {/* <hr className="h-px bg-gray-800 my-12 border-0" /> */}
     </>
   );
 };

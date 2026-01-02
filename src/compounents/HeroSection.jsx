@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -8,6 +8,7 @@ import {
   AiOutlineSound,
 } from "react-icons/ai";
 import { IoMdBusiness } from "react-icons/io";
+import AnimatedCanvasBackground from './AnimatedCanvasBackground'
 
 const HeroSection = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -17,6 +18,12 @@ const HeroSection = () => {
   const [playing, setPlaying] = useState(true);
   const [muted, setMuted] = useState(true);
   const [progress, setProgress] = useState(0);
+
+  const [theme, setTheme] = useState("dark");
+  
+    useEffect(() => {
+      document.documentElement.setAttribute("data-theme", theme);
+    }, [theme]);
 
   const [form, setForm] = useState({
     name: "",
@@ -55,7 +62,9 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="relative h-screen pt-24 pb-10 flex items-center bg-grain">
+      <AnimatedCanvasBackground theme={theme} />
+
+      <section className="relative h-screen pb-10 flex items-center bg-grain">
         <motion.div
           className="relative max-w-7xl text-center mx-auto px-6 items-center flex flex-col"
           initial="hidden"
@@ -231,7 +240,7 @@ const HeroSection = () => {
           </div>
         </motion.div>
       </section>
-      <hr className="h-px bg-gray-800 my-12 border-0" />
+      {/* <hr className="h-px bg-gray-800 my-12 border-0" /> */}
     </>
   );
 };

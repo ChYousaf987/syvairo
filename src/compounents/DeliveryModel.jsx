@@ -61,7 +61,7 @@ const DeliveryModel = () => {
   return (
     <>
       <section
-        className="py-7 overflow-hidden"
+        className="py-7 overflow-hidden bgGradient"
         style={{ color: "var(--text-primary)" }}
       >
         <div className="max-w-4xl mx-auto px-6">
@@ -205,7 +205,7 @@ const DeliveryModel = () => {
           </div>
         </div>
       </section>
-      <hr className="h-px bg-gray-800 my-12 border-0" />
+      {/* <hr className="h-px bg-gray-800 my-12 border-0" /> */}
     </>
   );
 };

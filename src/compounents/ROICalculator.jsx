@@ -43,7 +43,7 @@ const ROICalculator = () => {
     <>
       <section
         id="roi-calculator"
-        className="py-7 px-6 min-h-screen flex flex-col items-center"
+        className="py-7 px-6 min-h-screen flex flex-col items-center bgGradient"
       >
         {/* Heading */}
         <div className="max-w-3xl w-full text-center mb-12">
@@ -265,7 +265,7 @@ const ROICalculator = () => {
           )}
         </AnimatePresence>
       </section>
-      <hr className="h-px bg-gray-800 my-12 border-0" />
+      {/* <hr className="h-px bg-gray-800 my-12 border-0" /> */}
     </>
   );
 };

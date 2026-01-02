@@ -127,7 +127,7 @@ const WhyChooseSyvairo = () => {
   return (
     <>
       <section
-        className="py-7 overflow-hidden"
+        className="py-7 overflow-hidden bgGradient"
         style={{
           color: "var(--text-primary)",
         }}
@@ -254,7 +254,7 @@ const WhyChooseSyvairo = () => {
           </div>
         </div>
       </section>
-      <hr className="h-px bg-gray-800 my-12 border-0" />
+      {/* <hr className="h-px bg-gray-800 my-12 border-0" /> */}
     </>
   );
 };
