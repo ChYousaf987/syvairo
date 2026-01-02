@@ -65,10 +65,10 @@ const FloatingAgents = () => {
             exit={{ opacity: 0, x: 50 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
             className="mb-4 w-64 rounded-2xl overflow-hidden shadow-lg"
-            // style={{
-            //   backgroundColor: "var(--card-bg)",
-            //   border: "1px solid var(--card-border)",
-            // }}
+            style={{
+              backgroundColor: "var(--card-bg)",
+              border: "1px solid var(--card-border)",
+            }}
           >
             {agents.map((agent, i) => {
               const Icon = agent.icon;
@@ -81,7 +81,7 @@ const FloatingAgents = () => {
                     scale: 1.03,
                     boxShadow: "0 10px 30px rgba(0,206,209,0.25)",
                   }}
-                  className="flex items-center gap-4 bg-gradient-to-tr from-[#092242] to-[#3B82F6] rounded- px-5 py-4 cursor-pointer transition-all duration-300 backdrop-blur-[10px]"
+                  className="flex items-center gap-4  rounded- px-5 py-4 cursor-pointer transition-all duration-300 backdrop-blur-[10px]"
                   style={{
                     // backgroundColor: "var(--card-bg)",
                     borderBottom:

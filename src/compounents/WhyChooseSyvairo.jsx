@@ -22,6 +22,7 @@ import {
   IoExtensionPuzzleOutline,
   IoRocketOutline,
 } from "react-icons/io5";
+import CaseStudyCard from "./CaseStudyCard";
 
 const benefits = [
   {
@@ -63,7 +64,7 @@ const caseStudies = [
     client: "Mid-sized E-commerce Retailer — USA",
     challenge: "Long wait times and unanswered calls resulted in lost leads.",
     impact: [
-      "**60%** calls handled without human intervention",
+      "**60%** calls without human intervention",
       "**30%** increase in leads captured",
       "Staff focused on high-value tasks",
     ],
@@ -80,47 +81,51 @@ const caseStudies = [
       "Admin staff freed for patient care",
     ],
   },
-  {
-    icon: HiOutlineUserGroup,
-    title: "Follow-Up & Lead Qualification",
-    client: "Insurance Provider — India",
-    challenge: "Slow manual follow-ups caused leads to cool down.",
-    impact: [
-      "**40%** more leads converted",
-      "**50%** faster response time",
-      "Sales workload reduced",
-    ],
-  },
-  {
-    icon: HiOutlineStar,
-    title: "Review & Coupon Engagement",
-    client: "Restaurant Chain — GCC",
-    challenge: "Low customer engagement and online reviews.",
-    impact: [
-      "**60%** increase in online reviews",
-      "**20%** higher repeat customer rate",
-      "Improved customer satisfaction",
-    ],
-  },
+  // {
+  //   icon: HiOutlineUserGroup,
+  //   title: "Follow-Up & Lead Qualification",
+  //   client: "Insurance Provider — India",
+  //   challenge: "Slow manual follow-ups caused leads to cool down.",
+  //   impact: [
+  //     "**40%** more leads converted",
+  //     "**50%** faster response time",
+  //     "Sales workload reduced",
+  //   ],
+  // },
+  // {
+  //   icon: HiOutlineStar,
+  //   title: "Review & Coupon Engagement",
+  //   client: "Restaurant Chain — GCC",
+  //   challenge: "Low customer engagement and online reviews.",
+  //   impact: [
+  //     "**60%** increase in online reviews",
+  //     "**20%** higher repeat customer rate",
+  //     "Improved customer satisfaction",
+  //   ],
+  // },
   {
     icon: HiOutlineBanknotes,
     title: "Multi-Agent Workflow Automation",
     client: "Financial Services Firm — UK",
     challenge: "Manual back-office tasks caused errors and delays.",
-    impact: ["**40%** faster process completion", "**30%** fewer errors"],
-  },
-  {
-    icon: HiOutlineChatBubbleLeftRight,
-    title: "WhatsApp AI Customer Support",
-    client: "Real Estate Agency — UAE",
-    challenge:
-      "High volume of WhatsApp inquiries with delayed responses and missed follow-ups.",
     impact: [
-      "**70%** inquiries handled instantly",
+      "**40%** faster process completion",
+      "**30%** fewer errors",
       "**45%** faster lead response time",
-      "Higher property viewing conversions",
     ],
   },
+  // {
+  //   icon: HiOutlineChatBubbleLeftRight,
+  //   title: "WhatsApp AI Customer Support",
+  //   client: "Real Estate Agency — UAE",
+  //   challenge:
+  //     "High volume of WhatsApp inquiries with delayed responses and missed follow-ups.",
+  //   impact: [
+  //     "**70%** inquiries handled instantly",
+  //     "**45%** faster lead response time",
+  //     "Higher property viewing conversions",
+  //   ],
+  // },
 ];
 
 const WhyChooseSyvairo = () => {
@@ -207,50 +212,9 @@ const WhyChooseSyvairo = () => {
           </motion.h2>
 
           <div className="mt-10 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {caseStudies.map((item, i) => {
-              const Icon = item.icon;
-
-              return (
-                <div
-                  key={i}
-                  className="group rounded-2xl p-8 transition-all duration-300
-        hover:-translate-y-2 hover:scale-[1.03]
-        hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-        hover:bg-[#00ced1] select-none"
-                  style={{
-                    backgroundColor: "var(--card-bg)",
-                    border: "1px solid rgba(0,206,209,0.35)",
-                  }}
-                >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div
-                      className="w-11 h-11 flex items-center justify-center rounded-xl
-            bg-cyan-400/20 text-cyan-400
-            group-hover:bg-white/20 group-hover:text-white transition"
-                    >
-                      <Icon size={22} />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-lg leading-tight">
-                        {item.title}
-                      </h4>
-                      <p className="text-sm text-accent">{item.client}</p>
-                    </div>
-                  </div>
-
-                  <p className="text-secondary mb-4">{item.challenge}</p>
-
-                  <ul className="space-y-2 text-sm">
-                    {item.impact.map((impact, idx) => (
-                      <li
-                        key={idx}
-                        dangerouslySetInnerHTML={{ __html: `• ${impact}` }}
-                      />
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
+            {caseStudies.map((item, i) => (
+              <CaseStudyCard key={i} item={item} />
+            ))}
           </div>
         </div>
       </section>

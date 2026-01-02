@@ -58,7 +58,7 @@ const IntroVideoSection = () => {
           color: "var(--text-primary)",
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 text-center">
+        <div className="max-w-6xl mx-auto px-6 text-center">
           <span
             style={{
               textShadow: `
@@ -109,13 +109,49 @@ const IntroVideoSection = () => {
           >
             From manual chaos to fully automated operations in 3 steps.
           </motion.p>
+          <div
+            className="
+    relative group rounded-2xl w-[95%] mt-16 mx-auto
+    transition-all duration-300
+    hover:-translate-y-2 hover:scale-[1.03]
+    select-none
+  "
+          >
+            {/* Neon Glow */}
+            <div
+              className="
+      absolute inset-0 rounded-2xl
+      blur-xl opacity-60 group-hover:opacity-100
+      transition-all duration-300
+    "
+              style={{
+                background:
+                  "linear-gradient(135deg, #00ced1)",
+              }}
+            />
+
+            {/* Card */}
+            <div
+              className="relative rounded-2xl p-[2px]"
+              style={{
+                background:
+                  "linear-gradient(135deg, #00ced1)",
+              }}
+            >
+              <img
+                src="/dashboard.png"
+                className="rounded-2xl w-full h-[90vh] bg-[#0b0f1a]"
+                alt="Dashboard Preview"
+              />
+            </div>
+          </div>
 
           {/* Cards */}
           <motion.div
             variants={container}
             whileInView="show"
             viewport={{ once: true }}
-            className="mt-16 grid md:grid-cols-3 gap-8"
+            className="mt-16 grid md:grid-cols-3 "
           >
             {steps.map((step, i) => {
               const Icon = step.icon;
@@ -125,23 +161,18 @@ const IntroVideoSection = () => {
                   key={i}
                   className="group rounded-2xl p-8 transition-all duration-300
         hover:-translate-y-2 hover:scale-[1.03]
-        hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-        hover:bg-[#00ced1]
         select-none"
-                  style={{
-                    backgroundColor: "var(--card-bg)",
-                    border: "1px solid rgba(0,206,209,0.35)",
-                  }}
+                  // style={{
+                  //   backgroundColor: "var(--card-bg)",
+                  //   border: "1px solid rgba(0,206,209,0.35)",
+                  // }}
                 >
-                  <div className="flex gap-5 items-center ">
+                  <div className=" ">
                     {/* Icon */}
                     <div
-                      className=" w-12 h-12 flex items-center justify-center rounded-xl
-          bg-cyan-400/20 text-cyan-400
-          group-hover:bg-white/20 group-hover:text-white
-          transition"
+                      className=" flex items-center justify-center rounded-xl text-cyan-400 transition mb-4"
                     >
-                      <Icon size={26} />
+                      <Icon size={37} />
                     </div>
 
                     {/* Title */}
@@ -150,7 +181,7 @@ const IntroVideoSection = () => {
 
                   {/* Description */}
                   <p
-                    className="mt-3"
+                    className="mt-3 w-[80%] mx-auto"
                     style={{ color: "var(--text-secondary)" }}
                   >
                     {step.desc}
@@ -159,21 +190,6 @@ const IntroVideoSection = () => {
               );
             })}
           </motion.div>
-
-
-          {/* dashboard view */}
-          <div className="group rounded-2xl w-[60%] mt-10 p-4 mx-auto transition-all duration-300
-        hover:-translate-y-2 hover:scale-[1.03]
-        hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-        hover:bg-[#00ced1]
-        select-none"
-            style={{
-              backgroundColor: "var(--card-bg)",
-              border: "1px solid rgba(0,206,209,0.35)",
-            }}>
-            <img src="/dashboard.png" className="rounded-2xl  mx-auto   " alt="" />
-          </div>
-
 
           <motion.div variants={container} className="mt-8 relative">
             <motion.button
@@ -195,13 +211,7 @@ const IntroVideoSection = () => {
               Calculate Your ROI
             </motion.button>
           </motion.div>
-
-
-
         </div>
-
-
-
       </section>
       {/* <hr className="h-px bg-gray-800 my-12 border-0" /> */}
     </>
