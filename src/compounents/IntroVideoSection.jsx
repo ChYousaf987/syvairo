@@ -140,7 +140,7 @@ const IntroVideoSection = () => {
             >
               <img
                 src="/dashboard.png"
-                className="rounded-2xl w-full h-[90vh] bg-[#0b0f1a]"
+                className="rounded-2xl w-full md:h-[90vh] bg-[#0b0f1a]"
                 alt="Dashboard Preview"
               />
             </div>
