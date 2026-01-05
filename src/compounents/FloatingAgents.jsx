@@ -6,147 +6,135 @@ import { RiAiGenerate } from "react-icons/ri";
 import AiChattingBox from "./AiChattingBox";
 import VoiceAiAgent from "./AiVoiceAgent/VoiceAiAgent";
 
-
-
 const FloatingAgents = () => {
   const [open, setOpen] = useState(false);
   const [openAiChat, setOpenAiChat] = useState(false);
   const [openAiVoice, setOpenAiVoice] = useState(false);
 
-  // ai chat toggle 
-  const toggleAiChat = () => {
-    setOpenAiChat(!openAiChat);
+  /* 🔒 CLOSE EVERYTHING */
+  const closeAll = () => {
     setOpen(false);
+    setOpenAiChat(false);
+    setOpenAiVoice(false);
   };
 
-  // ai voice toggle 
+  /* 💬 OPEN CHAT (ONLY ONE) */
+  const toggleAiChat = () => {
+    closeAll();
+    setOpenAiChat(true);
+  };
+
+  /* 🎙️ OPEN VOICE (ONLY ONE) */
   const toggleAiVoice = () => {
-    setOpenAiVoice(!openAiVoice);
-    setOpen(false);
+    closeAll();
+    setOpenAiVoice(true);
+  };
+
+  /* 📂 TOGGLE DROPDOWN (ONLY ONE) */
+  const toggleDropdown = () => {
+    if (open || openAiChat || openAiVoice) {
+      closeAll();
+    } else {
+      setOpen(true);
+    }
   };
 
   const agents = [
-    {
-      name: "AI Chatbot",
-      icon: BsChatDots,
-      fnc: toggleAiChat
-    },
-    {
-      name: "WhatsApp AI",
-      icon: FaWhatsapp,
-    },
-    {
-      name: "Voice AI Agent",
-      icon: BsMic,
-      fnc: toggleAiVoice
-    },
+    { name: "AI Chatbot", icon: BsChatDots, fnc: toggleAiChat },
+    { name: "WhatsApp AI", icon: FaWhatsapp },
+    { name: "Voice AI Agent", icon: BsMic, fnc: toggleAiVoice },
   ];
 
   return (
-    <div className="fixed right-5 bottom-5 z-50 flex flex-col items-end ">
+    <>
+      {/* 🌑 OUTSIDE CLICK OVERLAY */}
+      {(open || openAiChat || openAiVoice) && (
+        <div onClick={closeAll} className="fixed inset-0 z-40 bg-transparent" />
+      )}
 
- {/* AI Chatting Box */}
-      <div>
-        {openAiChat && <AiChattingBox openAiChat={openAiChat} setOpenAiChat={setOpenAiChat} />}
-      </div>
+      <div className="fixed right-5 bottom-5 z-50 flex flex-col items-end">
+        {/* 💬 AI CHAT */}
+        {openAiChat && (
+          <AiChattingBox
+            openAiChat={openAiChat}
+            setOpenAiChat={setOpenAiChat}
+          />
+        )}
 
+        {/* 🎙️ VOICE AI */}
+        {openAiVoice && <VoiceAiAgent setOpenAiVoice={setOpenAiVoice} />}
 
-      {/* AI Voice Agent */}
-      <div>
-        {openAiVoice && <VoiceAiAgent setOpenAiVoice={setOpenAiVoice}/>}
-      </div>
-
-      {/* Dropdown */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 50 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="mb-4 w-64 rounded-2xl overflow-hidden shadow-lg"
-            style={{
-              backgroundColor: "var(--card-bg)",
-              border: "1px solid var(--card-border)",
-            }}
-          >
-            {agents.map((agent, i) => {
-              const Icon = agent.icon;
-
-              return (
-                <motion.div
-                  key={i}
-                  whileHover={{
-                    x: 6,
-                    scale: 1.03,
-                    boxShadow: "0 10px 30px rgba(0,206,209,0.25)",
-                  }}
-                  className="flex items-center gap-4  rounded- px-5 py-4 cursor-pointer transition-all duration-300 backdrop-blur-[10px]"
-                  style={{
-                    // backgroundColor: "var(--card-bg)",
-                    borderBottom:
-                      i !== agents.length - 1
-                        ? "1px solid var(--card-border)"
-                        : "none",
-                    WebkitTapHighlightColor: "transparent",
-                  }}
-                >
-                  {/* Icon */}
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center"
+        {/* 📂 DROPDOWN */}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              onClick={(e) => e.stopPropagation()}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 50 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="mb-4 w-64 rounded-2xl overflow-hidden backdrop-blur-[10px] text-white shadow-lg"
+              style={{
+                backgroundColor: "var(--card-bg)",
+                border: "1px solid var(--card-border)",
+              }}
+            >
+              {agents.map((agent, i) => {
+                const Icon = agent.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    onClick={agent.fnc}
+                    whileHover={{
+                      x: 6,
+                      scale: 1.03,
+                      boxShadow: "0 10px 30px rgba(0,206,209,0.25)",
+                    }}
+                    className="flex items-center gap-4 px-5 py-4 cursor-pointer"
                     style={{
-                      background: "linear-gradient(135deg, #22D3EE, #3B82F6)",
-                      color: "#000",
-                      boxShadow: "0 8px 20px rgba(34,211,238,0.25)",
+                      borderBottom:
+                        i !== agents.length - 1
+                          ? "1px solid var(--card-border)"
+                          : "none",
                     }}
                   >
-                    <Icon className="text-lg" />
-                  </div>
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-br from-cyan-400 to-cyan-600 shadow-[0_0_15px_rgba(0,206,209,0.5)]">
+                      <Icon className="text-white text-lg" />
+                    </div>
 
-                  {/* Text */}
-                  <div onClick={agent.fnc} className="flex flex-col">
-                    <p
-                      className="font-semibold"
-                      style={{ color: "var(--text-primary)" }}
-                    >
-                      {agent.name}
-                    </p>
-                    <p
-                      className="text-sm"
-                      style={{ color: "var(--text-secondary)" }}
-                    >
-                      Start conversation
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        )}
-      </AnimatePresence>
+                    <div>
+                      <p className="font-semibold">{agent.name}</p>
+                      <p className="text-sm text-gray-400">
+                        Start conversation
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-      {/* Floating Button */}
-      <motion.button
-        onClick={() => setOpen(!open)}
-        whileHover={{ scale: 1.15, rotate: 10 }}
-        whileTap={{ scale: 0.95 }}
-        animate={open ? {} : { scale: [1, 1.05, 1], rotate: [0, 5, 0] }}
-        transition={{
-          repeat: open ? 0 : Infinity,
-          repeatDelay: 2,
-          duration: 1.5,
-        }}
-        aria-label="AI Agents"
-        className="p-3 rounded-full bg-cyan-600 border-2 border-cyan-500 font-bold text-white text-lg transition-all duration-300"
-        style={{
-          boxShadow: "0 0 2px #00ced1, 0 0 10px #00ced1", // neon glow
-        }}
-      >
-        <RiAiGenerate className="text-2xl text-white" />
-      </motion.button>
-
-     
-    </div>
+        {/* 🤖 FLOATING BUTTON */}
+        <motion.button
+          onClick={toggleDropdown}
+          whileHover={{ scale: 1.15, rotate: 10 }}
+          whileTap={{ scale: 0.95 }}
+          animate={open ? {} : { scale: [1, 1.05, 1] }}
+          transition={{
+            repeat: open ? 0 : Infinity,
+            repeatDelay: 2,
+            duration: 1.5,
+          }}
+          className="p-3 rounded-full bg-cyan-600 border-2 border-cyan-500 text-white"
+          style={{
+            boxShadow: "0 0 10px #00ced1, 0 0 20px #00ced1",
+          }}
+        >
+          <RiAiGenerate className="text-2xl" />
+        </motion.button>
+      </div>
+    </>
   );
 };
 

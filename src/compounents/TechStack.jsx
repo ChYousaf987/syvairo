@@ -136,45 +136,78 @@ const TechStack = () => {
             viewport={{ once: true }}
             className="mt-16 grid md:grid-cols-3 gap-8"
           >
-            {stacks.map((s, i) => (
-              <motion.div
-                key={i}
-                variants={item}
-                className="group rounded-2xl p-6 transition-all duration-300
-              hover:-translate-y-2 hover:scale-[1.03]
-              hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-              hover:bg-[#00ced1] select-none"
-                style={{
-                  backgroundColor: "var(--card-bg)",
-                  border: "1px solid rgba(0,206,209,0.35)",
-                }}
-              >
-                <div className="flex items-center gap-4 mb-4">
+            {stacks.map((s, i) => {
+              const Icon = s.icon;
+
+              return (
+                <motion.div
+                  key={i}
+                  onMouseMove={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    e.currentTarget.style.setProperty(
+                      "--x",
+                      `${e.clientX - rect.left}px`
+                    );
+                    e.currentTarget.style.setProperty(
+                      "--y",
+                      `${e.clientY - rect.top}px`
+                    );
+                  }}
+                  className="
+                  group relative rounded-2xl p-6 overflow-hidden
+                  transition-all duration-300
+                  hover:-translate-y-2 hover:scale-[1.03]
+                  hover:shadow-[0_25px_60px_rgba(0,206,209,0.3)]
+                  select-none
+                "
+                  style={{
+                    backgroundColor: "var(--card-bg)",
+                    border: "1px solid rgba(0,206,209,0.35)",
+                  }}
+                >
+                  {/* CURSOR GLOW */}
+                  <div
+                    className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      background: `
+                      radial-gradient(
+                        200px circle at var(--x) var(--y),
+                        rgba(0,206,209,0.25),
+                        transparent 70%
+                      )
+                    `,
+                    }}
+                  />
+
                   {/* ICON */}
                   <div
-                    className="w-12 h-12 flex items-center justify-center rounded-xl
-      bg-cyan-400/20 text-cyan-400
-      group-hover:bg-white/20 group-hover:text-white transition"
+                    className="
+                    w-12 h-12 mb-4 flex items-center justify-center
+                    rounded-xl
+                    bg-gradient-to-br from-cyan-400 to-cyan-600
+                    shadow-[0_0_25px_rgba(0,206,209,0.55)]
+                  "
                   >
-                    <s.icon size={24} />
+                    <Icon className="text-white" size={22} />
                   </div>
 
-                  {/* TEXT */}
-                  <div className="text-left">
-                    <h3 className="font-semibold leading-tight">{s.title}</h3>
-                  </div>
-                </div>
+                  {/* TITLE */}
+                  <h3 className="text-xl font-semibold text-white text-left">
+                    {s.title}
+                  </h3>
 
-                <ul
-                  className="text-sm space-y-1"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  {s.items.map((it, idx) => (
-                    <li key={idx}>• {it}</li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+                  {/* LIST */}
+                  <ul className="mt-4 space-y-2 text-sm text-gray-300 text-left">
+                    {s.items.map((it, idx) => (
+                      <li key={idx} className="flex items-start gap-2">
+                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
+                        <span>{it}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>

@@ -81,28 +81,6 @@ const caseStudies = [
       "Admin staff freed for patient care",
     ],
   },
-  // {
-  //   icon: HiOutlineUserGroup,
-  //   title: "Follow-Up & Lead Qualification",
-  //   client: "Insurance Provider — India",
-  //   challenge: "Slow manual follow-ups caused leads to cool down.",
-  //   impact: [
-  //     "**40%** more leads converted",
-  //     "**50%** faster response time",
-  //     "Sales workload reduced",
-  //   ],
-  // },
-  // {
-  //   icon: HiOutlineStar,
-  //   title: "Review & Coupon Engagement",
-  //   client: "Restaurant Chain — GCC",
-  //   challenge: "Low customer engagement and online reviews.",
-  //   impact: [
-  //     "**60%** increase in online reviews",
-  //     "**20%** higher repeat customer rate",
-  //     "Improved customer satisfaction",
-  //   ],
-  // },
   {
     icon: HiOutlineBanknotes,
     title: "Multi-Agent Workflow Automation",
@@ -114,18 +92,7 @@ const caseStudies = [
       "**45%** faster lead response time",
     ],
   },
-  // {
-  //   icon: HiOutlineChatBubbleLeftRight,
-  //   title: "WhatsApp AI Customer Support",
-  //   client: "Real Estate Agency — UAE",
-  //   challenge:
-  //     "High volume of WhatsApp inquiries with delayed responses and missed follow-ups.",
-  //   impact: [
-  //     "**70%** inquiries handled instantly",
-  //     "**45%** faster lead response time",
-  //     "Higher property viewing conversions",
-  //   ],
-  // },
+  
 ];
 
 const WhyChooseSyvairo = () => {
@@ -172,15 +139,29 @@ const WhyChooseSyvairo = () => {
             {benefits.map((item, i) => (
               <div
                 key={i}
-                className="group rounded-2xl p-8 transition-all duration-300
-        hover:-translate-y-2 hover:scale-[1.03]
-        hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-        hover:bg-[#00ced1] select-none"
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  e.currentTarget.style.setProperty(
+                    "--x",
+                    `${e.clientX - rect.left}px`
+                  );
+                  e.currentTarget.style.setProperty(
+                    "--y",
+                    `${e.clientY - rect.top}px`
+                  );
+                }}
+                className="group relative rounded-2xl p-6 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03]  hover:shadow-[0_25px_60px_rgba(0,206,209,0.3)] select-none"
                 style={{
                   backgroundColor: "var(--card-bg)",
                   border: "1px solid rgba(0,206,209,0.35)",
                 }}
               >
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-0  group-hover:opacity-100 transition-opacity duration-300"
+                  style={{
+                    background: ` radial-gradient(200px circle at var(--x) var(--y), rgba(0,206,209,0.25), transparent 70%)`,
+                  }}
+                />
                 <div className="flex items-center gap-3">
                   <div
                     className="w-12 h-12 flex items-center justify-center rounded-xl

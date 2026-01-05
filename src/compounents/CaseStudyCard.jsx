@@ -6,15 +6,23 @@ const CaseStudyCard = ({ item }) => {
 
   return (
     <div
-      className="relative rounded-3xl p-8 overflow-hidden transition-all duration-300
-                 hover:-translate-y-2 hover:scale-[1.03]
-        hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-        hover:bg-[#00ced1]"
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        e.currentTarget.style.setProperty("--x", `${e.clientX - rect.left}px`);
+        e.currentTarget.style.setProperty("--y", `${e.clientY - rect.top}px`);
+      }}
+      className="group relative rounded-2xl p-6 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03]  hover:shadow-[0_25px_60px_rgba(0,206,209,0.3)] select-none"
       style={{
         backgroundColor: "var(--card-bg)",
         border: "1px solid rgba(0,206,209,0.35)",
       }}
     >
+      <div
+        className="pointer-events-none absolute inset-0 opacity-0  group-hover:opacity-100 transition-opacity duration-300"
+        style={{
+          background: ` radial-gradient(200px circle at var(--x) var(--y), rgba(0,206,209,0.25), transparent 70%)`,
+        }}
+      />
       {/* Subtle Grid */}
       <div
         className="absolute inset-0 opacity-[0.05]"

@@ -1,193 +1,147 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { TIERS } from "../compounents/automationAgents";
 import { Link } from "react-router-dom";
-import {
-  HiOutlineChatBubbleLeftRight,
-  HiOutlinePhone,
-  HiOutlineCalendarDays,
-  HiOutlineUserGroup,
-  HiOutlineBriefcase,
-  HiOutlineBanknotes,
-  HiOutlineChartBar,
-  HiOutlineCog,
-  HiOutlineBuildingOffice2,
-  HiOutlineRocketLaunch,
-  HiOutlineStar,
-} from "react-icons/hi2";
 
-/* ---------------- PAGE ---------------- */
+export default function AutomationCatalogue() {
+  const [selectedAgent, setSelectedAgent] = useState("");
 
-const AutomationCatalogue = () => {
+  // Get all agents from TIER-1
+  const tier1Agents =
+    TIERS.find((tier) => tier.id === "TIER-1")?.sections.flatMap(
+      (section) => section.agents
+    ) || [];
+
   return (
-    <section className="py-20 md:py-28 text-white text-center bgGradient">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Heading */}
-        <motion.h2
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl md:text-5xl font-semibold text-center
-                     bg-clip-text text-transparent"
-          style={{
-            backgroundImage:
-              "linear-gradient(180deg, var(--text-primary), var(--accent))",
-            textShadow:
-              "0 0 38px rgba(0,206,209,0.35), 0 0 18px rgba(0,206,209,0.2)",
-          }}
-        >
-          Full AI Automation Catalogue (45+ Agents)
-        </motion.h2>
+    <section className="bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white">
+      <div className="max-w-7xl mx-auto px-6 py-20">
+        {/* TOP CTA SECTION */}
+        <div className="bg-gray-900 flex justify-between items-center max-w-4xl mx-auto rounded-2xl p-6 mb-20">
+          <div className="">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              Try Your Agent for
+              <br />
+              Free
+            </h1>
+            <p className="text-gray-400 mb-6">
+              Experience Clario AI in action — choose an agent and start a live
+              demo call
+            </p>
+          </div>
 
-        <p
-          className="mt-5 max-w-3xl mx-auto text-center"
-          style={{ color: "var(--text-secondary)" }}
-        >
-          Discover enterprise-grade AI agents designed to automate, engage, and
-          scale across every business function.
-        </p>
+          <div className="flex flex-col justify-center items-center gap-4">
+            <select
+              className="min-w-[250px] px-6 py-4 text-lg rounded-xl bg-gray-800 text-white border border-gray-600 focus:outline-none"
+              value={selectedAgent}
+              onChange={(e) => setSelectedAgent(e.target.value)}
+            >
+              <option value="">Select an agent</option>
+              {tier1Agents.map((agent) => (
+                <option key={agent.name} value={agent.name}>
+                  {agent.name}
+                </option>
+              ))}
+            </select>
 
-        {/* ===================== TIER 1 ===================== */}
-        <Tier
-          title="TIER-1 · SMB Ready-to-Launch"
-          subtitle="Quick-to-deploy solutions for small & medium businesses."
-        >
-          <Section title="Communication & Support">
-            <Agent
-              icon={HiOutlineChatBubbleLeftRight}
-              title="WhatsApp AI Receptionist"
-              desc="24/7 chat handling, bookings & instant replies"
-            />
-            <Agent
-              icon={HiOutlinePhone}
-              title="AI Voice Call Center"
-              desc="Automated inbound & outbound calls"
-            />
-            <Agent
-              icon={HiOutlineBuildingOffice2}
-              title="Website Knowledge Bot"
-              desc="Answers queries using your documents"
-            />
-            <Agent
-              icon={HiOutlineUserGroup}
-              title="Multi-Language Chatbots"
-              desc="Arabic, English & more"
-            />
-          </Section>
+            <button
+              disabled={!selectedAgent}
+              className={`px-6 py-3 rounded-xl font-semibold transition 
+                ${
+                  selectedAgent
+                    ? "bg-purple-600 hover:bg-purple-700"
+                    : "bg-purple-600/50 cursor-not-allowed"
+                }`}
+            >
+              📞 Start Demo Call
+            </button>
 
-          <Section title="Sales & Marketing">
-            <Agent
-              icon={HiOutlineBriefcase}
-              title="Lead Qualification Agent"
-              desc="Scores & prioritizes leads automatically"
-            />
-            <Agent
-              icon={HiOutlineBanknotes}
-              title="Pricing & Quote Generator"
-              desc="Instant quotes & PDFs"
-            />
-            <Agent
-              icon={HiOutlineRocketLaunch}
-              title="Sales Follow-Ups AI"
-              desc="Re-engages cold & warm leads"
-            />
-          </Section>
+            <p className="text-gray-500 text-sm mt-3">
+              No payment required • Live demo call • Instant connection
+            </p>
+          </div>
+        </div>
 
-          <Section title="Customer Experience">
-            <Agent
-              icon={HiOutlineStar}
-              title="Review & Coupon Agent"
-              desc="Collects reviews & sends rewards"
-            />
-            <Agent
-              icon={HiOutlineCalendarDays}
-              title="Appointment Booking AI"
-              desc="Schedules & reminds customers"
-            />
-          </Section>
-        </Tier>
+        {/* AUTOMATION CATALOGUE */}
+        {TIERS.map((tier) => (
+          <div key={tier.id} className="mb-32">
+            <h2 className="text-3xl md:text-5xl font-semibold text-center">
+              {tier.title}
+            </h2>
+            <p className="mt-4 text-center text-gray-400">{tier.subtitle}</p>
 
-        {/* Divider */}
-        <Divider />
+            {tier.sections.map((section, i) => (
+              <div key={i} className="mt-16">
+                {section.title && (
+                  <h3 className="text-2xl mb-8 font-semibold">
+                    {section.title}
+                  </h3>
+                )}
 
-        {/* ===================== TIER 2 ===================== */}
-        <Tier
-          title="TIER-2 · Mid-to-Large Enterprises"
-          subtitle="Scalable automation for growing organizations."
-        >
-          <Section>
-            <Agent
-              icon={HiOutlineCog}
-              title="Multi-Agent Business Assistant"
-              desc="Manages multiple workflows at once"
-            />
-            <Agent
-              icon={HiOutlineChartBar}
-              title="Automated BI Reporting"
-              desc="Live dashboards & KPIs"
-            />
-            <Agent
-              icon={HiOutlineBriefcase}
-              title="CRM AI Pipeline"
-              desc="Automated lead & customer flows"
-            />
-            <Agent
-              icon={HiOutlineBanknotes}
-              title="Finance Automation Suite"
-              desc="Invoices, forecasting & approvals"
-            />
-          </Section>
-        </Tier>
+                <div className="grid md:grid-cols-3 gap-8">
+                  {section.agents.map((a, idx) => {
+                    const Icon = a.icon;
 
-        {/* Divider */}
-        <Divider />
+                    return (
+                      <motion.div
+                        key={idx}
+                        onMouseMove={(e) => {
+                          const r = e.currentTarget.getBoundingClientRect();
+                          e.currentTarget.style.setProperty(
+                            "--x",
+                            `${e.clientX - r.left}px`
+                          );
+                          e.currentTarget.style.setProperty(
+                            "--y",
+                            `${e.clientY - r.top}px`
+                          );
+                        }}
+                        className="group relative rounded-2xl p-6 overflow-hidden hover:-translate-y-2 hover:scale-[1.03] transition-all duration-300"
+                        style={{
+                          backgroundColor: "var(--card-bg)",
+                          border: "1px solid rgba(0,206,209,0.35)",
+                        }}
+                      >
+                        <div
+                          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition"
+                          style={{
+                            background:
+                              "radial-gradient(220px circle at var(--x) var(--y), rgba(0,206,209,0.25), transparent 70%)",
+                          }}
+                        />
 
-        {/* ===================== TIER 3 ===================== */}
-        <Tier
-          title="TIER-3 · Enterprise Custom Intelligence"
-          subtitle="Executive-level AI orchestration & control."
-        >
-          <Section>
-            <Agent
-              icon={HiOutlineBuildingOffice2}
-              title="Enterprise AI Brain"
-              desc="Central intelligence hub"
-            />
-            <Agent
-              icon={HiOutlineRocketLaunch}
-              title="AI COO Decision Engine"
-              desc="Executive insights & optimization"
-            />
-            <Agent
-              icon={HiOutlineCog}
-              title="Compliance & Audit Automation"
-              desc="Tracks policies & performance"
-            />
-          </Section>
-        </Tier>
+                        {a.badge && (
+                          <span className="absolute top-3 right-3 text-xs px-2 py-1 rounded-full bg-cyan-500/20 text-cyan-300">
+                            {a.badge}
+                          </span>
+                        )}
 
-        {/* CTA */}
-        <div className="mt-24 flex justify-center gap-5 flex-wrap">
-          <button
-            className="px-8 py-4 rounded-2xl font-semibold transition
-                       hover:scale-105"
-            style={{
-              backgroundColor: "var(--accent)",
-              color: "var(--bg-primary)",
-              boxShadow: "0 0 30px rgba(0,206,209,0.4)",
-            }}
+                        <div className="relative">
+                          <div className="w-12 h-12 mb-4 flex items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 shadow-[0_0_25px_rgba(0,206,209,0.55)]">
+                            <Icon className="text-white" size={22} />
+                          </div>
+
+                          <h4 className="text-lg font-semibold">{a.name}</h4>
+                          <p className="mt-2 text-sm text-gray-400">{a.desc}</p>
+                        </div>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+
+        <div className="mt-20 flex justify-center gap-6">
+          <Link
+            to="/ConsultationForm"
+            className="px-8 py-4 rounded-2xl bg-cyan-500 text-black font-semibold hover:scale-105 transition"
           >
             Book Agent Demo
-          </button>
-
+          </Link>
           <Link
             to="/contact"
-            className="px-8 py-4 rounded-2xl border font-semibold
-                       transition hover:bg-[#00ced1] hover:text-black"
-            style={{
-              borderColor: "var(--accent)",
-              color: "var(--text-primary)",
-            }}
+            className="px-8 py-4 rounded-2xl border border-cyan-400 font-semibold hover:bg-cyan-500 hover:text-black transition"
           >
             Contact Us
           </Link>
@@ -195,97 +149,4 @@ const AutomationCatalogue = () => {
       </div>
     </section>
   );
-};
-
-/* ---------------- HELPERS ---------------- */
-
-const Tier = ({ title, subtitle, children }) => (
-  <div className="mt-24">
-    <motion.h3
-      initial={{ y: 40, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className="text-3xl md:text-4xl font-semibold text-center
-                 bg-clip-text text-transparent"
-      style={{
-        backgroundImage:
-          "linear-gradient(180deg, var(--text-primary), var(--accent))",
-        textShadow: "0 0 32px rgba(0,206,209,0.25)",
-      }}
-    >
-      {title}
-    </motion.h3>
-
-    <p
-      className="mt-4 max-w-2xl mx-auto text-center"
-      style={{ color: "var(--text-secondary)" }}
-    >
-      {subtitle}
-    </p>
-
-    <div className="mt-16">{children}</div>
-  </div>
-);
-
-const Section = ({ title, children }) => (
-  <div className="mb-20">
-    {title && (
-      <h4
-        className="text-2xl mb-8 font-semibold bg-clip-text text-transparent"
-        style={{
-          backgroundImage:
-            "linear-gradient(180deg, var(--text-primary), var(--accent))",
-        }}
-      >
-        {title}
-      </h4>
-    )}
-    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {children}
-    </div>
-  </div>
-);
-
-const Agent = ({ icon: Icon, title, desc }) => (
-  <motion.div
-    whileHover={{ y: -6, scale: 1.03 }}
-    transition={{ type: "spring", stiffness: 220, damping: 18 }}
-    className="group relative rounded-2xl p-8 select-none"
-    style={{
-      backgroundColor: "var(--card-bg)",
-      border: "1px solid rgba(0,206,209,0.35)",
-    }}
-  >
-    {/* Neon Glow */}
-    <div
-      className="absolute inset-0 rounded-2xl opacity-0  blur-xl transition"
-      style={{ backgroundColor: "#00ced1" }}
-    />
-
-    <div className="relative">
-      <div
-        className="w-12 h-12 mb-4 flex items-center justify-center mx-auto rounded-xl bg-cyan-400/20 text-cyan-400 group-hover:bg-white/20 group-hover:text-white transition"
-      >
-        <Icon size={24} />
-      </div>
-
-      <h5 className="text-lg font-semibold mb-2 group-hover:text-white transition">
-        {title}
-      </h5>
-
-      <p className="text-sm text-secondary group-hover:text-white/90 transition">
-        {desc}
-      </p>
-    </div>
-  </motion.div>
-);
-
-const Divider = () => (
-  <div
-    className="my-24 h-px w-full bg-gradient-to-r
-                  from-transparent via-cyan-400/40 to-transparent"
-  />
-);
-
-export default AutomationCatalogue;
+}
