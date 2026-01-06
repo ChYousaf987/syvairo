@@ -19,6 +19,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
 import Dashboard from "./compounents/Dashboard";
+import ScrollToTop from "./compounents/ScrollToTop";
 
 const App = () => {
   const [theme, setTheme] = useState("dark");
@@ -33,6 +34,7 @@ const App = () => {
         {/* <AnimatedCanvasBackground theme={theme} /> */}
         <div className="relative z-10">
           <Navbar theme={theme} setTheme={setTheme} />
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/media" element={<MediaBlog />} />

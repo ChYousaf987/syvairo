@@ -17,7 +17,7 @@ export default function ConsultationForm() {
   };
 
   return (
-    <div className="py-20 flex h- items-center justify-center px-4">
+    <div className="py-20 flex bgGradientOutPadding h- items-center justify-center px-4">
       <div
         className="w-full max-w-2xl bg-gray-600/30 shadow-2xl relative group rounded-2xl py-6 px-8 transition-all duration-300
         hover:-translate-y-2 hover:scale-[1]
