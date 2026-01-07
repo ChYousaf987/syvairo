@@ -80,70 +80,78 @@ const container = {
 
 const TopHighROIAgents = () => {
   return (
-    <>
-      <section
-        className="pt-20 pb-7 md:pt-28 overflow-hidden bgGradient"
-        style={{ color: "var(--text-primary)" }}
-      >
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          {/* TOP BADGE */}
-          <span
-            style={{
-              textShadow:
-                "0 0 38px rgba(0, 206, 209, 0.45), 0 0 20px rgba(0, 206, 209, 0.25)",
-            }}
-            className="inline-block mb-4 px-4 py-1 rounded-full text-sm font-semibold bg-cyan-500/10 border border-cyan-700"
-          >
-            <div className="flex items-center gap-2">
-              {/* Gradient Icon */}
-              <span className="relative w-4 h-4 inline-block">
-                <TrendingUp className="w-4 h-4 text-transparent" />
-                <span className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-green-400 to-cyan-400 mask-icon" />
-              </span>
+    <section
+      className="pt-20 pb-7 md:pt-28 overflow-hidden bgGradient"
+      style={{ color: "var(--text-primary)" }}
+    >
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        {/* BADGE */}
+        <span
+          style={{
+            textShadow:
+              "0 0 38px rgba(0, 206, 209, 0.45), 0 0 20px rgba(0, 206, 209, 0.25)",
+          }}
+          className="inline-block mb-4 px-4 py-1 rounded-full text-sm font-semibold bg-cyan-500/10 border border-cyan-700"
+        >
+          <div className="flex items-center gap-2">
+            <TrendingUp className="w-4 h-4 text-cyan-400" />
+            <span className="text-cyan-400">High ROI Automation</span>
+          </div>
+        </span>
 
-              <span className="text-cyan-400">High ROI Automation</span>
-            </div>
-          </span>
+        {/* HEADING */}
+        <motion.h2
+          initial={{ y: 40, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-5xl pb-2 font-semibold tracking-tight bg-clip-text text-transparent"
+          style={{
+            backgroundImage:
+              "linear-gradient(180deg, var(--text-primary), var(--accent))",
+            textShadow:
+              "0 0 38px rgba(0, 206, 209, 0.35), 0 0 20px rgba(0, 206, 209, 0.2)",
+          }}
+        >
+          Top High-ROI AI Agents
+        </motion.h2>
 
-          {/* Heading */}
-          <motion.h2
-            initial={{ y: 40, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl md:text-5xl pb-2 font-semibold tracking-tight bg-clip-text text-transparent"
-            style={{
-              backgroundImage: `linear-gradient(180deg, var(--text-primary), var(--accent))`,
-              textShadow:
-                "0 0 38px rgba(0, 206, 209, 0.35), 0 0 20px rgba(0, 206, 209, 0.2)",
-            }}
-          >
-            Top High-ROI AI Agents
-          </motion.h2>
+        <motion.p
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15 }}
+          className="mt-4 max-w-2xl mx-auto"
+        >
+          Proven agents delivering immediate business impact.
+        </motion.p>
 
-          <motion.p
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
-            className="mt-4 max-w-2xl mx-auto"
-          >
-            Proven agents delivering immediate business impact.
-          </motion.p>
-
-          {/* Cards */}
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-3 mt-16 gap-8"
-          >
-            {agents.map((a, i) => {
-              const Icon = a.icon;
-              return (
+        {/* 🔥 CARDS — MOBILE SLIDER / DESKTOP GRID */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="
+            mt-16
+            flex gap-6 overflow-x-auto pb-4
+            snap-x snap-mandatory
+            md:grid md:grid-cols-3 md:gap-8
+            md:overflow-visible
+          "
+        >
+          {agents.map((a, i) => {
+            const Icon = a.icon;
+            return (
+              <div
+                key={i}
+                className="
+                  min-w-[90%] sm:min-w-[65%]
+                  snap-center
+                  md:min-w-0
+                "
+              >
                 <motion.div
-                  key={i}
                   onMouseMove={(e) => {
                     const rect = e.currentTarget.getBoundingClientRect();
                     e.currentTarget.style.setProperty(
@@ -155,23 +163,22 @@ const TopHighROIAgents = () => {
                       `${e.clientY - rect.top}px`
                     );
                   }}
-                  className="group relative rounded-2xl p-6 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03]  hover:shadow-[0_25px_60px_rgba(0,206,209,0.3)] select-none"
+                  className="group relative rounded-2xl p-6 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03] hover:shadow-[0_25px_60px_rgba(0,206,209,0.3)] select-none"
                   style={{
                     backgroundColor: "var(--card-bg)",
                     border: "1px solid rgba(0,206,209,0.35)",
                   }}
                 >
+                  {/* Glow */}
                   <div
-                    className="pointer-events-none absolute inset-0 opacity-0  group-hover:opacity-100 transition-opacity duration-300"
+                    className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{
-                      background: ` radial-gradient(200px circle at var(--x) var(--y), rgba(0,206,209,0.25), transparent 70%)`,
+                      background: `radial-gradient(200px circle at var(--x) var(--y), rgba(0,206,209,0.25), transparent 70%)`,
                     }}
                   />
 
                   {/* ICON */}
-                  <div
-                    className=" w-12 h-12 mb-4 flex items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 shadow-[0_0_25px_rgba(0,206,209,0.55)]"
-                  >
+                  <div className="w-12 h-12 mb-4 flex items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-cyan-600 shadow-[0_0_25px_rgba(0,206,209,0.55)]">
                     <Icon className="text-white" size={22} />
                   </div>
 
@@ -180,12 +187,12 @@ const TopHighROIAgents = () => {
                     {a.name}
                   </h3>
 
-                  {/* DESCRIPTION */}
+                  {/* DESC */}
                   <p className="mt-2 text-start text-sm text-gray-400">
                     {a.desc}
                   </p>
 
-                  {/* BULLET LIST */}
+                  {/* POINTS */}
                   <ul className="mt-5 space-y-2 text-sm text-gray-300">
                     {a.points.map((point, idx) => (
                       <li key={idx} className="flex items-start gap-2">
@@ -195,38 +202,37 @@ const TopHighROIAgents = () => {
                     ))}
                   </ul>
                 </motion.div>
-              );
-            })}
-          </motion.div>
+              </div>
+            );
+          })}
+        </motion.div>
 
-          {/* CTA */}
-          <motion.div
-            initial={{ y: 40, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.35 }}
-            className="mt-14 flex justify-center"
-          >
-            <Link to="/catalogue">
-              <motion.button
-                whileHover={{
-                  scale: 1.07,
-                  boxShadow: "0 0 10px #00ced1, 0 0 20px #00ced1",
-                }}
-                whileTap={{ scale: 0.97 }}
-                className="px-8 py-4 rounded-full bg-cyan-600 border-2 border-cyan-500 font-bold text-white text-lg transition-all duration-300"
-                style={{
-                  boxShadow: "0 0 2px #00ced1, 0 0 10px #00ced1", // neon glow
-                }}
-              >
-                View Full 45+ Agent Catalog
-              </motion.button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-      {/* <hr className="h-px bg-gray-800 my-12 border-0" /> */}
-    </>
+        {/* CTA */}
+        <motion.div
+          initial={{ y: 40, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.35 }}
+          className="mt-14 flex justify-center"
+        >
+          <Link to="/catalogue">
+            <motion.button
+              whileHover={{
+                scale: 1.07,
+                boxShadow: "0 0 10px #00ced1, 0 0 20px #00ced1",
+              }}
+              whileTap={{ scale: 0.97 }}
+              className="px-8 py-4 rounded-full bg-cyan-600 border-2 border-cyan-500 font-bold text-white text-lg transition-all duration-300"
+              style={{
+                boxShadow: "0 0 2px #00ced1, 0 0 10px #00ced1",
+              }}
+            >
+              View Full 45+ Agent Catalog
+            </motion.button>
+          </Link>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

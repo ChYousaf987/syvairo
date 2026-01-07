@@ -92,7 +92,6 @@ const caseStudies = [
       "**45%** faster lead response time",
     ],
   },
-  
 ];
 
 const WhyChooseSyvairo = () => {
@@ -135,7 +134,7 @@ const WhyChooseSyvairo = () => {
           </motion.h2>
 
           {/* Benefits Cards */}
-          <div className="mt-16 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className=" mt-16 flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory md:grid md:gap-8 md:grid-cols-2 lg:grid-cols-3 md:overflow-visible">
             {benefits.map((item, i) => (
               <div
                 key={i}
@@ -150,28 +149,37 @@ const WhyChooseSyvairo = () => {
                     `${e.clientY - rect.top}px`
                   );
                 }}
-                className="group relative rounded-2xl p-6 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:scale-[1.03]  hover:shadow-[0_25px_60px_rgba(0,206,209,0.3)] select-none"
+                className="
+        group relative rounded-2xl p-6 overflow-hidden
+        transition-all duration-300
+        hover:-translate-y-2 hover:scale-[1.03]
+        hover:shadow-[0_25px_60px_rgba(0,206,209,0.3)]
+        select-none
+
+        min-w-[85%] sm:min-w-[70%]
+        snap-center
+        md:min-w-0
+      "
                 style={{
                   backgroundColor: "var(--card-bg)",
                   border: "1px solid rgba(0,206,209,0.35)",
                 }}
               >
+                {/* glow */}
                 <div
-                  className="pointer-events-none absolute inset-0 opacity-0  group-hover:opacity-100 transition-opacity duration-300"
+                  className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{
-                    background: ` radial-gradient(200px circle at var(--x) var(--y), rgba(0,206,209,0.25), transparent 70%)`,
+                    background: `radial-gradient(200px circle at var(--x) var(--y), rgba(0,206,209,0.25), transparent 70%)`,
                   }}
                 />
+
                 <div className="flex items-center gap-3">
-                  <div
-                    className="w-12 h-12 flex items-center justify-center rounded-xl
-          bg-cyan-400/20 text-cyan-400
-          group-hover:bg-white/20 group-hover:text-white transition"
-                  >
+                  <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-cyan-400/20 text-cyan-400 group-hover:bg-white/20 group-hover:text-white transition">
                     {item.icon}
                   </div>
                   <h3 className="text-lg font-semibold">{item.title}</h3>
                 </div>
+
                 <p className="text-secondary mt-4">{item.description}</p>
               </div>
             ))}
@@ -192,9 +200,27 @@ const WhyChooseSyvairo = () => {
             CASE STUDIES — Real Results from AI Agents
           </motion.h2>
 
-          <div className="mt-10 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div
+            className="
+    mt-10
+    flex gap-6 overflow-x-auto pb-4
+    snap-x snap-mandatory
+    md:grid md:gap-8
+    md:grid-cols-2 lg:grid-cols-3
+    md:overflow-visible
+  "
+          >
             {caseStudies.map((item, i) => (
-              <CaseStudyCard key={i} item={item} />
+              <div
+                key={i}
+                className="
+        min-w-[90%] sm:min-w-[70%]
+        snap-center
+        md:min-w-0
+      "
+              >
+                <CaseStudyCard item={item} />
+              </div>
             ))}
           </div>
         </div>

@@ -35,7 +35,7 @@ const AIAnimatedBackground = ({ theme }) => {
 
     const draw = () => {
       // Base background
-      ctx.fillStyle = theme === "dark" ? "#0a0b11" : "#f5f7ff";
+      ctx.fillStyle = theme === "dark" ? "#150120" : "#f5f7ff";
       ctx.fillRect(0, 0, w, h);
 
       // Draw small moving particles

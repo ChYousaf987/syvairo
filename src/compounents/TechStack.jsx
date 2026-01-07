@@ -134,7 +134,13 @@ const TechStack = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="mt-16 grid md:grid-cols-3 gap-8"
+            className="
+  mt-16
+  flex gap-6 overflow-x-auto pb-4
+  snap-x snap-mandatory
+  md:grid md:grid-cols-3 md:gap-8
+  md:overflow-visible
+"
           >
             {stacks.map((s, i) => {
               const Icon = s.icon;
@@ -154,12 +160,14 @@ const TechStack = () => {
                     );
                   }}
                   className="
-                  group relative rounded-2xl p-6 overflow-hidden
-                  transition-all duration-300
-                  hover:-translate-y-2 hover:scale-[1.03]
-                  hover:shadow-[0_25px_60px_rgba(0,206,209,0.3)]
-                  select-none
-                "
+  group relative rounded-2xl p-6 overflow-hidden
+  transition-all duration-300
+  hover:-translate-y-2 hover:scale-[1.03]
+  hover:shadow-[0_25px_60px_rgba(0,206,209,0.3)]
+  select-none
+  min-w-[85%] snap-center
+  md:min-w-0
+"
                   style={{
                     backgroundColor: "var(--card-bg)",
                     border: "1px solid rgba(0,206,209,0.35)",

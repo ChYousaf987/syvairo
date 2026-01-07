@@ -219,6 +219,9 @@ export const TIERS = [
             desc: "Instant multi-language translation",
             icon: HiOutlineLanguage,
           },
+          {
+            name: "Build Custom Agent",
+          },
         ],
       },
     ],
@@ -267,6 +270,9 @@ export const TIERS = [
             desc: "Reads & extracts documents",
             icon: HiOutlineDocumentMagnifyingGlass,
           },
+          {
+            name: "Build Custom Agent",
+          },
         ],
       },
     ],
@@ -309,6 +315,9 @@ export const TIERS = [
             name: "Autonomous AI Control Tower",
             desc: "Enterprise-wide supervision",
             icon: HiOutlineCog,
+          },
+          {
+            name: "Build Custom Agent",
           },
         ],
       },

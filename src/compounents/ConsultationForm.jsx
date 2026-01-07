@@ -1,12 +1,25 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { HiArrowLeft } from "react-icons/hi";
 
 export default function ConsultationForm() {
+ 
+
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const selectedAgent = location.state?.selectedAgent || "";
+  const tier = location.state?.tier || "";
+  
+   const [goals, setGoals] = useState(() => {
+     if (selectedAgent) {
+       return `Interested in ${selectedAgent} (${tier}).\n\nMy automation goals are:\n`;
+     }
+     return "";
+   });
 
   const next = () => {
     if (step < 1) {
@@ -16,10 +29,13 @@ export default function ConsultationForm() {
     }
   };
 
+  
+
+
   return (
-    <div className="py-20 flex bgGradientOutPadding h- items-center justify-center px-4">
+    <div className="py-20 flex bgGradientOutPadding h- items-center justify-center px-2 md:px-4">
       <div
-        className="w-full max-w-2xl bg-gray-600/30 shadow-2xl relative group rounded-2xl py-6 px-8 transition-all duration-300
+        className="w-full max-w-2xl bg-gray-600/30 shadow-2xl relative group rounded-2xl py-6 px-3 md:px-8 transition-all duration-300
         hover:-translate-y-2 hover:scale-[1]
         hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
         hover:bg-[#00ced1]
@@ -109,10 +125,12 @@ export default function ConsultationForm() {
                 </label>
 
                 <textarea
-                  rows={3}
-                  placeholder={`What processes you want to automate`}
+                  rows={4}
+                  value={goals}
+                  onChange={(e) => setGoals(e.target.value)}
+                  placeholder="What processes you want to automate"
                   className="w-full px-4 py-3 rounded-xl bg-black/30 border border-gray-600 text-white placeholder-gray-400
-    focus:outline-none focus:ring-2 focus:ring-cyan-400"
+      focus:outline-none focus:ring-2 focus:ring-cyan-400"
                 />
               </div>
             </motion.div>
@@ -157,7 +175,7 @@ export default function ConsultationForm() {
                 boxShadow: "0 0 10px #00ced1, 0 0 20px #00ced1",
               }}
               whileTap={{ scale: 0.97 }}
-              className="px-8 py-2 rounded-full bg-cyan-600 border-2 border-cyan-500 font-bold text-white text-lg transition-all duration-300"
+              className="px-8 py-2 rounded-full w-full md:w-auto bg-cyan-600 border-2 border-cyan-500 font-bold text-white text-lg transition-all duration-300"
               style={{
                 boxShadow: "0 0 2px #00ced1, 0 0 10px #00ced1", // neon glow
               }}

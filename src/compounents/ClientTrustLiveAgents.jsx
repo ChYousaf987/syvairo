@@ -67,15 +67,27 @@ const ClientTrustLiveAgents = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="mt-12 grid md:grid-cols-5 gap-6"
+            className="
+    mt-12
+    flex gap-6 overflow-x-auto pb-4
+    snap-x snap-mandatory
+    md:grid md:grid-cols-5 md:gap-6
+    md:overflow-visible
+  "
           >
             {stats.map((item, i) => (
               <motion.div
                 key={i}
-                className="group rounded-2xl p-8 transition-all duration-300
-              hover:-translate-y-2 hover:scale-[1.03]
-              hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
-              hover:bg-[#00ced1]"
+                className="
+    group rounded-2xl p-8 transition-all duration-300
+    hover:-translate-y-2 hover:scale-[1.03]
+    hover:shadow-[0_25px_60px_rgba(0,206,209,0.15)]
+    hover:bg-[#00ced1]
+
+    min-w-[75%] sm:min-w-[55%]
+    snap-center
+    md:min-w-0
+  "
                 style={{
                   backgroundColor: "var(--card-bg)",
                   border: "1px solid rgba(0,206,209,0.35)",
