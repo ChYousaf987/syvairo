@@ -77,7 +77,7 @@ const HeroSection = () => {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl py-2 font-bold tracking-tight bg-clip-text text-transparent"
+            className="text-3xl md:text-4xl py-2  font-bold tracking-tight bg-clip-text text-transparent"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, var(--text-primary), var(--accent))",
