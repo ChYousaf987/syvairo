@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { HiChat } from "react-icons/hi";
+import { HiChat, HiOutlineMail } from "react-icons/hi";
 import { FaWhatsapp } from "react-icons/fa";
-import { HiOutlineMicrophone } from "react-icons/hi2";
+import { HiOutlineMicrophone, HiPhone } from "react-icons/hi2";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -40,12 +40,125 @@ const Contact = () => {
       </motion.h2>
 
       <div className="max-w-7xl mx-auto grid md:grid-cols-1  gap-16 px-6">
+        {/* Contact Form */}
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 justify-center items-start gap-16 px-6">
+            {/* Left Column - Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col justify-center items-start space-y-6"
+            >
+              <motion.h2
+                initial={{ y: 40, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl font-semibold bg-clip-text text-transparent"
+                style={{
+                  backgroundImage: `linear-gradient(90deg, #00e0e0, #00aaff)`,
+                }}
+              >
+                Contact Us
+              </motion.h2>
+
+              <p className="text-gray-300 text-lg">
+                Do you have a question? Call us, email us, or fill out the
+                contact form and we’ll get back to you as soon as possible.
+              </p>
+
+              {/* Contact Items */}
+              <div className="flex flex-col space-y-4 mt-6">
+                <div className="flex items-center space-x-4">
+                  <HiPhone className="text-cyan-400 text-2xl" />
+                  <div>
+                    <p className="text-gray-300">Phone</p>
+                    <span className="text-cyan-400 font-semibold">
+                      +31 06 47008927
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <FaWhatsapp className="text-green-400 text-2xl" />
+                  <div>
+                    <p className="text-gray-300">WhatsApp</p>
+                    <span className="text-cyan-400 font-semibold">
+                      +31 06 47008927
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <HiOutlineMail className="text-purple-400 text-2xl" />
+                  <div>
+                    <p className="text-gray-300">Email</p>
+                    <span className="text-cyan-400 font-semibold">
+                      contact@opusmatic.com
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Column - Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="bg-[#1a1a2e] p-10 rounded-3xl border border-cyan-400/30 shadow-xl"
+            >
+              <form className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    placeholder="First Name"
+                    className="w-full px-5 py-3 rounded-xl bg-transparent border border-cyan-400/30 focus:border-cyan-400 outline-none transition"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    className="w-full px-5 py-3 rounded-xl bg-transparent border border-cyan-400/30 focus:border-cyan-400 outline-none transition"
+                  />
+                </div>
+
+                <input
+                  type="text"
+                  placeholder="Company Name (Optional)"
+                  className="w-full px-5 py-3 rounded-xl bg-transparent border border-cyan-400/30 focus:border-cyan-400 outline-none transition"
+                />
+
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="w-full px-5 py-3 rounded-xl bg-transparent border border-cyan-400/30 focus:border-cyan-400 outline-none transition"
+                />
+
+                <textarea
+                  placeholder="Tell us about your automation goals..."
+                  rows="5"
+                  className="w-full px-5 py-3 rounded-xl bg-transparent border border-cyan-400/30 resize-none focus:border-cyan-400 outline-none transition"
+                />
+
+                <button className="w-full py-4 rounded-2xl font-semibold text-lg bg-gradient-to-r from-cyan-400 to-cyan-600 text-black shadow-xl">
+                  Send
+                </button>
+              </form>
+            </motion.div>
+          </div>
+        </section>
+
         {/* AI Agents */}
-        <div>
-          <h2 className="text-2xl text-center md:text-3xl font-semibold mb-4">
+        <div className="py-20">
+          <h2
+            className="text-2xl md:text-3xl font-semibold text-center mb-4 bg-clip-text text-transparent"
+            style={{
+              backgroundImage: "linear-gradient(90deg, #00e0e0, #00aaff)",
+            }}
+          >
             Meet Our AI Workforce
           </h2>
-          <p className="text-gray-300 text-center mb-10">
+          <p className="text-gray-300 text-center mb-16 max-w-2xl mx-auto">
             Experience the power of agents built by our own team, for our own
             business
           </p>
@@ -55,11 +168,10 @@ const Contact = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="mt-8 grid md:grid-cols-3  text-center gap-8"
+            className="grid md:grid-cols-3 gap-10"
           >
             {agents.map((agent, i) => {
               const Icon = agent.icon;
-
               return (
                 <motion.div
                   key={i}
@@ -75,125 +187,57 @@ const Contact = () => {
                     );
                   }}
                   className="
-                            group relative rounded-2xl p-8 overflow-hidden
-                            transition-all duration-300
-                            hover:-translate-y-2 hover:scale-[1.03]
-                            hover:shadow-[0_25px_60px_rgba(0,206,209,0.25)]
-                            select-none
-                          "
+            group relative flex flex-col items-center p-8 rounded-3xl
+            transition-all duration-300
+            hover:-translate-y-3 hover:scale-105
+            cursor-pointer
+          "
                   style={{
-                    backgroundColor: "var(--card-bg)",
-                    border: "1px solid rgba(0,206,209,0.35)",
+                    background:
+                      "linear-gradient(135deg, rgba(0,232,255,0.05), rgba(0,170,255,0.05))",
+                    borderRadius: "1.5rem",
                   }}
                 >
-                  {/* CURSOR GLOW */}
+                  {/* Hover Glow */}
                   <div
-                    className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl"
                     style={{
                       background: `
-                                radial-gradient(
-                                  180px circle at var(--x) var(--y),
-                                  rgba(0,206,209,0.25),
-                                  transparent 70%
-                                )
-                              `,
+                radial-gradient(
+                  150px circle at var(--x) var(--y),
+                  rgba(0,206,209,0.2),
+                  transparent 70%
+                )
+              `,
                     }}
                   />
 
-                  {/* ICON */}
+                  {/* Icon */}
                   <div
                     className="
-                              w-12 h-12 mx-auto mb-4 flex items-center justify-center
-                              rounded-xl
-                              bg-gradient-to-br from-cyan-400 to-cyan-600
-                              shadow-[0_0_25px_rgba(0,206,209,0.55)]
-                            "
+            w-16 h-16 flex items-center justify-center mb-4
+            rounded-full
+            bg-gradient-to-br from-cyan-400 to-cyan-600
+            shadow-[0_0_35px_rgba(0,206,209,0.6)]
+            transition-transform duration-300
+            group-hover:scale-110
+          "
                   >
-                    <Icon className="text-white" size={24} />
+                    <Icon className="text-white" size={28} />
                   </div>
 
-                  {/* TITLE */}
-                  <p className="text-lg font-semibold">{agent.name}</p>
+                  {/* Name */}
+                  <p className="text-lg font-semibold text-white mb-1">
+                    {agent.name}
+                  </p>
 
-                  {/* SUBTEXT */}
-                  <p className="mt-2 text-sm text-gray-300">
+                  {/* Subtext */}
+                  <p className="text-sm text-gray-300 text-center">
                     Live & ready to interact
                   </p>
                 </motion.div>
               );
             })}
-          </motion.div>
-        </div>
-
-        {/* Contact Form */}
-        <div className="">
-          <h2 className="text-2xl text-center md:text-3xl font-semibold mb-4">
-            Send a Message
-          </h2>
-          <p className="text-gray-300 text-center mb-10">
-            Fill out the form and our team will reach out within 24 hours.
-          </p>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="bg-[var(--card-bg)] max-w-3xl mx-auto p-10 rounded-3xl border border-cyan-400/30 shadow-xl"
-          >
-            <form className="space-y-6 ">
-              {/* Name */}
-              <div>
-                <label className="block mb-2 text-sm text-gray-400">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="John Doe"
-                  className="w-full px-5 py-3 rounded-xl bg-transparent border border-cyan-400/30 focus:border-cyan-400 outline-none transition shadow-[0_0_0_rgba(0,0,0,0)] focus:shadow-[0_0_25px_rgba(0,206,209,0.4)]"
-                />
-              </div>
-
-              {/* Email */}
-              <div>
-                <label className="block mb-2 text-sm text-gray-400">
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="john@email.com"
-                  className="w-full px-5 py-3 rounded-xl bg-transparent border border-cyan-400/30 focus:border-cyan-400 outline-none transition shadow-[0_0_0_rgba(0,0,0,0)] focus:shadow-[0_0_25px_rgba(0,206,209,0.4)]"
-                />
-              </div>
-
-              {/* Message */}
-              <div>
-                <label className="block mb-2 text-sm text-gray-400">
-                  Your Message
-                </label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  rows="5"
-                  placeholder="Tell us about your project..."
-                  className="w-full px-5 py-3 rounded-xl bg-transparent border border-cyan-400/30 resize-none focus:border-cyan-400 outline-none transition shadow-[0_0_0_rgba(0,0,0,0)] focus:shadow-[0_0_25px_rgba(0,206,209,0.4)]"
-                />
-              </div>
-
-              {/* Button */}
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full py-4 rounded-2xl font-semibold text-lg bg-gradient-to-r from-cyan-400 to-cyan-600 text-black shadow-xl"
-              >
-                Send Message
-              </motion.button>
-            </form>
           </motion.div>
         </div>
       </div>
