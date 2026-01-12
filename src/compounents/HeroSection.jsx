@@ -64,7 +64,7 @@ const HeroSection = () => {
     <>
       <AnimatedCanvasBackground theme={theme} />
 
-      <section className="relative h-screen pb-10 flex items-center bg-grain">
+      <section className="relative  md:h-screen pb-10 flex items-center bg-grain">
         <motion.div
           className="relative max-w-7xl text-center mx-auto px-6 items-center flex flex-col"
           initial="hidden"
@@ -134,7 +134,7 @@ const HeroSection = () => {
                 loop
                 muted={muted}
                 playsInline
-                className="w-full h-[40vh] object-cover"
+                className="w-full md:h-[40vh] object-cover"
                 onTimeUpdate={() => {
                   const v = videoRef.current;
                   setProgress((v.currentTime / v.duration) * 100);
