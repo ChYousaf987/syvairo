@@ -59,17 +59,16 @@ const MediaBlog = () => {
 
   return (
     <section
-      className=""
+      className="bgGradient"
       style={{
-        
         color: "var(--text-primary)",
       }}
     >
-      <div className="max-w-7xl mx-auto py-28 px-6">
+      <div className="max-w-7xl mx-auto  px-6">
         <motion.h1
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-8"
+          className="text-4xl md:text-5xl  font-bold text-center mb-20"
           style={{ color: "var(--text-primary)" }}
         >
           Media & Blog

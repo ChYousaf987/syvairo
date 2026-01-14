@@ -125,8 +125,7 @@ const IntroVideoSection = () => {
       transition-all duration-300
     "
               style={{
-                background:
-                  "linear-gradient(135deg, #00ced1)",
+                background: "linear-gradient(135deg, #00ced1)",
               }}
             />
 
@@ -134,8 +133,7 @@ const IntroVideoSection = () => {
             <div
               className="relative rounded-2xl p-[2px]"
               style={{
-                background:
-                  "linear-gradient(135deg, #00ced1)",
+                background: "linear-gradient(135deg, #00ced1)",
               }}
             >
               <img
@@ -169,9 +167,7 @@ const IntroVideoSection = () => {
                 >
                   <div className=" ">
                     {/* Icon */}
-                    <div
-                      className=" flex items-center justify-center rounded-xl text-cyan-400 transition mb-4"
-                    >
+                    <div className=" flex items-center justify-center rounded-xl text-cyan-400 transition mb-4">
                       <Icon size={37} />
                     </div>
 

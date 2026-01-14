@@ -41,7 +41,6 @@ const FloatingAgents = () => {
 
   const agents = [
     { name: "AI Chatbot", icon: BsChatDots, fnc: toggleAiChat },
-    { name: "WhatsApp AI", icon: FaWhatsapp },
     { name: "Voice AI Agent", icon: BsMic, fnc: toggleAiVoice },
   ];
 
