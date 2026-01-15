@@ -180,7 +180,7 @@ const DeliveryModel = () => {
                         {item.items.map((it, idx) => (
                           <div
                             key={idx}
-                            className="flex flex-col items-start gap-2 text-sm text-gray-300"
+                            className="flex flex-col items-start gap-2 text-sm text-color2"
                           >
                             <p>
                               <span className="text-[#22D3EE] font-semibold">

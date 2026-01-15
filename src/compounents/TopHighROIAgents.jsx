@@ -183,7 +183,7 @@ const TopHighROIAgents = () => {
                   </div>
 
                   {/* TITLE */}
-                  <h3 className="text-xl text-start font-semibold text-white">
+                  <h3 className="text-xl text-start font-semibold text-color">
                     {a.name}
                   </h3>
 
@@ -193,7 +193,7 @@ const TopHighROIAgents = () => {
                   </p>
 
                   {/* POINTS */}
-                  <ul className="mt-5 space-y-2 text-sm text-gray-300">
+                  <ul className="mt-5 space-y-2 text-sm text-color2">
                     {a.points.map((point, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <span className="mt-2 w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />

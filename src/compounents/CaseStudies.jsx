@@ -5,7 +5,6 @@ import { FaWhatsapp } from "react-icons/fa";
 
 const agents = [
   { name: "AI Chatbot", icon: HiChat },
-  { name: "WhatsApp AI", icon: FaWhatsapp },
   { name: "Voice AI Agent", icon: HiOutlineMicrophone },
 ];
 
@@ -87,7 +86,7 @@ const CaseStudies = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="mt-8 grid md:grid-cols-3 gap-8"
+          className="mt-8 grid md:grid-cols-2 gap-8"
         >
           {agents.map((agent, i) => {
             const Icon = agent.icon;
@@ -148,7 +147,7 @@ const CaseStudies = () => {
                 <p className="text-lg font-semibold">{agent.name}</p>
 
                 {/* SUBTEXT */}
-                <p className="mt-2 text-sm text-gray-300">
+                <p className="mt-2 text-sm text-colors">
                   Live & ready to interact
                 </p>
               </motion.div>

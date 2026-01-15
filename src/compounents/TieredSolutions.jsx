@@ -171,12 +171,12 @@ const TieredSolutions = () => {
                   </div>
 
                   {/* TITLE */}
-                  <h3 className="text-xl text-start font-semibold mb-4 text-white">
+                  <h3 className="text-xl text-start font-semibold mb-4 text-color">
                     {t.name}
                   </h3>
 
                   {/* LIST */}
-                  <ul className="space-y-2 text-start text-sm text-gray-300">
+                  <ul className="space-y-2 text-start text-sm text-color2">
                     {t.items.map((it, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <span className="mt-2 w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />

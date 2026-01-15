@@ -200,12 +200,12 @@ const TechStack = () => {
                   </div>
 
                   {/* TITLE */}
-                  <h3 className="text-xl font-semibold text-white text-left">
+                  <h3 className="text-xl font-semibold text-color text-left">
                     {s.title}
                   </h3>
 
                   {/* LIST */}
-                  <ul className="mt-4 space-y-2 text-sm text-gray-300 text-left">
+                  <ul className="mt-4 space-y-2 text-sm text-color2 text-left">
                     {s.items.map((it, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <span className="mt-2 w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />

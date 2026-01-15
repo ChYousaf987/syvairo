@@ -39,7 +39,7 @@ const CaseStudyCard = ({ item }) => {
         <div
           className="w-12 h-12 flex items-center justify-center rounded-xl
           bg-cyan-400/20 text-cyan-400
-          group-hover:bg-white/20 group-hover:text-white transition"
+          group-hover:bg-white/20 group-hover:text-color transition"
         >
           <Icon size={26} className="" />
         </div>
@@ -57,11 +57,11 @@ const CaseStudyCard = ({ item }) => {
       </div>
 
       {/* Title */}
-      <h3 className="text-xl font-semibold text-white mb-1">{item.title}</h3>
+      <h3 className="text-xl font-semibold text-color mb-1">{item.title}</h3>
       <p className="text-cyan-400 italic mb-5 text-sm">{item.client}</p>
 
       {/* Challenge */}
-      <p className="text-gray-400 leading-relaxed mb-6">{item.challenge}</p>
+      <p className="text-color2 leading-relaxed mb-6">{item.challenge}</p>
 
       {/* Impact */}
       <div className="space-y-3 mb-8">
@@ -70,7 +70,7 @@ const CaseStudyCard = ({ item }) => {
             {/* Replace bullet with icon */}
             <HiOutlineCheck className="text-cyan-400 w-4 h-4 flex-shrink-0" />
             <span
-              className="text-gray-300"
+              className="text-color2"
               dangerouslySetInnerHTML={{ __html: impact }}
             />
           </div>
