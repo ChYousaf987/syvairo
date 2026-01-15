@@ -30,6 +30,7 @@
 
   /* LIGHT MODE GRADIENT */
   --bg-gradient-main: linear-gradient(to top right, #ecf6f6, #f2f8fd, #f7fcfd);
+  --bg-gradient-mains: linear-gradient(to top right, #dcf4f4, #e8f4fd, #e9f8fb);
 }
 
 [data-theme="dark"] {
@@ -58,6 +59,7 @@
 
   /* DARK MODE GRADIENT */
   --bg-gradient-main: linear-gradient(to top right, #110f35, #000002, #220141);
+  --bg-gradient-mains: linear-gradient(to top right, #100c5f, #000000, #3d0275);
 }
 
 

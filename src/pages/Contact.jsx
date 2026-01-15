@@ -14,7 +14,6 @@ const Contact = () => {
 
   const agents = [
     { name: "AI Chatbot", icon: HiChat },
-    { name: "WhatsApp AI", icon: FaWhatsapp },
     { name: "Voice AI Agent", icon: HiOutlineMicrophone },
   ];
   // Motion variants
@@ -168,7 +167,7 @@ const Contact = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid md:grid-cols-3 gap-10"
+            className="grid md:grid-cols-2 gap-10"
           >
             {agents.map((agent, i) => {
               const Icon = agent.icon;

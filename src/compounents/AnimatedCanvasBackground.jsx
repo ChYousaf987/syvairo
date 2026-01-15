@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const AIAnimatedBackground = ({ theme }) => {
+const AIAnimatedBackground = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -10,7 +10,7 @@ const AIAnimatedBackground = ({ theme }) => {
     let w = (canvas.width = window.innerWidth);
     let h = (canvas.height = window.innerHeight);
 
-    const particleCount = 70; // Keep under 100 for performance
+    const particleCount = 70;
 
     const particles = Array.from({ length: particleCount }, () => ({
       x: Math.random() * w,
@@ -18,7 +18,7 @@ const AIAnimatedBackground = ({ theme }) => {
       radius: 2 + Math.random() * 3,
       dx: (Math.random() - 0.5) * 0.8,
       dy: (Math.random() - 0.5) * 0.8,
-      color: theme === "dark" ? "rgba(155,81,224,0.7)" : "rgba(59,130,246,0.7)",
+      color: "rgba(155,81,224,0.7)",
     }));
 
     const resize = () => {
@@ -34,15 +34,31 @@ const AIAnimatedBackground = ({ theme }) => {
     };
     window.addEventListener("mousemove", mouseMove);
 
-    const draw = () => {
-      // Background gradient
+    // 🔥 Get gradient colors from CSS variable
+    const getGradientColors = () => {
+      const gradientCSS = getComputedStyle(document.documentElement)
+        .getPropertyValue("--bg-gradient-mains")
+        .trim(); // e.g. linear-gradient(to top right, #ecf6f6, #f2f8fd, #f7fcfd)
+      const match = gradientCSS.match(/#([0-9a-f]{3,6})/gi);
+      if (!match) return ["#ecf6f6", "#f2f8fd", "#f7fcfd"];
+      return match;
+    };
+
+    const drawBackground = () => {
+      const colors = getGradientColors();
       const gradient = ctx.createLinearGradient(0, h, w, 0);
-      gradient.addColorStop(0, "#100c5f");
-      gradient.addColorStop(0.5, "#000000");
-      gradient.addColorStop(1, "#3d0275");
+
+      // Add stops dynamically
+      colors.forEach((color, i) => {
+        gradient.addColorStop(i / (colors.length - 1), color);
+      });
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, w, h);
+    };
+
+    const draw = () => {
+      drawBackground();
 
       const parallaxX = (mouse.x - w / 2) * 0.01;
       const parallaxY = (mouse.y - h / 2) * 0.01;
@@ -56,11 +72,8 @@ const AIAnimatedBackground = ({ theme }) => {
 
         ctx.beginPath();
         ctx.fillStyle = p.color;
-
-        // ✨ Glow Effect (very fast)
         ctx.shadowBlur = 15;
         ctx.shadowColor = p.color;
-
         ctx.arc(p.x + parallaxX, p.y + parallaxY, p.radius, 0, Math.PI * 2);
         ctx.fill();
       });
@@ -74,7 +87,7 @@ const AIAnimatedBackground = ({ theme }) => {
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", mouseMove);
     };
-  }, [theme]);
+  }, []);
 
   return (
     <canvas
