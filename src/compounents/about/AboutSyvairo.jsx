@@ -26,13 +26,13 @@ const AboutSyvairo = () => {
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
-            <p className="text-gray-300 text-lg leading-relaxed mb-6">
+            <p className="color text-lg leading-relaxed mb-6">
               Syvairo is an AI automation company focused on helping businesses
               simplify operations, reduce manual effort, and improve efficiency
               through intelligent automation.
             </p>
 
-            <p className="text-gray-300 text-lg leading-relaxed mb-6">
+            <p className="color text-lg leading-relaxed mb-6">
               We design and implement practical AI solutions such as workflow
               automation, AI agents, and process optimization that integrate
               smoothly with existing systems. Our goal is to deliver real
@@ -40,7 +40,7 @@ const AboutSyvairo = () => {
               enabling scalable growth.
             </p>
 
-            <p className="text-gray-300 text-lg leading-relaxed mb-10">
+            <p className="color text-lg leading-relaxed mb-10">
               Syvairo follows a lean and flexible delivery approach, allowing us
               to adapt quickly to client needs while maintaining high quality
               and transparency.
@@ -52,21 +52,21 @@ const AboutSyvairo = () => {
                 <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-400/30 mb-3">
                   <HiOutlineCog6Tooth className="text-cyan-400" size={28} />
                 </div>
-                <p className="text-sm text-gray-300">Simplify Operations</p>
+                <p className="text-sm color">Simplify Operations</p>
               </div>
 
               <div className="flex flex-col items-center text-center">
                 <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-400/30 mb-3">
                   <HiOutlineBolt className="text-cyan-400" size={28} />
                 </div>
-                <p className="text-sm text-gray-300">Reduce Manual Work</p>
+                <p className="text-sm color">Reduce Manual Work</p>
               </div>
 
               <div className="flex flex-col items-center text-center">
                 <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-400/30 mb-3">
                   <HiOutlineChartBar className="text-cyan-400" size={28} />
                 </div>
-                <p className="text-sm text-gray-300">Improve Efficiency</p>
+                <p className="text-sm color">Improve Efficiency</p>
               </div>
             </div>
           </motion.div>

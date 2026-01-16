@@ -30,7 +30,7 @@ const AboutHero = () => {
               Solutions
             </h1>
 
-            <p className="mt-6 text-lg text-gray-300">
+            <p className="mt-6 text-lg color">
               Intelligent Automation | AI Agents | Scalable Growth
             </p>
 

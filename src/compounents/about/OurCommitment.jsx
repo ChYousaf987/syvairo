@@ -19,7 +19,7 @@ const OurCommitment = () => {
           Our Commitment
         </h2>
 
-        <p className="text-gray-300 text-lg leading-relaxed mb-10">
+        <p className="color2 text-lg leading-relaxed mb-10">
           We are committed to building practical, scalable, and secure AI
           automation solutions that deliver measurable results. Our focus on
           efficiency, transparency, and long-term value makes Syvairo a reliable
@@ -46,11 +46,11 @@ const OurCommitment = () => {
                 <HiOutlineShieldCheck className="text-white" size={28} />
               </div>
 
-              <h4 className="text-lg font-semibold text-white mb-2">
+              <h4 className="text-lg font-semibold color mb-2">
                 Secure & Reliable
               </h4>
 
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="color2 text-sm leading-relaxed">
                 Enterprise-grade security with robust infrastructure and
                 compliance-ready AI automation systems.
               </p>
@@ -65,11 +65,11 @@ const OurCommitment = () => {
                 <HiOutlineArrowTrendingUp className="text-white" size={28} />
               </div>
 
-              <h4 className="text-lg font-semibold text-white mb-2">
+              <h4 className="text-lg font-semibold color mb-2">
                 Measurable Growth
               </h4>
 
-              <p className="text-gray-400 text-sm leading-relaxed">
+              <p className="color2 text-sm leading-relaxed">
                 Data-driven solutions that deliver clear ROI, efficiency gains,
                 and performance improvement.
               </p>

@@ -26,7 +26,7 @@ const MissionVision = () => {
           >
             Our Mission & Vision
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="color2 max-w-2xl mx-auto">
             Driving intelligent automation and empowering businesses through AI
             innovation.
           </p>
@@ -87,13 +87,10 @@ const MissionVision = () => {
             >
               <HiOutlineRocketLaunch className="text-white" size={36} />
             </div>
-           
 
-            <h3 className="text-2xl font-semibold text-white mb-4">
-              Our Mission
-            </h3>
+            <h3 className="text-2xl font-semibold color mb-4">Our Mission</h3>
 
-            <p className="text-gray-300 leading-relaxed text-lg">
+            <p className="color2 leading-relaxed text-lg">
               To deliver intelligent, end-to-end workflow automation that helps
               businesses operate smarter, faster, and more efficiently.
             </p>
@@ -153,11 +150,9 @@ const MissionVision = () => {
               <HiOutlineGlobeAlt className="text-white" size={36} />
             </div>
 
-            <h3 className="text-2xl font-semibold text-white mb-4">
-              Our Vision
-            </h3>
+            <h3 className="text-2xl font-semibold color mb-4">Our Vision</h3>
 
-            <p className="text-gray-300 leading-relaxed text-lg">
+            <p className="color2 leading-relaxed text-lg">
               To become a trusted global partner in AI automation, enabling
               organizations of all sizes to adopt intelligent technologies and
               achieve sustainable digital transformation.

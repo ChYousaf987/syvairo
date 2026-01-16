@@ -60,7 +60,7 @@ const CareersHero = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="mt-6 text-lg max-w-xl mx-auto md:mx-0 text-gray-300"
+            className="mt-6 text-lg max-w-xl mx-auto md:mx-0 color2"
           >
             We build AI agents and automation solutions that transform
             businesses — and we value passion over degrees.
@@ -70,7 +70,7 @@ const CareersHero = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="mt-2 text-lg max-w-xl mx-auto md:mx-0 text-gray-300"
+            className="mt-2 text-lg max-w-xl mx-auto md:mx-0 color2"
           >
             Join us to create innovative solutions that shape the future of AI.
           </motion.p>
@@ -79,7 +79,7 @@ const CareersHero = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="mt-2 text-lg max-w-xl mx-auto md:mx-0 text-gray-300"
+            className="mt-2 text-lg max-w-xl mx-auto md:mx-0 color2"
           >
             Be part of a team that values creativity, impact, and growth.
           </motion.p>

@@ -16,7 +16,7 @@
   --card-bgs: #ffffff;
   --card-border: rgba(0, 0, 0, 0.08);
 
---accent: #a236e4;
+  --accent: #a236e4;
 
   --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.08);
   --gradient-from: #c5d4ff;
@@ -62,13 +62,15 @@
   --bg-gradient-mains: linear-gradient(to top right, #100c5f, #000000, #3d0275);
 }
 
-
 .bgGradient {
   background: var(--bg-gradient-main);
   padding: 70px 0;
 }
 .color {
   color: var(--text-primary);
+}
+.footer {
+  background-color: var(--bg-primary);
 }
 .color2 {
   color: var(--text-secondary);
@@ -79,5 +81,3 @@
   background: var(--bg-primary);
   color: var(--text-primary);
 }
-
-

@@ -131,12 +131,10 @@ const ValuesSection = () => {
                 {/* Content */}
                 <div className="relative z-10 flex flex-col items-center gap-4">
                   <Icon size={42} className="text-cyan-400" />
-                  <h3 className="text-lg font-semibold text-white text-center">
+                  <h3 className="text-lg font-semibold color text-center">
                     {value.title}
                   </h3>
-                  <p className="text-sm text-center text-gray-400">
-                    {value.desc}
-                  </p>
+                  <p className="text-sm text-center color2">{value.desc}</p>
                 </div>
               </motion.div>
             );

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer
-      className="pt-20 bg-black pb-10 z-50"
+      className="pt-20 footer pb-10 z-50"
       style={{
         color: "var(--text-secondary)",
       }}
@@ -105,17 +105,26 @@ const Footer = () => {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/privacy-policy" className="hover:text-accent transition">
+                <a
+                  href="/privacy-policy"
+                  className="hover:text-accent transition"
+                >
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="/terms-of-service" className="hover:text-accent transition">
+                <a
+                  href="/terms-of-service"
+                  className="hover:text-accent transition"
+                >
                   Terms of Service
                 </a>
               </li>
               <li>
-                <a href="/cookie-policy" className="hover:text-accent transition">
+                <a
+                  href="/cookie-policy"
+                  className="hover:text-accent transition"
+                >
                   Cookie Policy
                 </a>
               </li>

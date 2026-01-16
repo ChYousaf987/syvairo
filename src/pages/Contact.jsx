@@ -55,13 +55,13 @@ const Contact = () => {
                 transition={{ duration: 0.6 }}
                 className="text-3xl font-semibold bg-clip-text text-transparent"
                 style={{
-                  backgroundImage: `linear-gradient(90deg, #00e0e0, #00aaff)`,
+                  backgroundImage: `linear-gradient(180deg, var(--text-primary), var(--accent))`,
                 }}
               >
                 Contact Us
               </motion.h2>
 
-              <p className="text-gray-300 text-lg">
+              <p className="color2 text-lg">
                 Do you have a question? Call us, email us, or fill out the
                 contact form and we’ll get back to you as soon as possible.
               </p>
@@ -71,8 +71,8 @@ const Contact = () => {
                 <div className="flex items-center space-x-4">
                   <HiPhone className="text-cyan-400 text-2xl" />
                   <div>
-                    <p className="text-gray-300">Phone</p>
-                    <span className="text-cyan-400 font-semibold">
+                    <p className="color font-semibold">Phone</p>
+                    <span className="font-semibold color2">
                       +31 06 47008927
                     </span>
                   </div>
@@ -81,8 +81,8 @@ const Contact = () => {
                 <div className="flex items-center space-x-4">
                   <FaWhatsapp className="text-green-400 text-2xl" />
                   <div>
-                    <p className="text-gray-300">WhatsApp</p>
-                    <span className="text-cyan-400 font-semibold">
+                    <p className="color font-semibold">WhatsApp</p>
+                    <span className="font-semibold color2">
                       +31 06 47008927
                     </span>
                   </div>
@@ -91,8 +91,8 @@ const Contact = () => {
                 <div className="flex items-center space-x-4">
                   <HiOutlineMail className="text-purple-400 text-2xl" />
                   <div>
-                    <p className="text-gray-300">Email</p>
-                    <span className="text-cyan-400 font-semibold">
+                    <p className="color font-semibold">Email</p>
+                    <span className=" font-semibold color2">
                       contact@opusmatic.com
                     </span>
                   </div>
@@ -105,7 +105,7 @@ const Contact = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="bg-[#1a1a2e] p-10 rounded-3xl border border-cyan-400/30 shadow-xl"
+              className="footer p-10 rounded-3xl border border-cyan-400/30 shadow-xl"
             >
               <form className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
@@ -157,7 +157,7 @@ const Contact = () => {
           >
             Meet Our AI Workforce
           </h2>
-          <p className="text-gray-300 text-center mb-16 max-w-2xl mx-auto">
+          <p className="color text-center mb-16 max-w-2xl mx-auto">
             Experience the power of agents built by our own team, for our own
             business
           </p>
@@ -226,12 +226,12 @@ const Contact = () => {
                   </div>
 
                   {/* Name */}
-                  <p className="text-lg font-semibold text-white mb-1">
+                  <p className="text-lg font-semibold color mb-1">
                     {agent.name}
                   </p>
 
                   {/* Subtext */}
-                  <p className="text-sm text-gray-300 text-center">
+                  <p className="text-sm color text-center">
                     Live & ready to interact
                   </p>
                 </motion.div>

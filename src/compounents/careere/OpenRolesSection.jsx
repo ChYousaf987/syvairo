@@ -1,41 +1,25 @@
 import { motion } from "framer-motion";
 import { TbSettingsAutomation } from "react-icons/tb";
 import { RiRobot2Line } from "react-icons/ri";
-// import { HiOutlineLaptop } from "react-icons/hi2";
 import { BsClipboardCheck } from "react-icons/bs";
 import { MdWorkOutline } from "react-icons/md";
 import { AiOutlineLaptop } from "react-icons/ai";
 
 const roles = [
-  {
-    title: "Automation Developers",
-    icon: TbSettingsAutomation,
-  },
-  {
-    title: "AI Engineers",
-    icon: RiRobot2Line,
-  },
-  {
-    title: "Web & App Developers",
-    icon: AiOutlineLaptop,
-  },
-  {
-    title: "QA Specialists",
-    icon: BsClipboardCheck,
-  },
-  {
-    title: "Freelancers & Remote Specialists",
-    icon: MdWorkOutline,
-  },
+  { title: "Automation Developers", icon: TbSettingsAutomation },
+  { title: "AI Engineers", icon: RiRobot2Line },
+  { title: "Web & App Developers", icon: AiOutlineLaptop },
+  { title: "QA Specialists", icon: BsClipboardCheck },
+  { title: "Freelancers & Remote Specialists", icon: MdWorkOutline },
 ];
 
 const OpenRolesSection = () => {
   return (
-    <section className="relative py-28 bgGradient overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 text-center">
+    <section className="relative overflow-hidden bgGradient py-28">
+      <div className="text-center max-w-5xl mx-auto px-4 mb-12">
         {/* Badge */}
         <span
-          className="inline-block mb-4 px-5 py-1 rounded-full text-sm font-semibold bg-cyan-500/10 border border-cyan-600 text-cyan-400"
+          className="inline-block mb-4 px-6 py-2 rounded-full text-sm font-semibold bg-cyan-500/10 border border-cyan-600 text-cyan-400"
           style={{
             textShadow: `
               0 0 20px rgba(0,206,209,0.45),
@@ -47,7 +31,6 @@ const OpenRolesSection = () => {
         </span>
 
         {/* Heading */}
-        
         <motion.h2
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -55,13 +38,7 @@ const OpenRolesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-5xl pb-2 font-semibold tracking-tight bg-clip-text text-transparent"
           style={{
-            backgroundImage: `
-                     linear-gradient(
-                       180deg,
-                       var(--text-primary),
-                       var(--accent)
-                     )
-                   `,
+            backgroundImage: `linear-gradient(180deg, var(--text-primary), var(--accent))`,
             textShadow: `
               0 0 38px rgba(0, 206, 209, 0.45),
               0 0 20px rgba(0, 206, 209, 0.25)
@@ -82,65 +59,52 @@ const OpenRolesSection = () => {
         >
           Join our global team and build the future of automation and AI.
         </motion.p>
+      </div>
 
-        {/* Roles Grid */}
-        <motion.div
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+        {/* LEFT: Roles List */}
+        <motion.ul
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          transition={{ staggerChildren: 0.15 }}
-          className="mt-16 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10"
+          className="flex flex-col gap-6"
         >
           {roles.map((role, i) => {
             const Icon = role.icon;
             return (
-              <motion.div
+              <motion.li
                 key={i}
-                onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  e.currentTarget.style.setProperty(
-                    "--x",
-                    `${e.clientX - rect.left}px`
-                  );
-                  e.currentTarget.style.setProperty(
-                    "--y",
-                    `${e.clientY - rect.top}px`
-                  );
-                }}
-                className="
-        group relative rounded-2xl p-6 overflow-hidden
-        transition-all duration-300
-        hover:-translate-y-2 hover:scale-[1.03]
-        hover:shadow-[0_25px_60px_rgba(0,206,209,0.3)]
-        select-none
-
-        min-w-[85%] sm:min-w-[70%]
-        snap-center
-        md:min-w-0
-      "
-                style={{
-                  backgroundColor: "var(--card-bg)",
-                  border: "1px solid rgba(0,206,209,0.35)",
-                }}
+                className="flex items-center gap-4 p-4 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:bg-white/10 cursor-default"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
               >
-                {/* glow */}
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    background: `radial-gradient(200px circle at var(--x) var(--y), rgba(0,206,209,0.25), transparent 70%)`,
-                  }}
-                />
-
-                {/* Content */}
-                <div className="relative z-10 flex flex-col items-center gap-4">
-                  <Icon size={42} className="text-cyan-400" />
-                  <h3 className="text-lg font-semibold text-white text-center">
-                    {role.title}
-                  </h3>
-                </div>
-              </motion.div>
+                <Icon size={28} className="text-cyan-400 flex-shrink-0" />
+                <span className="text-lg color font-medium">{role.title}</span>
+              </motion.li>
             );
           })}
+        </motion.ul>
+
+        {/* RIGHT: Image */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="relative"
+        >
+          {/* Glow Behind Image */}
+          <div className="absolute -inset-10 blur-3xl opacity-40 bg-cyan-400/20 rounded-full"></div>
+
+          {/* Image Card */}
+          <div className="relative rounded-3xl overflow-hidden border border-cyan-400/30 shadow-2xl">
+            <img
+              src="/flexible-workspace.png"
+              alt="Global Delivery Model"
+              className="w-full h-full object-cover"
+            />
+          </div>
         </motion.div>
       </div>
     </section>

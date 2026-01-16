@@ -39,9 +39,9 @@ const companyValues = [
 const Careers = () => {
   return (
     <>
+      <OpenRolesSection />
       <CareersHero />
       <CultureSection />
-      <OpenRolesSection />
       <ValuesSection />
       <WorkYourWaySection />
       <WhyJoinUsSection />

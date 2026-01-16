@@ -20,7 +20,7 @@ const DeliveryModel = () => {
           Our Delivery Model
         </h2>
 
-        <p className="text-gray-300 text-lg leading-relaxed mb-8">
+        <p className="color2 text-lg leading-relaxed mb-8">
           Syvairo operates with a scalable global delivery model designed to
           support clients efficiently as we grow. This model allows us to expand
           expertise across regions while maintaining consistent quality and
@@ -67,14 +67,12 @@ const DeliveryModel = () => {
                 viewport={{ once: true }}
                 className="flex gap-4 items-start"
               >
-                <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-400/30">
-                  <HiOutlineMapPin className="text-cyan-400" size={22} />
+                <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-cyan-500/10 border border-cyan-400/30">
+                  <HiOutlineMapPin className="text-cyan-400" size={30} />
                 </div>
                 <div>
-                  <h4 className="text-white font-semibold">{item.title}</h4>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    {item.desc}
-                  </p>
+                  <h4 className="color font-semibold">{item.title}</h4>
+                  <p className="color2 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
